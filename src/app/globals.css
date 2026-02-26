@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* ================= BRAND COLORS ================= */
+
+@theme {
+  --color-primary: #FF8500;
+  --color-primary-light: #FFB05B;
+  --color-dark: #131313;
+  --color-light: #F5F4F4;
+}
+
+/* Base */
+
+body {
+  @apply bg-light text-dark;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
