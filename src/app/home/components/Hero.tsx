@@ -68,12 +68,12 @@ const ServiceImage = ({ src, id, activeId, setActiveId }: { src: string, id: num
     );
 };
 
-const Services = () => {
+const Hero = () => {
 
     const [activeId, setActiveId] = React.useState<number | null>(null);
 
     return (
-        <div className='bg-dark py-10 sm:py-16'>
+        <div className='bg-dark py-10 sm:pt-32  pb-16'>
             <Section>
                 <div className='space-y-4'>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
@@ -110,4 +110,4 @@ const Services = () => {
     )
 }
 
-export default Services
+export default Hero

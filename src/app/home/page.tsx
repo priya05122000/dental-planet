@@ -5,10 +5,12 @@ import MissionVision from './components/MissionVision'
 import Testimonials from './components/Testimonials'
 import CaptchaWrapper from '@/src/components/common/CaptchaWrapper'
 import Doctors from './components/Doctors'
+import Hero from './components/Hero'
 
 const HomePage = () => {
     return (
         <div>
+            <Hero />
             <Services />
             <CaptchaWrapper>
                 <AppointmentForm />

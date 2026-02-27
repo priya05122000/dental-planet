@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { ToastContainer } from "react-toastify";
 import Footer from "../components/layout/Footer";
+import Navbar from "../components/layout/Navbar";
 
 const abcSans = localFont({
   src: [
@@ -44,6 +45,7 @@ export default function RootLayout({
 
         <ToastContainer position="top-right" autoClose={3000} theme="light" />
 
+        <Navbar />
         {children}
         <Footer />
 
