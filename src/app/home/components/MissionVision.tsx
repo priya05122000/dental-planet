@@ -82,7 +82,7 @@ const MissionVision = () => {
 
                         <div className="relative aspect-square w-full overflow-hidden rounded">
                             <Image
-                                src="/services/dental-clinic.webp"
+                                src="/services/patient-having-dental-treatment-with-tool-patients-mouth-dentistry-improved-smile.jpg"
                                 alt="Doctor Portrait"
                                 fill
                                 className="object-cover"

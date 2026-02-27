@@ -8,12 +8,12 @@ import Image from 'next/image'
 import { PiArrowUpRightBold } from 'react-icons/pi';
 
 const servicesImages = [
-    { id: 1, src: "/services/dental-clinic.webp" },
-    { id: 2, src: "/services/dental-clinic.webp" },
-    { id: 3, src: "/services/dental-clinic.webp" },
-    { id: 4, src: "/services/dental-clinic.webp" },
-    { id: 5, src: "/services/dental-clinic.webp" },
-    { id: 6, src: "/services/dental-clinic.webp" },
+    { id: 1, src: "/services/stomatologist-hands-examining-child-teeth-dental-office.jpg" },
+    { id: 2, src: "/services/dentist-attaching-metal-braces-patient-teeth.jpg" },
+    { id: 3, src: "/services/dentist-professional-oral-care-services-healthy-smiles-routine-checkups-cleanings-treatments-ensure-optimal-dental-health-confident-radiant-smile-every-patien.jpg" },
+    { id: 4, src: "/services/worlds-aids-day.jpg" },
+    { id: 5, src: "/services/tightening-invisible-ceramic-braces.jpg" },
+    { id: 6, src: "/services/patient-having-dental-treatment-with-tool-patients-mouth-dentistry-improved-smile.jpg" },
 ];
 
 const ServiceImage = ({ src, id, activeId, setActiveId }: { src: string, id: number, activeId: number | null, setActiveId: React.Dispatch<React.SetStateAction<number | null>> }) => {
