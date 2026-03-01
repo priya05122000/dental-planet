@@ -101,7 +101,7 @@ export default function Header() {
                                     alt="Dental Planet Logo"
                                     width={200}
                                     height={200}
-                                    className="w-1/2 h-full"
+                                    className=" h-full"
                                 />
                             </div>
                         </button>

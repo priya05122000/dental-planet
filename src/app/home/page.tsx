@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials'
 import CaptchaWrapper from '@/src/components/common/CaptchaWrapper'
 import Doctors from './components/Doctors'
 import Hero from './components/Hero'
+import InstagramClient from './components/InstagramClient'
 
 const HomePage = () => {
     return (
@@ -18,6 +19,7 @@ const HomePage = () => {
             <MissionVision />
             <Doctors />
             <Testimonials />
+            <InstagramClient />
         </div>
     )
 }
