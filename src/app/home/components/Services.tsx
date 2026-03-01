@@ -73,14 +73,14 @@ const Services = () => {
     const [activeId, setActiveId] = React.useState<number | null>(null);
 
     return (
-        <div className='bg-dark py-10 sm:py-16'>
+        <div className=' py-10 sm:py-16'>
             <Section>
                 <div className='space-y-4'>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         <div className='max-w-sm'>
-                            <Heading level={4} className='text-light uppercase tracking-wide mb-4'>Services</Heading>
-                            <Paragraph className='text-light mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo rem quas perferendis nam inventore autem vel incidunt suscipit, dignissimos itaque.</Paragraph>
-                            <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer text-base font-semibold ">
+                            <Heading level={4} className='text-dark uppercase tracking-wide mb-4'>Services</Heading>
+                            <Paragraph className='text-dark mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo rem quas perferendis nam inventore autem vel incidunt suscipit, dignissimos itaque.</Paragraph>
+                            <button className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded cursor-pointer text-base font-semibold ">
                                 View All Services
                             </button>
                         </div>
