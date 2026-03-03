@@ -103,7 +103,7 @@ export default function Testimonials() {
           <Swiper
             modules={[Autoplay, Navigation]}
             slidesPerView={1}
-            loop={true} 
+            loop={true}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false, // keeps autoplay after arrow click
@@ -124,13 +124,13 @@ export default function Testimonials() {
                 >
                   {item.text}
                 </Paragraph>
-                <div className="flex flex-col items-center justify-center">
-                    <Paragraph size="base" className="text-primary font-bold mt-4">
-                      {item.name}
-                    </Paragraph>
-                    <Span className="text-gray-500 text-xs mt-1">
-                      {item.role}
-                    </Span>
+                <div className="sm:hidden flex-col items-center justify-center flex">
+                  <Paragraph size="base" className="text-primary font-bold mt-4">
+                    {item.name}
+                  </Paragraph>
+                  <Span className="text-gray-500 text-xs mt-1">
+                    {item.role}
+                  </Span>
                 </div>
                 <Paragraph
                   size="xl"

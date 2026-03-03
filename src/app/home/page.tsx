@@ -23,7 +23,7 @@ const HomePage = () => {
             <CaseStudy />
             <MissionVision />
             <Testimonials />
-            {/* <InstagramClient /> */}
+            <InstagramClient />
         </div>
     )
 }

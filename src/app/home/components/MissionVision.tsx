@@ -104,7 +104,7 @@ export default function MissionVision() {
             className="h-screen bg-black text-white flex items-center relative overflow-hidden"
         >
             {/* LEFT SIDE NAV */}
-            <div className="w-1/3 pl-16 space-y-6 relative z-10 bg-amber-900">
+            <div className="w-1/3 pl-16 space-y-6 relative z-10 ">
                 {data.map((item, index) => (
                     <div
                         key={index}
@@ -120,7 +120,7 @@ export default function MissionVision() {
             </div>
 
             {/* RIGHT SIDE CONTENT */}
-            <div className="w-2/3 bg-amber-700 relative z-10 h-60 flex items-center overflow-hidden">
+            <div className="w-2/3  relative z-10 h-60 flex items-center overflow-hidden">
                 {data.map((item, index) => (
                     <div
                         key={index}
@@ -146,7 +146,7 @@ export default function MissionVision() {
                     src="/design/dental-planet.png"
                     alt="Dental Planet"
                     fill
-                    className="object-contain object-bottom opacity-20"
+                    className="object-contain object-bottom"
                     sizes="100vw"
                     priority
                 />
