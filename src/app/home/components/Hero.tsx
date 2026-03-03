@@ -1,77 +1,181 @@
-import Heading from "@/src/components/common/Heading"
-import Paragraph from "@/src/components/common/Paragraph"
-import Image from "next/image"
+"use client";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import Heading from "@/src/components/common/Heading";
+import Paragraph from "@/src/components/common/Paragraph";
+
+/* ===========================
+   ODOMETER
+=========================== */
+
+const OdometerNumber = ({ value }: { value: number }) => {
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const el = wrapperRef.current;
+        if (!el) return;
+
+        let animated = false;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+
+                    const digitHeight =
+                        el.querySelector(".digit-span")?.clientHeight || 24;
+
+                    value
+                        .toString()
+                        .split("")
+                        .forEach((digit, i) => {
+                            const column = el.children[i]?.querySelector(
+                                ".digit-column"
+                            ) as HTMLElement | null;
+
+                            if (!column) return;
+
+                            gsap.set(column, { y: 0 });
+
+                            gsap.to(column, {
+                                y: -Number(digit) * digitHeight,
+                                duration: 2,
+                                delay: i * 0.15,
+                                ease: "power2.inOut",
+                            });
+                        });
+
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.6 }
+        );
+
+        observer.observe(el);
+
+        return () => observer.disconnect();
+    }, [value]);
+
+    return (
+        <div
+            ref={wrapperRef}
+            className="flex overflow-hidden tabular-nums leading-none"
+        >
+            {value
+                .toString()
+                .split("")
+                .map((_, i) => (
+                    <div key={i} className="h-[1em] overflow-hidden">
+                        <div className="digit-column flex flex-col">
+                            {Array.from({ length: 10 }, (_, n) => (
+                                <span
+                                    key={n}
+                                    className="digit-span block h-[1em]"
+                                >
+                                    {n}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+        </div>
+    );
+};
+
+/* ===========================
+   HERO
+=========================== */
 
 const Hero = () => {
-
     const stats = [
-        { value: "500+", label: "Customer" },
-        { value: "20+", label: "Customer" },
-        { value: "50+", label: "Customer" },
-    ]
+        { value: 500, label: "Customer" },
+        { value: 20, label: "Customer" },
+        { value: 50, label: "Customer" },
+    ];
+
     return (
-        <div className="h-screen">
-            <div className="grid grid-cols-3 h-full">
+        <section className="min-h-screen">
+            <div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 
                 {/* LEFT SIDE */}
-                {/* LEFT SIDE */}
-                <div className="bg-black h-full px-0 md:px-4 lg:px-12 grid grid-rows-2">
+                <div className="bg-black px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-2">
 
-                    {/* Top Half (Empty) */}
-                    <div></div>
+                    {/* Empty top (desktop only spacing) */}
+                    <div className="hidden md:block" />
 
-                    {/* Bottom Half (Content) */}
-                    <div className="bg-amber-300  mb-10 sm:mb-16 flex flex-col justify-between">
+                    {/* Content */}
+                    <div className="flex flex-col justify-between gap-10 relative">
 
-                        {/* Text */}
-                        <Paragraph className="text-dark">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Voluptate a molestias, praesentium inventore unde quia.
-                        </Paragraph>
+                        {/* Text Content */}
+                        <div>
+                            <Paragraph
+                                size="lg"
+                                className="uppercase text-light/50 tracking-[1rem] md:tracking-[1.5rem]"
+                            >
+                                Dental
+                            </Paragraph>
+
+                            <Paragraph
+                                size="xl"
+                                className="text-light my-4"
+                            >
+                                Redefining <br /> Aesthetics
+                            </Paragraph>
+
+                            <button className="hidden md:inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded">
+                                Book Appointment
+                            </button>
+                        </div>
 
                         {/* Stats */}
-                        <div className="border border-light/20 bg-amber-900 rounded p-4 flex justify-between">
-                            {stats.map((item, index) => (
-                                <div key={index}>
-                                    <Heading level={4} className="text-dark tracking-wider">
-                                        {item.value}
+                        <div className="border border-light/20 rounded p-4 flex flex-col sm:flex-row justify-between gap-6 md:absolute md:bottom-0 md:w-full">
+
+                            {stats.map((item, i) => (
+                                <div key={i}>
+                                    <Heading
+                                        level={4}
+                                        className="text-light flex items-baseline"
+                                    >
+                                        <OdometerNumber value={item.value} />
+                                        <span className="ml-1">+</span>
                                     </Heading>
-                                    <Paragraph className="text-dark tracking-wide">
+
+                                    <Paragraph className="text-light/80">
                                         {item.label}
                                     </Paragraph>
                                 </div>
                             ))}
-                        </div>
 
+                        </div>
                     </div>
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className="md:col-span-2 h-full">
-                    <div className="relative h-full  shadow-lg">
-                        <Image
-                            src="/hero/Group-1.png"
-                            alt="Clinic Interior"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 60vw"
-                            priority
-                        />
+                <div className="relative md:col-span-2 min-h-[60vh] md:min-h-full">
+                    <Image
+                        src="/hero/Group-1.png"
+                        alt="Clinic Interior"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 66vw"
+                        priority
+                    />
 
-                        <Image
-                            src="/design/bannerteeth.png"
-                            alt="Dental Planet Logo"
-                            width={250}
-                            height={250}
-                            className="absolute left-3 bottom-1/12 -translate-x-1/2  pointer-events-none "
-                            priority
-                        />
-                    </div>
+                    <Image
+                        src="/design/bannerteeth.png"
+                        alt="Dental Planet Logo"
+                        width={250}
+                        height={250}
+                        className="absolute left-0 bottom-10 -translate-x-1/2 pointer-events-none hidden md:block"
+                        priority
+                    />
                 </div>
 
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
-export default Hero
+export default Hero;
