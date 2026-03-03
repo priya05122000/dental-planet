@@ -87,7 +87,7 @@ export default function Services() {
                     {services.map((item, index) => (
                         <button
                             key={item.id}
-                            onClick={() => swiperRef.current?.slideTo(index)}
+                            onClick={() => swiperRef.current?.slideToLoop(index)}
                             className={`relative  px-2 py-0.5  border border-dark/10 rounded  shadow-md cursor-pointer  overflow-hidden  transition-all duration-300 ${activeIndex === index
                                 ? " bg-dark text-light"
                                 : " bg-washed-black/12 "

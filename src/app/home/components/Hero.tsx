@@ -112,7 +112,7 @@ const Hero = () => {
                         <div>
                             <Paragraph
                                 size="lg"
-                                className="uppercase text-light/50 tracking-[1rem] md:tracking-[1.5rem]"
+                                className="uppercase text-light/50 tracking-[1rem] md:tracking-[2rem]"
                             >
                                 Dental
                             </Paragraph>
@@ -130,7 +130,7 @@ const Hero = () => {
                         </div>
 
                         {/* Stats */}
-                        <div className="border border-light/20 rounded p-4 flex flex-col sm:flex-row justify-between gap-6 md:absolute md:bottom-0 md:w-full">
+                        <div className="mb-10 border z-10 border-light/20 rounded p-4 flex flex-col sm:flex-row justify-between gap-20 md:absolute md:bottom-0 ">
 
                             {stats.map((item, i) => (
                                 <div key={i}>
@@ -168,7 +168,7 @@ const Hero = () => {
                         alt="Dental Planet Logo"
                         width={250}
                         height={250}
-                        className="absolute left-0 bottom-10 -translate-x-1/2 pointer-events-none hidden md:block"
+                        className="absolute left-5 bottom-16 -translate-x-1/2 pointer-events-none hidden md:block"
                         priority
                     />
                 </div>
