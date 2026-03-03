@@ -14,32 +14,35 @@ const Hero = () => {
             <div className="grid grid-cols-3 h-full">
 
                 {/* LEFT SIDE */}
-                <div className="bg-black h-full px-0 md:px-4 lg:px-12 flex items-end">
-                    <div className="relative">
+                {/* LEFT SIDE */}
+                <div className="bg-black h-full px-0 md:px-4 lg:px-12 grid grid-rows-2">
 
+                    {/* Top Half (Empty) */}
+                    <div></div>
 
-                        <div>
+                    {/* Bottom Half (Content) */}
+                    <div className="bg-amber-300  mb-10 sm:mb-16 flex flex-col justify-between">
 
+                        {/* Text */}
+                        <Paragraph className="text-dark">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Voluptate a molestias, praesentium inventore unde quia.
+                        </Paragraph>
+
+                        {/* Stats */}
+                        <div className="border border-light/20 bg-amber-900 rounded p-4 flex justify-between">
+                            {stats.map((item, index) => (
+                                <div key={index}>
+                                    <Heading level={4} className="text-dark tracking-wider">
+                                        {item.value}
+                                    </Heading>
+                                    <Paragraph className="text-dark tracking-wide">
+                                        {item.label}
+                                    </Paragraph>
+                                </div>
+                            ))}
                         </div>
-                        <div className="absolute bottom-10 z-10">
-                            <div className="border rounded border-light/20 p-4 flex gap-10">
 
-                                {stats.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        className=""
-                                    >
-                                        <Heading level={4} className="text-light font-bold tracking-widest">
-                                            {item.value}
-                                        </Heading>
-                                        <Paragraph  className="text-light tracking-widest mt-2">
-                                            {item.label}
-                                        </Paragraph>
-                                    </div>
-                                ))}
-
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -60,7 +63,7 @@ const Hero = () => {
                             alt="Dental Planet Logo"
                             width={250}
                             height={250}
-                            className="absolute left-0 bottom-1/12 -translate-x-1/2  pointer-events-none "
+                            className="absolute left-3 bottom-1/12 -translate-x-1/2  pointer-events-none "
                             priority
                         />
                     </div>
