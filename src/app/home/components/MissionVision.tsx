@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Paragraph from "@/src/components/common/Paragraph"
 import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -39,7 +38,11 @@ export default function MissionVision() {
         const ctx = gsap.context(() => {
             const sections = contentRefs.current
 
-            timelineRef.current = gsap.timeline({
+            // Initial state
+            gsap.set(sections, { autoAlpha: 0, y: 50 })
+            gsap.set(sections[0], { autoAlpha: 1, y: 0 })
+
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "top top",
@@ -47,33 +50,34 @@ export default function MissionVision() {
                     scrub: true,
                     pin: true,
                     snap: 1 / (sections.length - 1),
+                    onUpdate: (self) => {
+                        const index = Math.round(
+                            self.progress * (sections.length - 1)
+                        )
+                        setActiveIndex(index)
+                    },
                 },
             })
 
-            // Animate each section
             sections.forEach((section, i) => {
-                if (i !== 0) {
-                    timelineRef.current?.fromTo(
-                        section,
-                        { opacity: 0, y: 100 },
-                        { opacity: 1, y: 0, duration: 1 },
-                        i
-                    )
-                }
+                if (i === 0) return
+
+                // Step 1 → Hide previous completely
+                tl.to(sections[i - 1], {
+                    autoAlpha: 0,
+                    y: -50,
+                    duration: 0.5,
+                })
+
+                // Step 2 → Then show next
+                tl.fromTo(
+                    section,
+                    { autoAlpha: 0, y: 50 },
+                    { autoAlpha: 1, y: 0, duration: 0.5 }
+                )
             })
 
-            // Update active index
-            ScrollTrigger.create({
-                trigger: containerRef.current,
-                start: "top top",
-                end: `+=${sections.length * 100}%`,
-                onUpdate: (self) => {
-                    const index = Math.round(
-                        self.progress * (sections.length - 1)
-                    )
-                    setActiveIndex(index)
-                },
-            })
+            timelineRef.current = tl
         }, containerRef)
 
         return () => ctx.revert()
@@ -97,10 +101,10 @@ export default function MissionVision() {
     return (
         <section
             ref={containerRef}
-            className="h-screen bg-black text-white flex items-center relative"
+            className="h-screen bg-black text-white flex items-center relative overflow-hidden"
         >
-            {/* LEFT SIDE STATIC NAV */}
-            <div className="w-1/3 pl-16 space-y-6">
+            {/* LEFT SIDE NAV */}
+            <div className="w-1/3 pl-16 space-y-6 relative z-10 bg-amber-900">
                 {data.map((item, index) => (
                     <div
                         key={index}
@@ -115,7 +119,8 @@ export default function MissionVision() {
                 ))}
             </div>
 
-            <div className="w-2/3 relative h-60 flex items-center overflow-hidden">
+            {/* RIGHT SIDE CONTENT */}
+            <div className="w-2/3 bg-amber-700 relative z-10 h-60 flex items-center overflow-hidden">
                 {data.map((item, index) => (
                     <div
                         key={index}
@@ -123,8 +128,7 @@ export default function MissionVision() {
                             if (!el) return
                             contentRefs.current[index] = el
                         }}
-                        className="absolute  inset-0 flex flex-col justify-center"
-                        style={{ opacity: index === 0 ? 1 : 0 }}
+                        className="absolute inset-0 flex flex-col justify-center"
                     >
                         <h2 className="text-4xl font-bold mb-4">
                             {item.title}
@@ -136,12 +140,13 @@ export default function MissionVision() {
                 ))}
             </div>
 
+            {/* BOTTOM BACKGROUND IMAGE */}
             <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none z-0">
                 <Image
                     src="/design/dental-planet.png"
                     alt="Dental Planet"
                     fill
-                    className="object-contain object-bottom "
+                    className="object-contain object-bottom opacity-20"
                     sizes="100vw"
                     priority
                 />
