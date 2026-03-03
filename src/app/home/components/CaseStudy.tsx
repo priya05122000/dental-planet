@@ -1,4 +1,6 @@
+"use client"
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const CaseStudy = () => {
     /* ---------------------------------- */
@@ -84,9 +86,20 @@ const CaseStudy = () => {
                             "w-full h-full object-cover"
                         )}
 
-                        <div className="absolute bottom-0 w-full flex">
-                            <div className="h-40 w-2/3 bg-dark">
+                        <div className="absolute bottom-0 w-full flex justify-start">
+                            <div className="relative h-40 w-2/3 overflow-hidden bg-dark">
+
                                 {renderImage("/doctors/before_after.webp")}
+
+                                <motion.div
+                                    initial={{ width: "100%" }}
+                                    whileInView={{ width: 0 }}
+                                    viewport={{ once: false, amount: 0.2 }}
+                                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                                    className="absolute top-0 right-0 h-full bg-black"
+                                    style={{ width: "100%" }}
+                                />
+
                             </div>
                         </div>
                     </div>
@@ -98,8 +111,17 @@ const CaseStudy = () => {
                                 "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
                             )}
                         </div>
-                        <div className="h-40">
+                        <div className="h-40 relative">
                             {renderImage("/doctors/before_after.webp")}
+
+                            <motion.div
+                                initial={{ width: "100%" }}
+                                whileInView={{ width: 0 }}
+                                viewport={{ once: false, amount: 0.2 }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                className="absolute top-0 right-0 h-full bg-black"
+                                style={{ width: "100%" }}
+                            />
                         </div>
                     </div>
                 </div>
@@ -114,7 +136,7 @@ const CaseStudy = () => {
                     )}
                 </div>
 
-                <div className="h-40">
+                <div className="h-40 ">
                     {renderImage("/doctors/doctor-holds-prosthesis.jpg")}
                 </div>
 
