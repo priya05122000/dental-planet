@@ -201,7 +201,7 @@ export default function AppointmentForm() {
                         alt="Dental Planet Logo"
                         width={200}
                         height={200}
-                        className="absolute right-0 top-1/4  opacity-60 pointer-events-none "
+                        className="absolute right-0 top-1/4  pointer-events-none "
                         priority
                     />
                 </CenterSection>

@@ -1,6 +1,8 @@
 "use client"
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Paragraph from "@/src/components/common/Paragraph";
+import Heading from "@/src/components/common/Heading";
 
 const CaseStudy = () => {
     /* ---------------------------------- */
@@ -26,9 +28,9 @@ const CaseStudy = () => {
         text: string,
         className: string = ""
     ) => (
-        <div className={`p-4 ${className}`}>
+        <Paragraph size="lg" className={`p-4 ${className}`}>
             {text}
-        </div>
+        </Paragraph>
     );
 
     return (
@@ -40,18 +42,30 @@ const CaseStudy = () => {
                 <div className="bg-off-white">
 
                     {/* Top Text */}
-                    <div className="h-40">
-                        {renderText(
+                    <div className="h-40 px-0 md:px-4 lg:px-12 items-center flex">
+                        {/* {renderText(
                             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe deleniti adipisci similique nobis!",
-                        )}
+                        )} */}
+                        <div>
+                            <Heading
+                                level={4}
+                                className="text-dark tracking-wide mb-2"
+                            >
+                                Case Study
+                            </Heading>
+                            <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest max-w-2xl">
+                                Professional teeth cleaning
+                            </Paragraph>
+                        </div>
+
                     </div>
 
                     {/* Text + Image */}
                     <div className="grid grid-cols-3">
-                        <div className="h-40 bg-primary">
+                        <div className="h-40 bg-primary flex items-center">
                             {renderText(
-                                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                                "text-light"
+                                "Professional teeth cleaning",
+                                "text-dark"
                             )}
                         </div>
                         <div className="h-40 col-span-2">
@@ -106,9 +120,9 @@ const CaseStudy = () => {
 
                     {/* Text + Image */}
                     <div className="grid grid-cols-3">
-                        <div className="h-40 col-span-2 bg-dark text-light">
+                        <div className="h-40 col-span-2 bg-dark text-light flex items-center">
                             {renderText(
-                                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                                "Professional teeth cleaning.",
                             )}
                         </div>
                         <div className="h-40 relative">
@@ -129,9 +143,9 @@ const CaseStudy = () => {
 
             {/* ===================== BOTTOM GRID ===================== */}
             <div className="grid grid-cols-3">
-                <div className="h-40 bg-off-white">
+                <div className="h-40 bg-off-white flex items-center">
                     {renderText(
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                        " Professional teeth cleaning.",
                         "text-dark"
                     )}
                 </div>
@@ -140,10 +154,10 @@ const CaseStudy = () => {
                     {renderImage("/doctors/doctor-holds-prosthesis.jpg")}
                 </div>
 
-                <div className="h-40 bg-old-lace">
+                <div className="h-40 bg-old-lace flex items-center">
                     {renderText(
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-                        "text-dark"
+                        "Professional teeth cleaning.",
+                        "text-primary"
                     )}
                 </div>
             </div>

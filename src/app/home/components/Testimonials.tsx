@@ -136,7 +136,7 @@ export default function Testimonials() {
                             {testimonials.map((item, index) => (
                                 <button
                                     key={item.id}
-                                    onClick={() => swiperRef.current?.slideTo(index)}
+                                    onClick={() => swiperRef.current?.slideToLoop(index)}
                                     className={`relative w-12 h-12 cursor-pointer rounded-full overflow-hidden border-2 transition-all duration-300 ${activeIndex === index
                                         ? "border-primary "
                                         : "border-transparent "
