@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { ToastContainer } from "react-toastify";
 import Footer from "../components/layout/Footer";

@@ -1,0 +1,132 @@
+import Image from "next/image";
+
+const CaseStudy = () => {
+    /* ---------------------------------- */
+    /* Reusable Image Block */
+    /* ---------------------------------- */
+    const renderImage = (
+        src: string,
+        className: string = "w-full h-full object-cover object-top"
+    ) => (
+        <Image
+            src={src}
+            width={500}
+            height={500}
+            alt="doctor"
+            className={className}
+        />
+    );
+
+    /* ---------------------------------- */
+    /* Reusable Text Block */
+    /* ---------------------------------- */
+    const renderText = (
+        text: string,
+        className: string = ""
+    ) => (
+        <div className={`p-4 ${className}`}>
+            {text}
+        </div>
+    );
+
+    return (
+        <div>
+            {/* ===================== TOP GRID ===================== */}
+            <div className="grid grid-cols-2">
+
+                {/* ---------- LEFT SIDE ---------- */}
+                <div className="bg-off-white">
+
+                    {/* Top Text */}
+                    <div className="h-40">
+                        {renderText(
+                            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe deleniti adipisci similique nobis!",
+                        )}
+                    </div>
+
+                    {/* Text + Image */}
+                    <div className="grid grid-cols-3">
+                        <div className="h-40 bg-primary">
+                            {renderText(
+                                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                                "text-light"
+                            )}
+                        </div>
+                        <div className="h-40 col-span-2">
+                            {renderImage("/doctors/1.jpg")}
+                        </div>
+                    </div>
+
+                    {/* Big Image + Small Stack */}
+                    <div className="grid grid-cols-3">
+                        <div className="h-80 col-span-2">
+                            {renderImage("/doctors/smiling-woman-dentist-chair.jpg")}
+                        </div>
+
+                        <div>
+                            <div className="h-40">
+                                {renderImage("/doctors/female-doctor.jpg")}
+                            </div>
+                            <div className="h-40">
+                                {renderImage("/doctors/portrait-man-doctor.jpg")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ---------- RIGHT SIDE ---------- */}
+                <div className="flex flex-col">
+
+                    {/* Large Image with Overlay */}
+                    <div className="h-120 w-full relative">
+                        {renderImage(
+                            "/doctors/close-up-female-1.jpg",
+                            "w-full h-full object-cover"
+                        )}
+
+                        <div className="absolute bottom-0 w-full flex">
+                            <div className="h-40 w-2/3 bg-dark">
+                                {renderImage("/doctors/before_after.webp")}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Text + Image */}
+                    <div className="grid grid-cols-3">
+                        <div className="h-40 col-span-2 bg-dark text-light">
+                            {renderText(
+                                "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                            )}
+                        </div>
+                        <div className="h-40">
+                            {renderImage("/doctors/before_after.webp")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* ===================== BOTTOM GRID ===================== */}
+            <div className="grid grid-cols-3">
+                <div className="h-40 bg-off-white">
+                    {renderText(
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                        "text-dark"
+                    )}
+                </div>
+
+                <div className="h-40">
+                    {renderImage("/doctors/doctor-holds-prosthesis.jpg")}
+                </div>
+
+                <div className="h-40 bg-old-lace">
+                    {renderText(
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                        "text-dark"
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CaseStudy;

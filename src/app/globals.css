@@ -5,8 +5,12 @@
 @theme {
   --color-primary: #FF8500;
   --color-primary-light: #FFB05B;
+  --color-old-lace: #FFF3E5;
+  --color-off-white: #F2F0F0;
   --color-dark: #131313;
   --color-light: #F5F4F4;
+  --color-washed-black: #343434;
+  --color-gold: #FFD813;
 }
 
 /* Base */

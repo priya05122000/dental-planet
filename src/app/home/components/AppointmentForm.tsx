@@ -109,111 +109,104 @@ export default function AppointmentForm() {
     };
 
     return (
-        <div className="bg-light py-10 sm:py-16">
-            <CenterSection>
-                <div className="mb-8">
+        <div className="bg-old-lace py-10 sm:py-16 relative ">
+            <div className=" relative ">
+                <CenterSection>
+                    <div className="mb-10">
+                        <div className="relative flex flex-col items-center justify-center text-center ">
+                            {/* Heading */}
 
+                            <Heading
+                                level={4}
+                                className="text-dark tracking-wide mb-2"
+                            >
+                                Make an  Appointment
+                            </Heading>
 
-                    <div className="relative flex flex-col items-center justify-center text-center py-10">
-
-                        {/* Logo Behind Text */}
-                        <Image
-                            src="/logo/dentallogo-2.webp"
-                            alt="Dental Planet Logo"
-                            width={200}
-                            height={200}
-                            className="absolute opacity-60 pointer-events-none "
-                            priority
-                        />
-
-                        {/* Heading */}
-                        <Heading
-                            level={4}
-                            className="relative text-dark tracking-wide uppercase  font-semibold"
-                        >
-                            Make an <br /> Appointment
-                        </Heading>
-
+                            <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest max-w-2xl">
+                                Professional teeth cleaning
+                            </Paragraph>
+                        </div>
                     </div>
 
-
-                    <Paragraph
-                        size="base"
-                        className="text-dark text-center  max-w-2xl mx-auto"
+                    <form
+                        onSubmit={handleSubmit}
+                        autoComplete="off"
+                        className="space-y-4 max-w-4xl  mx-auto"
                     >
-                        Ready for a smile transformation? Book your appointment
-                        today and experience top-notch dental care at Dental
-                        Planet. Your perfect smile awaits!
-                    </Paragraph>
-                </div>
-
-                <form
-                    onSubmit={handleSubmit}
-                    autoComplete="off"
-                    className="space-y-4 max-w-4xl  mx-auto"
-                >
-                    <div className="grid gap-4 sm:grid-cols-3 text-base">
-
-                        <input
-                            type="text"
-                            name="no-autofill-name"
-                            autoComplete="off"
-                            placeholder="Name *"
-                            value={form.name}
-                            onChange={(e) => handleChange("name", e.target.value)}
-                            className="rounded border border-dark/20 px-3 py-2 w-full focus:outline-none"
-                        />
-
-                        <div className="flex">
-                            <span className="rounded-tl rounded-bl border-y border-l border-dark/20 px-3 py-2 flex items-center">
-                                +91
-                            </span>
+                        <div className="grid gap-4 sm:grid-cols-3 text-base">
 
                             <input
-                                type="tel"
-                                name="no-autofill-mobile"
-                                inputMode="numeric"
+                                type="text"
+                                name="no-autofill-name"
                                 autoComplete="off"
-                                placeholder="Mobile *"
-                                value={form.mobile}
-                                onChange={(e) => handleChange("mobile", e.target.value)}
-                                className="rounded-tr rounded-br border border-dark/20 px-3 py-2 w-full focus:outline-none"
+                                placeholder="Name *"
+                                value={form.name}
+                                onChange={(e) => handleChange("name", e.target.value)}
+                                className="rounded border border-dark/20 px-3 py-2 w-full focus:outline-none"
+                            />
+
+                            <div className="flex">
+                                <span className="rounded-tl rounded-bl border-y border-l border-dark/20 px-3 py-2 flex items-center">
+                                    +91
+                                </span>
+
+                                <input
+                                    type="tel"
+                                    name="no-autofill-mobile"
+                                    inputMode="numeric"
+                                    autoComplete="off"
+                                    placeholder="Mobile *"
+                                    value={form.mobile}
+                                    onChange={(e) => handleChange("mobile", e.target.value)}
+                                    className="rounded-tr rounded-br border border-dark/20 px-3 py-2 w-full focus:outline-none"
+                                />
+                            </div>
+
+                            <input
+                                type="text"
+                                name="no-autofill-email"
+                                autoComplete="off"
+                                placeholder="Email"
+                                value={form.email}
+                                onChange={(e) => handleChange("email", e.target.value)}
+                                className="rounded border border-dark/20 px-3 py-2 w-full focus:outline-none"
                             />
                         </div>
 
-                        <input
-                            type="text"
-                            name="no-autofill-email"
+
+                        <textarea
+                            name="no-autofill-message"
                             autoComplete="off"
-                            placeholder="Email"
-                            value={form.email}
-                            onChange={(e) => handleChange("email", e.target.value)}
+                            placeholder="Message"
+                            value={form.message}
+                            onChange={(e) => handleChange("message", e.target.value)}
                             className="rounded border border-dark/20 px-3 py-2 w-full focus:outline-none"
                         />
-                    </div>
+                        <div className="flex justify-center">
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-3 rounded cursor-pointer text-base font-semibold   disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                {loading ? "Booking..." : "Book Appointment"}
+                            </button>
+                        </div>
 
 
-                    <textarea
-                        name="no-autofill-message"
-                        autoComplete="off"
-                        placeholder="Message"
-                        value={form.message}
-                        onChange={(e) => handleChange("message", e.target.value)}
-                        className="rounded border border-dark/20 px-3 py-2 w-full focus:outline-none"
+                    </form>
+
+                    <Image
+                        src="/design/teeth.webp"
+                        alt="Dental Planet Logo"
+                        width={200}
+                        height={200}
+                        className="absolute right-0 top-1/4  opacity-60 pointer-events-none "
+                        priority
                     />
-                    <div className="flex justify-center">
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-3 rounded cursor-pointer text-base font-semibold   disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {loading ? "Booking..." : "Book Appointment"}
-                        </button>
-                    </div>
+                </CenterSection>
+            </div>
 
-
-                </form>
-            </CenterSection>
         </div>
     );
 }

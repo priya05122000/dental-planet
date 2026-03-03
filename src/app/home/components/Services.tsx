@@ -1,113 +1,156 @@
-"use client"
-import React from "react";
-import Heading from '@/src/components/common/Heading'
-import Paragraph from '@/src/components/common/Paragraph'
-import Section from '@/src/components/common/Section'
-import Span from '@/src/components/common/Span';
-import Image from 'next/image'
-import { PiArrowUpRightBold } from 'react-icons/pi';
+"use client";
 
-const servicesImages = [
-    { id: 1, src: "/services/stomatologist-hands-examining-child-teeth-dental-office.jpg" },
-    { id: 2, src: "/services/dentist-attaching-metal-braces-patient-teeth.jpg" },
-    { id: 3, src: "/services/dentist-professional-oral-care-services-healthy-smiles-routine-checkups-cleanings-treatments-ensure-optimal-dental-health-confident-radiant-smile-every-patien.jpg" },
-    { id: 4, src: "/services/worlds-aids-day.jpg" },
-    { id: 5, src: "/services/tightening-invisible-ceramic-braces.jpg" },
-    { id: 6, src: "/services/patient-having-dental-treatment-with-tool-patients-mouth-dentistry-improved-smile.jpg" },
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import { useRef, useState } from "react";
+import type { Swiper as SwiperType } from "swiper";
+import CenterSection from "@/src/components/common/CenterSection";
+import Heading from "@/src/components/common/Heading";
+import Paragraph from "@/src/components/common/Paragraph";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+const services = [
+    {
+        id: 1,
+        name: "Dr. Samantha Jones",
+        service: "Orthodontics",
+        subtext: `Comprehensive orthodontic solutions designed to correct misaligned teeth and improve bite function.`,
+        text: `We offer advanced orthodontic treatments including metal braces and clear aligners.
+Our goal is to properly align teeth and improve overall jaw function.
+Each treatment plan is customized to ensure long-term comfort and stability.`,
+    },
+    {
+        id: 2,
+        name: "Dr. Michael Lee",
+        service: "Gum Treatment",
+        subtext: `Advanced periodontal care focused on maintaining healthy gums and preventing disease.`,
+        text: `Our gum treatments target infection and inflammation at an early stage.
+We use deep cleaning and modern laser techniques for effective results.
+Healthy gums are essential for strong teeth and overall oral wellness.`,
+    },
+    {
+        id: 3,
+        name: "Dr. David Smith",
+        service: "Oral Surgery",
+        subtext: `Safe and minimally invasive surgical procedures performed with precision.`,
+        text: `We perform wisdom tooth removals and minor oral surgeries with utmost care.
+Modern equipment ensures accuracy and faster recovery time.
+Patient safety and comfort remain our highest priorities.`,
+    },
+    {
+        id: 4,
+        name: "Dr. Emily Carter",
+        service: "Root Canal Treatment",
+        subtext: `Modern and painless root canal procedures to preserve natural teeth.`,
+        text: `Root canal treatment removes infection while saving your natural tooth.
+We use advanced rotary systems for precise and pain-free procedures.
+Early treatment helps prevent further dental complications.`,
+    },
+    {
+        id: 5,
+        name: "Dr. Daniel Brown",
+        service: "Dental Implants",
+        subtext: `Permanent and durable tooth replacement solutions for missing teeth.`,
+        text: `Dental implants restore both appearance and chewing function.
+They are designed to look and feel like natural teeth.
+Our implant procedures ensure strength, stability, and long-term success.`,
+    },
+    {
+        id: 6,
+        name: "Dr. Olivia Wilson",
+        service: "Cosmetic Dentistry",
+        subtext: `Personalized cosmetic treatments to enhance smile aesthetics.`,
+        text: `We offer teeth whitening, veneers, and complete smile makeovers.
+Our cosmetic treatments improve confidence and facial harmony.
+Every procedure is tailored to match your unique smile goals.`,
+    },
 ];
 
-const ServiceImage = ({ src, id, activeId, setActiveId }: { src: string, id: number, activeId: number | null, setActiveId: React.Dispatch<React.SetStateAction<number | null>> }) => {
-
-    const active = activeId === id;
+export default function Services() {
+    const swiperRef = useRef<SwiperType | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div className="relative aspect-square w-full overflow-hidden rounded">
-
-            {/* Image */}
-            <Image
-                src={src}
-                alt="Service"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className={`object-cover transition-all duration-500 ${active ? "scale-105 blur-md" : ""
-                    }`}
-            />
-
-            {/* FULL OVERLAY (Explanation) */}
-            {active && (
-                <div
-                    className="absolute inset-0 bg-dark/60 backdrop-blur-sm flex flex-col justify-center items-start  p-6 transition-all duration-300"
-                    onClick={() => setActiveId(null)}
-                >
-                    <Paragraph size="xl" className="text-light  font-semibold mb-2">
-                        Service Name
+        <div className="py-10 sm:py-16 bg-old-lace">
+            <CenterSection>
+                <div className="mb-8">
+                    <Heading level={4} className="text-dark tracking-widest  mb-2">
+                        Services
+                    </Heading>
+                    <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest max-w-2xl">
+                        Professional teeth cleaning
                     </Paragraph>
-                    <Span className="text-light ">
-                        This service provides complete dental care with modern equipment
-                        and expert professionals ensuring comfort and safety.
-                    </Span>
                 </div>
-            )}
 
-            {/* BOTTOM BAR (Default Only) */}
-            {!active && (
-                <div className="absolute bottom-0 w-full flex justify-between items-center  transition-all duration-300">
-                    <div className='flex justify-between w-full p-2 gap-2 '>
-                        <Span className="text-light font-semibold bg-dark/30 backdrop-blur-md rounded p-3 flex-1">Service Name</Span>
+                {/* Avatar Navigation */}
+                <div className="flex  items-center gap-2 ">
+                    {services.map((item, index) => (
+                        <button
+                            key={item.id}
+                            onClick={() => swiperRef.current?.slideTo(index)}
+                            className={`relative  px-2 py-0.5  border border-dark/10 rounded  shadow-md cursor-pointer  overflow-hidden  transition-all duration-300 ${activeIndex === index
+                                ? " bg-dark text-light"
+                                : " bg-washed-black/12 "
+                                }`}
+                        >
+                            <Paragraph size="sm">{item.service}</Paragraph>
+                        </button>
+                    ))}
 
-                        <button onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveId(id);
+                </div>
+                {/* Swiper */}
+                <div className=" my-10  sm:flex ">
+                    <div className="flex justify-center ">
+                        {/* Name + Role */}
+                        <div className="flex  w-56  text-dark  rounded">
+                            <Paragraph className=" text-primary">
+                                &#9679;  {services[activeIndex].service}
+                            </Paragraph>
+                        </div>
+                    </div>
+
+                    <Swiper
+                        modules={[Autoplay, Navigation]}
+                        slidesPerView={1}
+                        loop={true}   // ✅ ADD THIS
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false, // keeps autoplay after arrow click
                         }}
-                            className="text-light cursor-pointer bg-dark/30 backdrop-blur-md p-3 flex rounded items-center"><PiArrowUpRightBold /></button>
-                    </div>
-                </div>
-            )
-            }
-        </div >
-    );
-};
+                        grabCursor={true}
+                        navigation={{
+                            prevEl: ".custom-prev",
+                            nextEl: ".custom-next",
+                        }}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // IMPORTANT
+                    >
+                        {services.map((item) => (
+                            <SwiperSlide key={item.id}>
 
-const Services = () => {
-
-    const [activeId, setActiveId] = React.useState<number | null>(null);
-
-    return (
-        <div className=' py-10 sm:py-16'>
-            <Section>
-                <div className='space-y-4'>
-                    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                        <div className='max-w-sm'>
-                            <Heading level={4} className='text-dark uppercase tracking-wide mb-4'>Services</Heading>
-                            <Paragraph className='text-dark mb-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo rem quas perferendis nam inventore autem vel incidunt suscipit, dignissimos itaque.</Paragraph>
-                            <button className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded cursor-pointer text-base font-semibold ">
-                                View All Services
-                            </button>
-                        </div>
-                        <div className='grid grid-cols-2 gap-4'>
-                            {servicesImages.slice(0, 2).map((item) => (
-                                <ServiceImage key={item.id}
-                                    id={item.id}
-                                    src={item.src}
-                                    activeId={activeId}
-                                    setActiveId={setActiveId} />
-                            ))}
-                        </div>
-                    </div>
-                    <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-                        {servicesImages.slice(2).map((item) => (
-                            <ServiceImage key={item.id}
-                                id={item.id}
-                                src={item.src}
-                                activeId={activeId}
-                                setActiveId={setActiveId} />
+                                <Paragraph size="xl" className="text-dark font-semibold mb-2 tracking-wide leading-snug">
+                                    {item.text}
+                                </Paragraph>
+                                <Paragraph size="base" className="text-dark ">
+                                    {item.subtext}
+                                </Paragraph>
+                            </SwiperSlide>
                         ))}
-                    </div>
+                    </Swiper>
+
+
                 </div>
-            </Section>
+                <div className="flex justify-end gap-2">
+                    <button className="custom-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+                        <IoIosArrowBack />
+                    </button>
+
+                    <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-washed-black/58  transition">
+                        <IoIosArrowForward />
+                    </button>
+                </div>
+            </CenterSection>
+
         </div>
-
-    )
+    );
 }
-
-export default Services

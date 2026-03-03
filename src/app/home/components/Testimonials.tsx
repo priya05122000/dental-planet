@@ -1,41 +1,77 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
-
-import Image from "next/image";
 import CenterSection from "@/src/components/common/CenterSection";
 import Heading from "@/src/components/common/Heading";
 import Paragraph from "@/src/components/common/Paragraph";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { RxStarFilled } from "react-icons/rx";
+import Image from "next/image";
 import Span from "@/src/components/common/Span";
 
 const testimonials = [
     {
         id: 1,
-        name: "Samantha Jones",
-        role: "CFO at BrightPath",
-        image: "/testimonials/avatar.webp",
-        text: `Advisory has completely transformed the way I manage my finances.
-    With its intuitive interface and powerful features, I now have better control
-    and visibility into my expenses and investments. Highly recommend it!`,
+        name: "Dr. Samantha Jones",
+        role: "Senior Orthodontist",
+        service: "Orthodontics",
+        image: "/images/doctors/doctor-1.jpg",
+        text: `We offer advanced orthodontic treatments including metal braces and clear aligners.
+Our goal is to properly align teeth and improve overall jaw function.
+Each treatment plan is customized to ensure long-term comfort and stability.`,
     },
     {
         id: 2,
-        name: "Michael Lee",
-        role: "Entrepreneur",
-        image: "/testimonials/avatar.webp",
-        text: `Amazing platform. Clean interface and powerful tools.
-    It changed how I handle business finances.`,
+        name: "Dr. Michael Lee",
+        role: "Periodontist",
+        service: "Gum Treatment",
+        image: "/images/doctors/doctor-2.jpg",
+        text: `Our gum treatments target infection and inflammation at an early stage.
+We use deep cleaning and modern laser techniques for effective results.
+Healthy gums are essential for strong teeth and overall oral wellness.`,
     },
     {
         id: 3,
-        name: "David Smith",
-        role: "Startup Founder",
-        image: "/testimonials/avatar.webp",
-        text: `Best financial management experience I've had so far.
-    Highly professional and reliable.`,
+        name: "Dr. David Smith",
+        role: "Oral Surgeon",
+        service: "Oral Surgery",
+        image: "/images/doctors/doctor-3.jpg",
+        text: `We perform wisdom tooth removals and minor oral surgeries with utmost care.
+Modern equipment ensures accuracy and faster recovery time.
+Patient safety and comfort remain our highest priorities.`,
+    },
+    {
+        id: 4,
+        name: "Dr. Emily Carter",
+        role: "Endodontist",
+        service: "Root Canal Treatment",
+        image: "/images/doctors/doctor-4.jpg",
+        text: `Root canal treatment removes infection while saving your natural tooth.
+We use advanced rotary systems for precise and pain-free procedures.
+Early treatment helps prevent further dental complications.`,
+    },
+    {
+        id: 5,
+        name: "Dr. Daniel Brown",
+        role: "Implant Specialist",
+        service: "Dental Implants",
+        image: "/images/doctors/doctor-5.jpg",
+        text: `Dental implants restore both appearance and chewing function.
+They are designed to look and feel like natural teeth.
+Our implant procedures ensure strength, stability, and long-term success.`,
+    },
+    {
+        id: 6,
+        name: "Dr. Olivia Wilson",
+        role: "Cosmetic Dentist",
+        service: "Cosmetic Dentistry",
+        image: "/images/doctors/doctor-6.jpg",
+        text: `We offer teeth whitening, veneers, and complete smile makeovers.
+Our cosmetic treatments improve confidence and facial harmony.
+Every procedure is tailored to match your unique smile goals.`,
     },
 ];
 
@@ -44,61 +80,57 @@ export default function Testimonials() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div className="py-10 sm:py-16">
+        <div className="py-10 sm:py-16 bg-off-white">
             <CenterSection>
                 <div className="mb-8">
-                    <Heading level={4} className="text-dark tracking-wide text-center mb-4 uppercase">
+                    <Heading level={4} className="text-dark tracking-wide text-center mb-4">
                         Testimonials
                     </Heading>
-                    <Paragraph size="base" className="text-dark text-center max-w-2xl mx-auto">
-                        We are here to help you. Please feel free to contact us if you have any questions or concerns.
+                    <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest text-center max-w-2xl mx-auto">
+                        Professional teeth cleaning
                     </Paragraph>
                 </div>
-                <div className="bg-dark/5 rounded p-10 text-center shadow-md">
-                    {/* Swiper */}
+
+
+                {/* Swiper */}
+                <div className=" my-10  ">
+
+
                     <Swiper
-                        modules={[Autoplay]}
+                        modules={[Autoplay, Navigation]}
                         slidesPerView={1}
-                        autoplay={{ delay: 5000 }}
+                        loop={true}   // ✅ ADD THIS
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false, // keeps autoplay after arrow click
+                        }}
                         grabCursor={true}
+                        navigation={{
+                            prevEl: ".custom-prev",
+                            nextEl: ".custom-next",
+                        }}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                        className="mb-8"
+                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // IMPORTANT
                     >
                         {testimonials.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <Paragraph size="lg" className="text-dark font-medium mb-2">
-                                    “{item.text}”
+
+                                <Paragraph size="lg" className="max-w-3xl mx-auto text-dark   tracking-wide leading-snug">
+                                    {item.text}
+                                </Paragraph>
+                                <Paragraph size="xl" className="text-gold my-6 flex gap-1 justify-center">
+                                    {[...Array(5)].map((_, index) => (
+                                        <RxStarFilled key={index} />
+                                    ))}
+
                                 </Paragraph>
                             </SwiperSlide>
                         ))}
                     </Swiper>
+
                     <div className="flex justify-center gap-4 ">
                         {/* Name + Role */}
-                        <div className="flex items-center bg-linear-to-r from-primary to-primary-light w-52 text-dark py-2 px-2 rounded">
-                            <button
-                                key={testimonials[activeIndex].id}
-                                onClick={() => swiperRef.current?.slideTo(activeIndex)}
-                                className={`relative w-10 h-10 rounded-full overflow-hidden  transition-all duration-300 $`}
-                            >
-                                <Image
-                                    src={testimonials[activeIndex].image}
-                                    alt={testimonials[activeIndex].name}
-                                    fill
-                                    sizes="48px"
-                                    className="object-cover"
-                                />
-                            </button>
-                            <div className="text-left ml-2">
-                                <Paragraph size="sm" className="font-semibold text-dark">
-                                    {testimonials[activeIndex].name}
-                                </Paragraph>
-                                <Span className=" text-light">
-                                    {testimonials[activeIndex].role}
-                                </Span>
-                            </div>
 
-                        </div>
                         {/* Avatar Navigation */}
                         <div className="flex justify-center items-center gap-2 ">
                             {testimonials.map((item, index) => (
@@ -120,6 +152,16 @@ export default function Testimonials() {
                             ))}
                         </div>
                     </div>
+
+                </div>
+                <div className="flex justify-center gap-2">
+                    <button className="custom-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+                        <IoIosArrowBack />
+                    </button>
+
+                    <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
+                        <IoIosArrowForward />
+                    </button>
                 </div>
             </CenterSection>
 

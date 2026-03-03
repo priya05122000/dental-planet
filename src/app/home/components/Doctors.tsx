@@ -1,131 +1,192 @@
+"use client"
+
 import CenterSection from '@/src/components/common/CenterSection'
-import Section from '@/src/components/common/Section'
+import Heading from '@/src/components/common/Heading'
+import Paragraph from '@/src/components/common/Paragraph'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { GoArrowUpLeft } from 'react-icons/go'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Doctors = () => {
+
+    const sectionRef = useRef<HTMLDivElement>(null)
+    const scrollTriggerRef = useRef<ScrollTrigger | null>(null)
+
+    const doctors = [
+        {
+            name: "Dr.Arjun Mehta",
+            role: "Orthodontist",
+            degree: "Dentist (OBD)",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            image: "/doctors/doctor1.jpg",
+        },
+        {
+            name: "Dr.Priya Sharma",
+            role: "Pediatric Dentist",
+            degree: "Dentist (MDS)",
+            description: "Specialized dental care for children and teenagers.",
+            image: "/doctors/doctor2.jpg",
+        },
+        {
+            name: "Dr.Rahul Verma",
+            role: "Cosmetic Dentist",
+            degree: "Dentist (BDS)",
+            description: "Smile designing and aesthetic dental treatments.",
+            image: "/doctors/doctor3.jpg",
+        },
+        {
+            name: "Dr.Kavya Iyer",
+            role: "Oral Surgeon",
+            degree: "Dentist (OMS)",
+            description: "Expert in advanced surgical procedures.",
+            image: "/doctors/doctor4.jpg",
+        },
+
+    ]
+
+    const [activeIndex, setActiveIndex] = useState(0)
+
+    useEffect(() => {
+        const total = doctors.length
+
+        const trigger = ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: "top top",
+            end: `+=${window.innerHeight * total}`,
+            pin: true,
+            scrub: true,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+                const index = Math.min(
+                    total - 1,
+                    Math.floor(self.progress * total)
+                )
+                setActiveIndex(index)
+            }
+        })
+        scrollTriggerRef.current = trigger
+
+        return () => trigger.kill()
+    }, [])
+
+    // const smallDoctors = doctors.slice(1)
+
+    const smallDoctors = doctors
+
     return (
-        <div className='py-10 sm:py-16'>
+        <div className='py-10 sm:py-16 bg-dark'>
             <CenterSection>
 
-                {/* Top Text Grid */}
-                <div className='grid grid-cols-2 h-32 '>
-                    <div className=' p-4'>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Saepe deleniti adipisci similique nobis! Officiis quod quo
-                        magni molestias similique pariatur nemo ad iure alias maiores.
-                    </div>
-                    <div className='flex'>
+                {/* Heading */}
+                <div className="mb-12 text-light text-center">
+                    <Heading level={4} className="tracking-wide mb-2">
+                        Doctors
+                    </Heading>
+                    <Paragraph
+                        size="lg"
+                        className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
+                    >
+                        Professional teeth cleaning
+                    </Paragraph>
 
-                        <div className='bg-primary-light p-4 h-full w-2/3 '>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, non!
-                        </div>
-                        <div className='bg-primary w-1/3 h-full flex  text-center justify-center items-center p-4'>
-                            Lorem ipsum dolor sit
-                        </div>
-                    </div>
                 </div>
 
-                {/* Image + Cards Grid */}
-                <div className='grid grid-cols-2 relative '>
+                {/* === PINNED SECTION === */}
+                <div ref={sectionRef} className='grid lg:grid-cols-2  gap-10 '>
 
                     {/* LEFT SIDE */}
-                    <div className='h-full flex flex-col'>
-
-                        {/* Small top card */}
-                        <div className='flex '>
-                            <div className=' h-32 w-1/3'>
-                                <Image
-                                    src="/doctors/doctor-holds-prosthesis.jpg"
-                                    width={500}
-                                    height={500}
-                                    alt="doctor"
-                                    className='w-full h-full object-cover object-top'
-                                />
-                            </div>
-                            <div className='bg-dark text-light p-4 h-32 w-[calc(100%-33.33%)]'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, non!
-                            </div>
-                        </div>
-
-                        {/* Big middle image (auto stretch) */}
-                        <div className='relative flex-1'>
-                            <Image
-                                src="/doctors/smiling-woman-dentist-chair.jpg"
-                                width={500}
-                                height={500}
-                                alt="dentist"
-                                className='w-full h-full object-cover'
-                            />
-                        </div>
-
-                    </div>
-
-                    {/* RIGHT SIDE BIG IMAGE */}
-                    <div className='h-128 '>
+                    <div className="relative aspect-3/4  overflow-hidden shadow-lg border border-light rounded">
                         <Image
-                            src="/doctors/close-up-female-1.jpg"
-                            width={500}
-                            height={500}
-                            alt="close up"
-                            className='w-full h-full object-cover'
+                            key={activeIndex}
+                            src={doctors[activeIndex].image}
+                            alt="Doctor"
+                            fill
+                            className="object-cover transition-opacity duration-500"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            priority
                         />
                     </div>
 
-                    {/* FLOATING CARD 1 */}
-                    <div className='absolute top-32 w-1/2 left-1/3'>
-                        <div className='flex'>
-                            <div className=' h-32 w-1/3'>
-                                <Image
-                                    src="/doctors/portrait-man-doctor.jpg"
-                                    width={500}
-                                    height={500}
-                                    alt="doctor"
-                                    className='w-full h-full object-cover object-top'
-                                />
+                    {/* RIGHT SIDE */}
+                    <div className="flex flex-col justify-between gap-8 text-white ">
+
+                        {/* Top Changing Content */}
+                        <div className="  text-justify relative  flex-1">
+                            <div className=' h-full flex  items-center'>
+                                <div className='max-w-xs ml-auto  '>
+                                    <div className="mb-4">
+                                        <Paragraph size='lg' className='font-bold tracking-widest'>
+                                            {doctors[activeIndex].role}
+                                        </Paragraph>
+
+                                        <Paragraph size='sm' className='tracking-widest'>
+                                            {doctors[activeIndex].degree}
+                                        </Paragraph>
+                                    </div>
+
+                                    <Paragraph size='base'>
+                                        {doctors[activeIndex].description}
+                                    </Paragraph>
+                                </div>
                             </div>
-                            <div className='bg-primary-light p-4 h-32 w-2/3 text-white'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, non!
+
+
+
+                            {/* Background Title */}
+                            <div className='absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2  pointer-events-none'>
+                                <Heading level={4} className='font-bold tracking-widest '>
+                                    {doctors[activeIndex].name}
+                                </Heading>
                             </div>
                         </div>
-                    </div>
 
-                    {/* FLOATING CARD 2 */}
-                    <div className='absolute top-64 w-1/2 left-1/3'>
-                        <div className='flex'>
-                            <div className=' h-32 w-1/3'>
-                                <Image
-                                    src="/doctors/female-doctor.jpg"
-                                    width={500}
-                                    height={500}
-                                    alt="doctor"
-                                    className='w-full h-full object-cover object-top'
-                                />
-                            </div>
-                            <div className='bg-dark p-4 h-32 w-2/3 text-white'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, non!
-                            </div>
+                        {/* Bottom Small Grid (Pinned Below Content) */}
+                        <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 '>
+                            {smallDoctors.map((doctor, index) => (
+                                <div
+                                    key={index}
+                                    // onClick={() => setActiveIndex(index)}
+
+                                    className={`relative aspect-square overflow-hidden shadow-lg rounded cursor-pointer transition-all duration-300
+            ${activeIndex === index ? "ring-1 ring-primary " : "opacity-70 hover:opacity-100"}`}
+                                >
+                                    <Image
+                                        src={doctor.image}
+                                        alt={`Doctor ${index + 1}`}
+                                        fill
+                                        className="object-cover object-top transition duration-700"
+                                        sizes="(max-width: 1024px) 50vw, 25vw"
+                                    />
+
+                                    <div className='absolute bottom-0 right-0'>
+                                        <div className='bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light' onClick={() => {
+                                            if (!scrollTriggerRef.current) return
+
+                                            const trigger = scrollTriggerRef.current
+                                            const total = doctors.length
+
+                                            // divide properly by total - 1
+                                            const progress = index / (total - 1)
+
+                                            const scrollPosition =
+                                                trigger.start + progress * (trigger.end - trigger.start)
+
+                                            window.scrollTo(0, scrollPosition)
+                                            trigger.update()
+
+                                        }}>
+                                            <GoArrowUpLeft />
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    </div>
 
-                    {/* FLOATING CARD 3 */}
-                    <div className='absolute top-96 w-1/2 right-1/3'>
-                        <div className='flex'>
-                            <div className='bg-primary/10 h-32 w-1/3'>
-                                <Image
-                                    src="/doctors/doctor-with-his-arms.jpg"
-                                    width={500}
-                                    height={500}
-                                    alt="doctor"
-                                    className='w-full h-full object-cover object-top'
-                                />
-                            </div>
-                            <div className='bg-primary p-4 h-32 w-2/3 text-white'>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, non!
-                            </div>
-                        </div>
                     </div>
-
                 </div>
 
             </CenterSection>
