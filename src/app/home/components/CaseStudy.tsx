@@ -68,8 +68,17 @@ const CaseStudy = () => {
                                 "text-dark"
                             )}
                         </div>
-                        <div className="h-40 col-span-2">
+                        <div className="h-40 col-span-2 relative">
                             {renderImage("/doctors/1.jpg")}
+
+                            <motion.div
+                                initial={{ width: "100%" }}
+                                whileInView={{ width: 0 }}
+                                viewport={{ once: false, amount: 0.2 }}
+                                transition={{ duration: 1.5, ease: "easeInOut" }}
+                                className="absolute top-0 right-0 h-full bg-dark"
+                                style={{ width: "100%" }}
+                            />
                         </div>
                     </div>
 
@@ -80,11 +89,29 @@ const CaseStudy = () => {
                         </div>
 
                         <div>
-                            <div className="h-40">
+                            <div className="h-40 relative">
                                 {renderImage("/doctors/female-doctor.jpg")}
+
+                                <motion.div
+                                    initial={{ width: "100%" }}
+                                    whileInView={{ width: 0 }}
+                                    viewport={{ once: false, amount: 0.2 }}
+                                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                                    className="absolute top-0 right-0 h-full bg-dark"
+                                    style={{ width: "100%" }}
+                                />
                             </div>
-                            <div className="h-40">
+                            <div className="h-40 relative">
                                 {renderImage("/doctors/portrait-man-doctor.jpg")}
+
+                                <motion.div
+                                    initial={{ width: "100%" }}
+                                    whileInView={{ width: 0 }}
+                                    viewport={{ once: false, amount: 0.2 }}
+                                    transition={{ duration: 1.5, ease: "easeInOut" }}
+                                    className="absolute top-0 right-0 h-full bg-dark"
+                                    style={{ width: "100%" }}
+                                />
                             </div>
                         </div>
                     </div>
@@ -110,7 +137,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-black"
+                                    className="absolute top-0 right-0 h-full bg-dark"
                                     style={{ width: "100%" }}
                                 />
 
@@ -133,7 +160,7 @@ const CaseStudy = () => {
                                 whileInView={{ width: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute top-0 right-0 h-full bg-black"
+                                className="absolute top-0 right-0 h-full bg-dark"
                                 style={{ width: "100%" }}
                             />
                         </div>
@@ -150,8 +177,16 @@ const CaseStudy = () => {
                     )}
                 </div>
 
-                <div className="h-40 ">
+                <div className="h-40 relative">
                     {renderImage("/doctors/doctor-holds-prosthesis.jpg")}
+                    <motion.div
+                        initial={{ width: "100%" }}
+                        whileInView={{ width: 0 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
+                        className="absolute top-0 right-0 h-full bg-dark"
+                        style={{ width: "100%" }}
+                    />
                 </div>
 
                 <div className="h-40 bg-old-lace flex items-center">

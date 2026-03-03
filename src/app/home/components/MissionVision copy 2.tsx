@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Paragraph from "@/src/components/common/Paragraph"
-import Image from "next/image"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -97,7 +95,7 @@ export default function MissionVision() {
     return (
         <section
             ref={containerRef}
-            className="h-screen bg-black text-white flex items-center relative"
+            className="h-screen bg-black text-white flex items-center"
         >
             {/* LEFT SIDE STATIC NAV */}
             <div className="w-1/3 pl-16 space-y-6">
@@ -106,8 +104,8 @@ export default function MissionVision() {
                         key={index}
                         onClick={() => handleClick(index)}
                         className={`cursor-pointer transition-all duration-300 ${activeIndex === index
-                            ? "opacity-100 text-white"
-                            : "opacity-40 text-gray-400"
+                                ? "opacity-100 text-white"
+                                : "opacity-40 text-gray-400"
                             }`}
                     >
                         {item.title}
@@ -115,6 +113,8 @@ export default function MissionVision() {
                 ))}
             </div>
 
+            {/* RIGHT SIDE CONTENT */}
+            {/* RIGHT SIDE CONTENT */}
             <div className="w-2/3 relative h-60 flex items-center overflow-hidden">
                 {data.map((item, index) => (
                     <div
@@ -123,7 +123,7 @@ export default function MissionVision() {
                             if (!el) return
                             contentRefs.current[index] = el
                         }}
-                        className="absolute  inset-0 flex flex-col justify-center"
+                        className="absolute inset-0 flex flex-col justify-center"
                         style={{ opacity: index === 0 ? 1 : 0 }}
                     >
                         <h2 className="text-4xl font-bold mb-4">
@@ -134,17 +134,6 @@ export default function MissionVision() {
                         </p>
                     </div>
                 ))}
-            </div>
-
-            <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none z-0">
-                <Image
-                    src="/design/dental-planet.png"
-                    alt="Dental Planet"
-                    fill
-                    className="object-contain object-bottom "
-                    sizes="100vw"
-                    priority
-                />
             </div>
         </section>
     )
