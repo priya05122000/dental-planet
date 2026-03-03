@@ -12,7 +12,7 @@ const OurClinic = () => {
                 <div className="flex flex-col lg:flex-row gap-10 items-stretch">
 
                     {/* LEFT COLUMN (40%) */}
-                    <div className="lg:w-[40%] flex flex-col justify-center px-0 md:px-4 lg:px-12">
+                    <div className="lg:w-[40%] flex flex-col justify-center px-4 md:px-6 lg:px-12 pt-10 lg:py-12 xl:py-0">
 
                         {/* Top Content */}
                         <div>

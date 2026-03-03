@@ -83,12 +83,12 @@ export default function Services() {
                 </div>
 
                 {/* Avatar Navigation */}
-                <div className="flex  items-center gap-2 ">
+                <div className="flex items-stretch gap-2 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
                     {services.map((item, index) => (
                         <button
                             key={item.id}
                             onClick={() => swiperRef.current?.slideToLoop(index)}
-                            className={`relative  px-2 py-0.5  border border-dark/10 rounded  shadow-md cursor-pointer  overflow-hidden  transition-all duration-300 ${activeIndex === index
+                            className={`relative  px-2 py-0.5  border border-dark/10 rounded  shadow-md cursor-pointer transition-all duration-300 snap-start ${activeIndex === index
                                 ? " bg-dark text-light"
                                 : " bg-washed-black/12 "
                                 }`}
@@ -100,9 +100,9 @@ export default function Services() {
                 </div>
                 {/* Swiper */}
                 <div className=" my-10  sm:flex ">
-                    <div className="flex justify-center ">
+                    <div className="flex sm:justify-center mb-4 sm:mb-0">
                         {/* Name + Role */}
-                        <div className="flex  w-56  text-dark  rounded">
+                        <div className="flex w-56 text-dark rounded">
                             <Paragraph className=" text-primary">
                                 &#9679;  {services[activeIndex].service}
                             </Paragraph>
