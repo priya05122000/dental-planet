@@ -56,14 +56,13 @@ const CaseStudy = () => {
                                 Professional teeth cleaning
                             </Paragraph>
                         </div>
-
                     </div>
 
                     {/* Text + Image */}
                     <div className="grid grid-cols-3">
                         <div className="h-48 bg-primary flex items-center">
                             {renderText(
-                                "Professional teeth cleaning",
+                                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, mollitia.",
                                 "text-dark"
                             )}
                         </div>
@@ -117,9 +116,8 @@ const CaseStudy = () => {
                 </div>
 
                 {/* ---------- RIGHT SIDE ---------- */}
-                <div className="flex flex-col">
+                <div className= "hidden sm:flex flex-col">
 
-                    {/* Large Image with Overlay */}
                     <div className="h-144 w-full relative overflow-hidden">
                         {renderImage(
                             "/casestudy/5.webp",
@@ -127,7 +125,7 @@ const CaseStudy = () => {
                         )}
 
                         <div className="absolute bottom-0 w-full flex justify-start">
-                            <div className="relative overflow-hidden h-48 w-2/3  bg-dark">
+                            <div className="relative overflow-hidden h-48 w-2/3">
 
                                 {renderImage("/casestudy/6.webp")}
 
@@ -144,11 +142,10 @@ const CaseStudy = () => {
                         </div>
                     </div>
 
-                    {/* Text + Image */}
                     <div className="grid grid-cols-3">
                         <div className="h-48 col-span-2 bg-dark text-light flex items-center">
                             {renderText(
-                                "Professional teeth cleaning.",
+                                "A modern dental clinic dedicated to providing advanced, comfortable, and painless dental care for patients of all ages.",
                             )}
                         </div>
                         <div className="h-48 relative overflow-hidden">
@@ -170,10 +167,14 @@ const CaseStudy = () => {
             {/* ===================== BOTTOM GRID ===================== */}
             <div className="grid grid-cols-3">
                 <div className="h-48 bg-off-white flex items-center">
-                    {renderText(
+                    {/* {renderText(
                         " Your Trusted Dentist.",
                         "text-dark"
-                    )}
+                    )} */}
+
+                    <Heading level={3} className="p-4">
+                        Your Trusted Dentist.
+                    </Heading>
                 </div>
 
                 <div className="h-48 relative overflow-hidden">
@@ -190,8 +191,9 @@ const CaseStudy = () => {
 
                 <div className="h-48 bg-old-lace flex items-center">
                     {renderText(
-                        "Professional teeth cleaning.",
+                        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, mollitia.",
                         "text-primary"
+
                     )}
                 </div>
             </div>
