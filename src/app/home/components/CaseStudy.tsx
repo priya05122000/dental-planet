@@ -75,7 +75,7 @@ const CaseStudy = () => {
                                 whileInView={{ width: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute top-0 right-0 h-full bg-dark"
+                                className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
                                 style={{ width: "100%" }}
                             />
                         </div>
@@ -96,7 +96,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-primary"
+                                    className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
                                     style={{ width: "100%" }}
                                 />
                             </div>
@@ -108,7 +108,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-primary-light"
+                                    className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
                                     style={{ width: "100%" }}
                                 />
                             </div>
@@ -136,7 +136,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-primary-light"
+                                    className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
                                     style={{ width: "100%" }}
                                 />
 
@@ -159,7 +159,7 @@ const CaseStudy = () => {
                                 whileInView={{ width: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute top-0 right-0 h-full bg-primary"
+                                className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
                                 style={{ width: "100%" }}
                             />
                         </div>
@@ -171,7 +171,7 @@ const CaseStudy = () => {
             <div className="grid grid-cols-3">
                 <div className="h-48 bg-off-white flex items-center">
                     {renderText(
-                        " Professional teeth cleaning.",
+                        " Your Trusted Dentist.",
                         "text-dark"
                     )}
                 </div>
@@ -183,7 +183,7 @@ const CaseStudy = () => {
                         whileInView={{ width: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute top-0 right-0 h-full bg-primary"
+                        className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
                         style={{ width: "100%" }}
                     />
                 </div>
