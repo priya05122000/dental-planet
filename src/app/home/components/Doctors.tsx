@@ -331,7 +331,6 @@ const Doctors = () => {
                                                 active={activeIndex === index}
                                                 onClick={() => handleScroll(index)}
                                             />
-
                                         ))}
                                     </div>
                                 </div>
