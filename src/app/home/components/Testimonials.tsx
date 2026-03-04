@@ -20,9 +20,8 @@ const testimonials = [
     role: "Senior Orthodontist",
     service: "Orthodontics",
     image: "doctors/doctor-holds-prosthesis.jpg",
-    text: `We offer advanced orthodontic treatments including metal braces and clear aligners.
-Our goal is to properly align teeth and improve overall jaw function.
-Each treatment plan is customized to ensure long-term comfort and stability.`,
+    text: `“Dental Planet is a very clean dental clinic with friendly staff. The dentist explained my root canal treatment clearly and made the procedure completely painless.”
+`,
   },
   {
     id: 2,
@@ -30,9 +29,7 @@ Each treatment plan is customized to ensure long-term comfort and stability.`,
     role: "Periodontist",
     service: "Gum Treatment",
     image: "doctors/portrait-man-doctor.jpg",
-    text: `Our gum treatments target infection and inflammation at an early stage.
-We use deep cleaning and modern laser techniques for effective results.
-Healthy gums are essential for strong teeth and overall oral wellness.`,
+    text: `“I visited Dental Planet for teeth whitening and the results were amazing. Highly recommend this professional dental care clinic in Anna Nagar.”`,
   },
   {
     id: 3,
@@ -40,39 +37,7 @@ Healthy gums are essential for strong teeth and overall oral wellness.`,
     role: "Oral Surgeon",
     service: "Oral Surgery",
     image: "doctors/female-doctor.jpg",
-    text: `We perform wisdom tooth removals and minor oral surgeries with utmost care.
-Modern equipment ensures accuracy and faster recovery time.
-Patient safety and comfort remain our highest priorities.`,
-  },
-  {
-    id: 4,
-    name: "Dr. Emily Carter",
-    role: "Endodontist",
-    service: "Root Canal Treatment",
-    image: "doctors/female-doctor.jpg",
-    text: `Root canal treatment removes infection while saving your natural tooth.
-We use advanced rotary systems for precise and pain-free procedures.
-Early treatment helps prevent further dental complications.`,
-  },
-  {
-    id: 5,
-    name: "Dr. Daniel Brown",
-    role: "Implant Specialist",
-    service: "Dental Implants",
-    image: "doctors/portrait-man-doctor.jpg",
-    text: `Dental implants restore both appearance and chewing function.
-They are designed to look and feel like natural teeth.
-Our implant procedures ensure strength, stability, and long-term success.`,
-  },
-  {
-    id: 6,
-    name: "Dr. Olivia Wilson",
-    role: "Cosmetic Dentist",
-    service: "Cosmetic Dentistry",
-    image: "doctors/doctor-holds-prosthesis.jpg",
-    text: `We offer teeth whitening, veneers, and complete smile makeovers.
-Our cosmetic treatments improve confidence and facial harmony.
-Every procedure is tailored to match your unique smile goals.`,
+    text: `“The dentist was very gentle with my child. This is truly a child-friendly dental clinic with caring doctors and hygienic treatment.”`,
   },
 ];
 

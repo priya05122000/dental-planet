@@ -41,7 +41,7 @@ const Footer = () => {
 
                             {/* Short Description */}
                             <Paragraph className="">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore placeat laborum assumenda eaque incidunt non sequi deserunt ex. Officiis, aspernatur?
+                                If you are searching for the best dentist in Anna Nagar, dental implant clinic in Chennai visit Dental Planet for trusted and professional dental care.
                             </Paragraph>
 
                             <div className="mt-8">

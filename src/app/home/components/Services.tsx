@@ -4,67 +4,119 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
+
 import CenterSection from "@/src/components/common/CenterSection";
 import Heading from "@/src/components/common/Heading";
 import Paragraph from "@/src/components/common/Paragraph";
+
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+
+// ================= DATA =================
 
 const services = [
     {
         id: 1,
-        name: "Dr. Samantha Jones",
-        service: "Orthodontics",
-        subtext: `Comprehensive orthodontic solutions designed to correct misaligned teeth and improve bite function.`,
-        text: `We offer advanced orthodontic treatments including metal braces and clear aligners.
-Our goal is to properly align teeth and improve overall jaw function.
-Each treatment plan is customized to ensure long-term comfort and stability.`,
+        service: "Dental Implants",
+        text: `Restore missing teeth with advanced dental implants. Our implant specialists provide single tooth implants, full mouth dental implants, and long-lasting solutions for missing teeth.
+`,
     },
     {
         id: 2,
-        name: "Dr. Michael Lee",
-        service: "Gum Treatment",
-        subtext: `Advanced periodontal care focused on maintaining healthy gums and preventing disease.`,
-        text: `Our gum treatments target infection and inflammation at an early stage.
-We use deep cleaning and modern laser techniques for effective results.
-Healthy gums are essential for strong teeth and overall oral wellness.`,
+        service: "Root Canal Treatment",
+        text: `Our painless root canal treatment helps save infected teeth and eliminate tooth pain effectively.`,
     },
     {
         id: 3,
-        name: "Dr. David Smith",
-        service: "Oral Surgery",
-        subtext: `Safe and minimally invasive surgical procedures performed with precision.`,
-        text: `We perform wisdom tooth removals and minor oral surgeries with utmost care.
-Modern equipment ensures accuracy and faster recovery time.
-Patient safety and comfort remain our highest priorities.`,
+        service: "Orthodontic Treatment & Braces",
+        text: `Correct crooked teeth and alignment issues with braces, clear aligners, and modern orthodontic treatment for both adults and teenagers.`,
     },
     {
         id: 4,
-        name: "Dr. Emily Carter",
-        service: "Root Canal Treatment",
-        subtext: `Modern and painless root canal procedures to preserve natural teeth.`,
-        text: `Root canal treatment removes infection while saving your natural tooth.
-We use advanced rotary systems for precise and pain-free procedures.
-Early treatment helps prevent further dental complications.`,
+        service: "Cosmetic Dentistry & Smile Makeover",
+        text: `Enhance your smile with teeth whitening, smile makeover treatment, and advanced cosmetic dental procedures.`,
     },
     {
         id: 5,
-        name: "Dr. Daniel Brown",
-        service: "Dental Implants",
-        subtext: `Permanent and durable tooth replacement solutions for missing teeth.`,
-        text: `Dental implants restore both appearance and chewing function.
-They are designed to look and feel like natural teeth.
-Our implant procedures ensure strength, stability, and long-term success.`,
+        service: "Teeth Cleaning & Preventive Care",
+        text: `Maintain oral hygiene with professional teeth cleaning, dental checkups, and cavity prevention treatments.`,
     },
     {
         id: 6,
-        name: "Dr. Olivia Wilson",
-        service: "Cosmetic Dentistry",
-        subtext: `Personalized cosmetic treatments to enhance smile aesthetics.`,
-        text: `We offer teeth whitening, veneers, and complete smile makeovers.
-Our cosmetic treatments improve confidence and facial harmony.
-Every procedure is tailored to match your unique smile goals.`,
+        service: "Pediatric Dentistry",
+        text: `Our child-friendly dental clinic provides gentle dental care for children including cavity treatment, preventive care, and early orthodontic evaluation.`,
     },
+    {
+        id: 7,
+        service: "Tooth Extraction & Wisdom Tooth Removal",
+        text: `Safe and painless tooth extraction and wisdom tooth removal procedures performed by experienced dentists.`,
+    },
+    {
+        id: 8,
+        service: "Gum Treatment",
+        text: `Advanced gum treatment for bleeding gums, gum infections, and periodontal care.`,
+    }
 ];
+
+
+// ================= HEADER =================
+
+const SectionHeader = () => (
+    <div className="mb-8">
+        <Heading level={4} className="text-dark tracking-widest mb-2">
+            Our Dental Services
+        </Heading>
+
+        <Paragraph
+            size="lg"
+            className="text-dark uppercase font-bold tracking-widest max-w-2xl"
+        >
+            Comprehensive Dental Care for Your Whole Family
+
+        </Paragraph>
+    </div>
+);
+
+
+// ================= SERVICE TABS =================
+
+const ServiceTabs = ({ services, activeIndex, onClick }: any) => (
+    <div className="w-full overflow-x-auto scrollbar-hide">
+        <div className="flex gap-2 w-max">
+            {services.map((item: any, index: number) => (
+                <button
+                    key={item.id}
+                    onClick={() => onClick(index)}
+                    className={`relative px-2 py-0.5 border border-dark/10 rounded shadow-md cursor-pointer transition-all duration-300 whitespace-nowrap shrink-0
+          ${activeIndex === index ? "bg-dark text-light" : "bg-washed-black/12"}`}
+                >
+                    <Paragraph size="sm">{item.service}</Paragraph>
+                </button>
+            ))}
+        </div>
+    </div>
+);
+
+
+// ================= SERVICE CONTENT =================
+
+const ServiceContent = ({ item }: any) => (
+    <>
+        <Paragraph
+            size="xl"
+            className="text-dark font-semibold mb-2 tracking-wide leading-snug"
+        >
+            {item.text}
+        </Paragraph>
+
+        <Paragraph size="base" className="text-dark">
+            {item.subtext}
+        </Paragraph>
+    </>
+);
+
+
+// ================= MAIN COMPONENT =================
 
 export default function Services() {
     const swiperRef = useRef<SwiperType | null>(null);
@@ -73,38 +125,26 @@ export default function Services() {
     return (
         <div id="services" className="py-10 sm:py-16 bg-old-lace">
             <CenterSection>
-                <div className="mb-8">
-                    <Heading level={4} className="text-dark tracking-widest  mb-2">
-                        Services
-                    </Heading>
-                    <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest max-w-2xl">
-                        Professional teeth cleaning
-                    </Paragraph>
-                </div>
 
-                {/* Avatar Navigation */}
-                <div className="flex items-stretch gap-2 overflow-x-auto scrollbar-hide snap-x snap-mandatory">
-                    {services.map((item, index) => (
-                        <button
-                            key={item.id}
-                            onClick={() => swiperRef.current?.slideToLoop(index)}
-                            className={`relative px-2 py-0.5 border border-dark/10 rounded shadow-md cursor-pointer transition-all duration-300 snap-start whitespace-nowrap ${activeIndex === index
-                                    ? "bg-dark text-light"
-                                    : "bg-washed-black/12"
-                                }`}
-                        >
-                            <Paragraph size="sm">{item.service}</Paragraph>
-                        </button>
-                    ))}
+                <SectionHeader />
 
-                </div>
-                {/* Swiper */}
-                <div className=" my-10  sm:flex ">
+                {/* Tabs */}
+                <ServiceTabs
+                    services={services}
+                    activeIndex={activeIndex}
+                    onClick={(index: number) =>
+                        swiperRef.current?.slideToLoop(index)
+                    }
+                />
+
+                {/* Swiper Section */}
+                <div className="my-10 sm:flex gap-8">
+
+                    {/* Service Name */}
                     <div className="flex sm:justify-center mb-4 sm:mb-0">
-                        {/* Name + Role */}
                         <div className="flex w-56 text-dark rounded">
-                            <Paragraph className=" text-primary">
-                                &#9642;  {services[activeIndex].service}
+                            <Paragraph className="text-primary">
+                                &#9642; {services[activeIndex].service}
                             </Paragraph>
                         </div>
                     </div>
@@ -112,10 +152,10 @@ export default function Services() {
                     <Swiper
                         modules={[Autoplay, Navigation]}
                         slidesPerView={1}
-                        loop={true}   // ✅ ADD THIS
+                        loop={true}
                         autoplay={{
                             delay: 5000,
-                            disableOnInteraction: false, // keeps autoplay after arrow click
+                            disableOnInteraction: false,
                         }}
                         grabCursor={true}
                         navigation={{
@@ -123,34 +163,30 @@ export default function Services() {
                             nextEl: ".custom-next",
                         }}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // IMPORTANT
+                        onSlideChange={(swiper) =>
+                            setActiveIndex(swiper.realIndex)
+                        }
                     >
                         {services.map((item) => (
                             <SwiperSlide key={item.id}>
-
-                                <Paragraph size="xl" className="text-dark font-semibold mb-2 tracking-wide leading-snug">
-                                    {item.text}
-                                </Paragraph>
-                                <Paragraph size="base" className="text-dark ">
-                                    {item.subtext}
-                                </Paragraph>
+                                <ServiceContent item={item} />
                             </SwiperSlide>
                         ))}
                     </Swiper>
-
-
                 </div>
+
+                {/* Navigation */}
                 <div className="flex justify-end gap-2">
-                    <button className="custom-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+                    <button className="custom-prev cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
                         <IoIosArrowBack />
                     </button>
 
-                    <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-washed-black/58  transition">
+                    <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/58 transition">
                         <IoIosArrowForward />
                     </button>
                 </div>
-            </CenterSection>
 
+            </CenterSection>
         </div>
     );
 }

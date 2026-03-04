@@ -39,8 +39,7 @@ export default function InstagramClient() {
                     </div>
                     <div className="mt-4 sm:mt-0">
                         <Paragraph size="xl" className="font-semibold">
-                            Orthodontics is a specialized branch of dentistry focused on diagnosing, preventing, and treating misaligned teeth and jaws (malocclusions) to improve oral function, health, and facial aesthetics.
-
+                            Stay connected with the latest updates from Dental Planet on Instagram. Explore helpful dental tips, patient smile transformations, oral health awareness posts, and updates about our advanced treatments.
                         </Paragraph>
 
                     </div>

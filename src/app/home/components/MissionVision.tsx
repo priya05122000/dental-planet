@@ -10,6 +10,7 @@ import Paragraph from "@/src/components/common/Paragraph"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import Heading from "@/src/components/common/Heading"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,20 +18,32 @@ const data = [
     {
         id: 1,
         title: "Values",
-        description:
-            "Our values define how we serve patients with compassion, integrity, and excellence in dental care.",
+        description: [
+            {
+                title: "Patient-Centered Care",
+                text: "We prioritize patient comfort, safety, and personalized dental treatment."
+            },
+            {
+                title: "Excellence in Dentistry",
+                text: "We use modern technology and advanced procedures to deliver the best dental care."
+            },
+            {
+                title: "Integrity & Trust",
+                text: "We maintain transparency, honesty, and ethical practices in all treatments."
+            },
+        ]
     },
     {
         id: 2,
         title: "Vision",
         description:
-            "To become the most trusted and advanced dental healthcare provider in the region.",
+            "Our vision is to become the most trusted dental clinic in Anna Nagar and Chennai, known for delivering high-quality dental treatments, patient comfort, and innovative dental solutions including dental implants, orthodontic treatment, and cosmetic dentistry.",
     },
     {
         id: 3,
         title: "Mission",
         description:
-            "Deliver high-quality dental treatment using modern technology and patient-first approach.",
+            "At Dental Planet, our mission is to redefine dental care by combining advanced technology, preventive dentistry, and compassionate treatment to create healthier smiles for every patient. We aim to provide comfortable, ethical, and personalized dental solutions that focus not only on treating dental problems but also on promoting long-term oral health and confidence. Our commitment is to make quality dental care accessible while ensuring every patient experiences a safe, gentle, and positive dental journey.",
     },
 ]
 
@@ -167,7 +180,7 @@ export default function MissionVision() {
                 </div>
 
                 {/* RIGHT SIDE CONTENT */}
-                <div className="w-2/3  relative z-10 h-60 flex items-center overflow-hidden">
+                <div className="w-2/3  relative z-10 h-72 flex items-center overflow-hidden">
                     {data.map((item, index) => (
                         <div
                             key={index}
@@ -175,14 +188,26 @@ export default function MissionVision() {
                                 if (!el) return
                                 contentRefs.current[index] = el
                             }}
-                            className="absolute inset-0 flex flex-col justify-center"
+                            className="absolute inset-0 flex flex-col justify-center max-w-4xl"
                         >
-                            <h2 className="text-4xl font-bold mb-4">
+                            <Heading level={6} className="font-bold mb-4 text-light">
                                 {item.title}
-                            </h2>
-                            <p className="max-w-md text-gray-300">
-                                {item.description}
-                            </p>
+                            </Heading>
+                            {item.title === "Values" && Array.isArray(item.description) ? (
+                                <ul className="list-disc pl-5 text-light space-y-2">
+                                    {item.description.map((desc, i) => (
+                                        <li key={i}>
+                                            <Paragraph size="base">
+                                                <span className="font-semibold">{desc.title}:</span> {desc.text}
+                                            </Paragraph>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <Paragraph size="base" className="text-light mb-2 tracking-wide leading-snug">
+                                    {item.description as string}
+                                </Paragraph>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -243,9 +268,27 @@ export default function MissionVision() {
                                 {/* <Paragraph size="xl" className="text-primary font-semibold  mb-2 tracking-wide leading-snug">
                                     {item.title}
                                 </Paragraph> */}
-                                <Paragraph size="base" className="text-light  mb-2 tracking-wide leading-snug">
-                                    {item.description}
-                                </Paragraph>
+                                {item.title === "Values" && Array.isArray(item.description) ? (
+                                    <ul className="list-disc pl-5 text-light space-y-2">
+                                        {item.description.map((desc, i) => (
+                                            <li key={i}>
+                                                <div>
+                                                    <Paragraph size="base" className="text-justify">
+                                                        <span className="font-semibold">{desc.title} :</span>
+                                                    </Paragraph>
+                                                    <Paragraph size="base" className="px-2 text-justify font-light text-light mb-2 tracking-wide leading-snug">
+                                                        {desc.text}
+                                                    </Paragraph>
+                                                </div>
+
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <Paragraph size="base" className="px-2 text-justify font-light text-light mb-2 tracking-wide leading-snug">
+                                        {item.description as string}
+                                    </Paragraph>
+                                )}
 
                             </SwiperSlide>
                         ))}

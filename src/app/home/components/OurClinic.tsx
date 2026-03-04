@@ -4,64 +4,61 @@ import Heading from "@/src/components/common/Heading";
 import Paragraph from "@/src/components/common/Paragraph";
 import Image from "next/image";
 
+const clinicDescription = [
+    "At Dental Planet, we believe everyone deserves healthy teeth and a confident smile. Our clinic provides comprehensive dental care using advanced technology and modern treatment techniques.",
+
+    "We focus on delivering comfortable, painless, and hygienic dental treatment for patients of all ages. Whether you need a routine dental checkup, tooth pain treatment, or a complete smile makeover, our dental specialists ensure personalized care for every patient. If you are searching for the best dentist in Anna Nagar or a modern dental clinic in Chennai, Dental Planet is here to help you achieve long-lasting dental health."
+];
+
 const OurClinic = () => {
     return (
-        <div id="about" className=" ">
-            <div>
+        <section id="about">
 
-                <div className="flex flex-col lg:flex-row gap-10 items-stretch">
+            <div className="flex flex-col lg:flex-row gap-10 items-stretch">
 
-                    {/* LEFT COLUMN (40%) */}
-                    <div className="lg:w-[40%] flex flex-col justify-center px-6 lg:px-12 pt-10 lg:py-12 xl:py-0">
+                {/* LEFT CONTENT */}
+                <div className="lg:w-[40%] flex flex-col justify-center px-6 lg:px-12 pt-10 lg:py-12 xl:py-0">
 
-                        {/* Top Content */}
-                        <div>
-                            <Heading
-                                level={4}
-                                className="text-dark tracking-wide mb-2"
-                            >
-                                Our Clinic
-                            </Heading>
+                    {/* Heading */}
+                    <div>
+                        <Heading level={4} className="text-dark tracking-wide mb-2">
+                            About Us
+                        </Heading>
 
-                            <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest max-w-2xl">
-                                Professional teeth cleaning
-                            </Paragraph>
-                        </div>
-
-                        {/* Feature Boxes */}
-
-                        <div className="mt-10 transition space-y-8  ">
-
-                            <Paragraph size="base" className="">
-                                Orthodontics is a specialized branch of dentistry focused on diagnosing, preventing, and treating misaligned teeth and jaws (malocclusions) to improve oral function, health, and facial aesthetics.
-
-                            </Paragraph>
-                            <Paragraph size="base" className="">
-                                Orthodontics is a specialized branch of dentistry focused on diagnosing, preventing, and treating misaligned teeth and jaws (malocclusions) to improve oral function, health, and facial aesthetics.
-
-                            </Paragraph>
-                        </div>
-
+                        <Paragraph
+                            size="lg"
+                            className="text-dark uppercase font-bold tracking-widest max-w-2xl"
+                        >
+                            Best Dental Clinic in Anna Nagar
+                        </Paragraph>
                     </div>
 
-                    {/* RIGHT IMAGE (60%) */}
-                    <div className="relative lg:w-[60%] aspect-4/3 overflow-hidden  shadow-lg">
-                        <Image
-                            src="/clinic/clinic.webp"
-                            alt="Clinic Interior"
-                            fill
-                            className="object-cover  transition duration-700"
-                            sizes="(max-width: 1024px) 100vw, 60vw"
-                            priority
-                        />
+                    {/* Description */}
+                    <div className="mt-10 space-y-8">
+                        {clinicDescription.map((text, index) => (
+                            <Paragraph key={index} size="base">
+                                {text}
+                            </Paragraph>
+                        ))}
                     </div>
 
                 </div>
 
+                {/* RIGHT IMAGE */}
+                <div className="relative lg:w-[60%] aspect-4/3 overflow-hidden shadow-lg">
+                    <Image
+                        src="/clinic/clinic.webp"
+                        alt="Clinic Interior"
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        className="object-cover transition duration-700"
+                    />
+                </div>
+
             </div>
-        </div>
 
-
+        </section>
     );
 };
 

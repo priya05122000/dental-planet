@@ -175,7 +175,6 @@ const Hero = () => {
                         priority
                     />
                 </div>
-
             </div>
         </section>
     );
