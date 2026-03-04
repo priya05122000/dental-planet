@@ -173,9 +173,9 @@ export default function MissionVision() {
                         <button
                             key={item.id}
                             onClick={() => swiperRef.current?.slideToLoop(index)}
-                            className={`relative py-0.5 border border-dark/10 rounded shadow-md cursor-pointer transition-all duration-300 snap-start whitespace-nowrap text-light ${activeIndex === index
+                            className={`relative py-0.5 border border-dark/10 rounded shadow-md cursor-pointer transition-all duration-300 snap-start whitespace-nowrap ${activeIndex === index
                                 ? " text-primary"
-                                : "text-light"
+                                : "text-light "
                                 }`}
                         >
                             <Paragraph size="sm">{item.title}</Paragraph>
@@ -209,7 +209,7 @@ export default function MissionVision() {
                                 <Paragraph size="xl" className="text-primary font-semibold  mb-2 tracking-wide leading-snug">
                                     {item.title}
                                 </Paragraph>
-                                <Paragraph size="base" className="text-light  mb-2 tracking-wide leading-snug">
+                                <Paragraph size="base" className="  mb-2 tracking-wide leading-snug">
                                     {item.description}
                                 </Paragraph>
 

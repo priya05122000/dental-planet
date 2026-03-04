@@ -10,7 +10,7 @@ const CaseStudy = () => {
     /* ---------------------------------- */
     const renderImage = (
         src: string,
-        className: string = "w-full h-full object-cover object-top"
+        className: string = "w-full h-full object-cover object-top max-w-full"
     ) => (
         <Image
             src={src}
@@ -36,8 +36,7 @@ const CaseStudy = () => {
     return (
         <div>
             {/* ===================== TOP GRID ===================== */}
-            <div id="case-studies" className="grid sm:grid-cols-2">
-
+            <div id="case-studies" className="grid grid-cols-1 lg:grid-cols-2">
                 {/* ---------- LEFT SIDE ---------- */}
                 <div className="bg-off-white">
 
@@ -68,7 +67,7 @@ const CaseStudy = () => {
                                 "text-dark"
                             )}
                         </div>
-                        <div className="h-40 col-span-2 relative">
+                        <div className="h-40 col-span-2 relative overflow-hidden">
                             {renderImage("/doctors/1.jpg")}
 
                             <motion.div
@@ -89,7 +88,7 @@ const CaseStudy = () => {
                         </div>
 
                         <div>
-                            <div className="h-40 relative">
+                            <div className="h-40 relative overflow-hidden">
                                 {renderImage("/doctors/female-doctor.jpg")}
 
                                 <motion.div
@@ -101,7 +100,7 @@ const CaseStudy = () => {
                                     style={{ width: "100%" }}
                                 />
                             </div>
-                            <div className="h-40 relative">
+                            <div className="h-40 relative overflow-hidden">
                                 {renderImage("/doctors/portrait-man-doctor.jpg")}
 
                                 <motion.div
@@ -121,14 +120,14 @@ const CaseStudy = () => {
                 <div className="flex flex-col">
 
                     {/* Large Image with Overlay */}
-                    <div className="h-120 w-full relative">
+                    <div className="h-120 w-full relative overflow-hidden">
                         {renderImage(
                             "/doctors/close-up-female-1.jpg",
                             "w-full h-full object-cover"
                         )}
 
                         <div className="absolute bottom-0 w-full flex justify-start">
-                            <div className="relative h-40 w-2/3 overflow-hidden bg-dark">
+                            <div className="relative overflow-hidden h-40 w-2/3  bg-dark">
 
                                 {renderImage("/doctors/before_after.webp")}
 
@@ -152,7 +151,7 @@ const CaseStudy = () => {
                                 "Professional teeth cleaning.",
                             )}
                         </div>
-                        <div className="h-40 relative">
+                        <div className="h-40 relative overflow-hidden">
                             {renderImage("/doctors/before_after.webp")}
 
                             <motion.div
@@ -177,7 +176,7 @@ const CaseStudy = () => {
                     )}
                 </div>
 
-                <div className="h-40 relative">
+                <div className="h-40 relative overflow-hidden">
                     {renderImage("/doctors/doctor-holds-prosthesis.jpg")}
                     <motion.div
                         initial={{ width: "100%" }}
