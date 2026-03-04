@@ -1,100 +1,157 @@
-"use client";
-import Heading from "@/src/components/common/Heading";
-import Paragraph from "@/src/components/common/Paragraph";
-import Section from "@/src/components/common/Section";
-import Image from "next/image";
+"use client"
 
-const MissionVision = () => {
+import { useEffect, useRef, useState } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Image from "next/image"
+
+gsap.registerPlugin(ScrollTrigger)
+
+const data = [
+    {
+        title: "Values",
+        description:
+            "Our values define how we serve patients with compassion, integrity, and excellence in dental care.",
+    },
+    {
+        title: "Vision",
+        description:
+            "To become the most trusted and advanced dental healthcare provider in the region.",
+    },
+    {
+        title: "Mission",
+        description:
+            "Deliver high-quality dental treatment using modern technology and patient-first approach.",
+    },
+]
+
+export default function MissionVision() {
+    const containerRef = useRef<HTMLDivElement | null>(null)
+    const contentRefs = useRef<HTMLDivElement[]>([])
+    const timelineRef = useRef<gsap.core.Timeline | null>(null)
+
+    const [activeIndex, setActiveIndex] = useState(0)
+
+    useEffect(() => {
+        if (!containerRef.current) return
+
+        const ctx = gsap.context(() => {
+            const sections = contentRefs.current
+
+            // Initial state
+            gsap.set(sections, { autoAlpha: 0, y: 50 })
+            gsap.set(sections[0], { autoAlpha: 1, y: 0 })
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top top",
+                    end: `+=${sections.length * 100}%`,
+                    scrub: true,
+                    pin: true,
+                    snap: 1 / (sections.length - 1),
+                    onUpdate: (self) => {
+                        const index = Math.round(
+                            self.progress * (sections.length - 1)
+                        )
+                        setActiveIndex(index)
+                    },
+                },
+            })
+
+            sections.forEach((section, i) => {
+                if (i === 0) return
+
+                // Step 1 → Hide previous completely
+                tl.to(sections[i - 1], {
+                    autoAlpha: 0,
+                    y: -50,
+                    duration: 0.5,
+                })
+
+                // Step 2 → Then show next
+                tl.fromTo(
+                    section,
+                    { autoAlpha: 0, y: 50 },
+                    { autoAlpha: 1, y: 0, duration: 0.5 }
+                )
+            })
+
+            timelineRef.current = tl
+        }, containerRef)
+
+        return () => ctx.revert()
+    }, [])
+
+    // Manual navigation click
+    const handleClick = (index: number) => {
+
+        if (!timelineRef.current?.scrollTrigger) return
+
+        const trigger = timelineRef.current.scrollTrigger
+        const total = data.length - 1
+        const progress = index / total
+
+        const scrollTo =
+            trigger.start +
+            progress * (trigger.end - trigger.start)
+
+        trigger.scroll(scrollTo)
+    }
+
     return (
-        <div className="bg-dark py-12 sm:py-16">
-            <Section>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
-
-                    {/* LEFT COLUMN */}
-                    <div className="flex flex-col justify-between">
-
-                        <div>
-                            <Heading
-                                level={4}
-                                className="text-light uppercase tracking-wide mb-4"
-                            >
-                                Our Clinic
-                            </Heading>
-
-                            <Paragraph size="base" className="text-light max-w-md">
-                                Modern treatments tailored to your unique needs ensure a
-                                comfortable and satisfying dental experience.
-                            </Paragraph>
-                        </div>
-                        <div className="space-y-4">
-                            {/* Feature Box 1 */}
-                            <div className="p-4 rounded border border-light/10">
-                                <Paragraph size="lg" className="text-light font-semibold mb-2">
-                                    Innovative Equipment
-                                </Paragraph>
-                                <Paragraph size="base" className="text-light">
-                                    We use cutting-edge technology for diagnosis and treatment,
-                                    ensuring a high standard of medical care.
-                                </Paragraph>
-                            </div>
-
-                            {/* Feature Box 2 */}
-                            <div className="p-4 rounded border border-light/10  ">
-                                <Paragraph size="lg" className="text-light mb-2 font-semibold">
-                                    Personalized Approach
-                                </Paragraph>
-                                <Paragraph size="base" className="text-light ">
-                                    Customized treatment plans adapted to each patient’s needs.
-                                </Paragraph>
-                            </div>
-                        </div>
-
-
+        <section
+            ref={containerRef}
+            className="h-screen bg-black text-white flex items-center relative overflow-hidden"
+        >
+            {/* LEFT SIDE NAV */}
+            <div className="w-1/3 pl-16 space-y-6 relative z-10 ">
+                {data.map((item, index) => (
+                    <div
+                        key={index}
+                        onClick={() => handleClick(index)}
+                        className={`cursor-pointer transition-all duration-300 ${activeIndex === index
+                            ? "opacity-100 text-white"
+                            : "opacity-40 text-gray-400"
+                            }`}
+                    >
+                        {item.title}
                     </div>
+                ))}
+            </div>
 
-                    {/* CENTER IMAGE */}
-                    <div className="relative aspect-4/5 w-full overflow-hidden rounded">
-                        <Image
-                            src="/services/dental-clinic.webp"
-                            alt="Clinic Interior"
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 33vw"
-                        />
+            {/* RIGHT SIDE CONTENT */}
+            <div className="w-2/3  relative z-10 h-60 flex items-center overflow-hidden">
+                {data.map((item, index) => (
+                    <div
+                        key={index}
+                        ref={(el) => {
+                            if (!el) return
+                            contentRefs.current[index] = el
+                        }}
+                        className="absolute inset-0 flex flex-col justify-center"
+                    >
+                        <h2 className="text-4xl font-bold mb-4">
+                            {item.title}
+                        </h2>
+                        <p className="max-w-md text-gray-300">
+                            {item.description}
+                        </p>
                     </div>
+                ))}
+            </div>
 
-                    {/* RIGHT COLUMN */}
-                    <div className="space-y-8">
-
-                        <div>
-                            <Heading level={6} className="text-light mb-4">
-                                Expert Care
-                            </Heading>
-                            <Paragraph size="base" className="text-light mb-4 max-w-sm">
-                                Our dedicated doctors continuously enhance their expertise to
-                                bring you the highest standards of dental services.
-                            </Paragraph>
-
-                            <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer text-base font-semibold ">
-                                Meet Our Team
-                            </button>
-                        </div>
-
-                        <div className="relative aspect-square w-full overflow-hidden rounded">
-                            <Image
-                                src="/services/patient-having-dental-treatment-with-tool-patients-mouth-dentistry-improved-smile.jpg"
-                                alt="Doctor Portrait"
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 1024px) 100vw, 33vw"
-                            />
-                        </div>
-
-                    </div>
-                </div>
-            </Section>
-        </div>
-    );
-};
-
-export default MissionVision;
+            {/* BOTTOM BACKGROUND IMAGE */}
+            <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none z-0">
+                <Image
+                    src="/design/dental-planet.png"
+                    alt="Dental Planet"
+                    fill
+                    className="object-contain object-bottom"
+                    sizes="100vw"
+                    priority
+                />
+            </div>
+        </section>
+    )
+}

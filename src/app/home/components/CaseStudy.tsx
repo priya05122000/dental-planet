@@ -97,7 +97,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-dark"
+                                    className="absolute top-0 right-0 h-full bg-primary"
                                     style={{ width: "100%" }}
                                 />
                             </div>
@@ -109,7 +109,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-dark"
+                                    className="absolute top-0 right-0 h-full bg-primary-light"
                                     style={{ width: "100%" }}
                                 />
                             </div>
@@ -137,7 +137,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-dark"
+                                    className="absolute top-0 right-0 h-full bg-primary-light"
                                     style={{ width: "100%" }}
                                 />
 
@@ -160,7 +160,7 @@ const CaseStudy = () => {
                                 whileInView={{ width: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute top-0 right-0 h-full bg-dark"
+                                className="absolute top-0 right-0 h-full bg-primary"
                                 style={{ width: "100%" }}
                             />
                         </div>
@@ -184,7 +184,7 @@ const CaseStudy = () => {
                         whileInView={{ width: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute top-0 right-0 h-full bg-dark"
+                        className="absolute top-0 right-0 h-full bg-primary"
                         style={{ width: "100%" }}
                     />
                 </div>
