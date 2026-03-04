@@ -355,86 +355,57 @@ const Doctors = () => {
                     </div>
 
 
-                    <Swiper
-                        modules={[Autoplay, Navigation]}
-                        slidesPerView={1}
-                        loop
-                        autoplay={{
-                            delay: 5000,
-                            disableOnInteraction: false,
-                        }}
-                        navigation={{
-                            prevEl: ".custom-prev",
-                            nextEl: ".custom-next",
-                        }}
-                        onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                    >
 
-                        {doctors.map((item) => (
 
-                            <SwiperSlide key={item.id}>
+                    {doctors.map((item) => (
 
-                                <div className="flex flex-col items-center text-center gap-3">
+                        <div key={item.id}>
 
-                                    <div className="h-52 w-36">
-                                        <Image
-                                            src={item.image}
-                                            alt={item.name}
-                                            width={200}
-                                            height={200}
-                                            className="object-cover object-top h-full w-full rounded"
-                                        />
-                                    </div>
+                            <div className="grid grid-cols-2 items-center text-center mb-8 gap-8">
 
-                                    <div>
-                                        <Paragraph size="xl" className="text-light font-semibold">
-                                            {item.name}
-                                        </Paragraph>
+                                <div className="h-52 w-36 relative">
+                                    <Image
+                                        src={item.image}
+                                        alt={item.name}
+                                        width={200}
+                                        height={200}
+                                        className="object-cover object-top h-full w-full rounded"
+                                    />
 
-                                        <Paragraph size="base" className="text-light">
+                                    <Heading level={5} className="text-light w-16 font-semibold absolute right-0 top-1/4 -translate-y-1/2 translate-x-1/2">
+                                        {item.name}
+                                    </Heading>
+                                </div>
+
+                                <div className=' h-full flex items-end text-left'>
+
+                                    <div className='space-y-1'>
+                                        <Paragraph size="xl" className="text-light leading-5">
                                             {item.role}
                                         </Paragraph>
 
-                                        <Paragraph size="base" className="text-light">
+                                        <Paragraph  className="text-light text-[12px]">
                                             {item.degree}
                                         </Paragraph>
 
-                                        <Paragraph size="base" className="text-light">
+                                        <Paragraph size="sm" className="text-light">
                                             {item.description}
                                         </Paragraph>
                                     </div>
 
-
-
                                 </div>
 
-                            </SwiperSlide>
-
-                        ))}
-
-                    </Swiper>
 
 
+                            </div>
 
-                    <DoctorAvatarNav
-                        doctors={doctors}
-                        activeIndex={activeIndex}
-                        swiperRef={swiperRef}
-                    />
+                        </div>
+
+                    ))}
 
 
-                    <div className="flex justify-center gap-2">
 
-                        <button className="custom-prev p-2 bg-light/20 text-white rounded">
-                            <IoIosArrowBack />
-                        </button>
 
-                        <button className="custom-next p-2 bg-primary text-white rounded">
-                            <IoIosArrowForward />
-                        </button>
-
-                    </div>
 
                 </div>
 

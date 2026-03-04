@@ -62,7 +62,7 @@ const CaseStudy = () => {
                     <div className="grid grid-cols-3">
                         <div className="h-48 bg-primary flex items-center">
                             {renderText(
-                                "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, mollitia.",
+                                "Lorem ipsum dolor, sit amet consectetur adipisicing ",
                                 "text-dark"
                             )}
                         </div>
@@ -74,7 +74,7 @@ const CaseStudy = () => {
                                 whileInView={{ width: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
+                                className="absolute top-0 right-0 h-full bg-dark"
                                 style={{ width: "100%" }}
                             />
                         </div>
@@ -95,7 +95,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
+                                    className="absolute top-0 right-0 h-full bg-primary-light"
                                     style={{ width: "100%" }}
                                 />
                             </div>
@@ -107,7 +107,7 @@ const CaseStudy = () => {
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
+                                    className="absolute top-0 right-0 h-full bg-old-lace"
                                     style={{ width: "100%" }}
                                 />
                             </div>
@@ -117,24 +117,20 @@ const CaseStudy = () => {
 
                 {/* ---------- RIGHT SIDE ---------- */}
                 <div className= "hidden sm:flex flex-col">
-
                     <div className="h-144 w-full relative overflow-hidden">
                         {renderImage(
                             "/casestudy/5.webp",
                             "w-full h-full object-cover"
                         )}
-
                         <div className="absolute bottom-0 w-full flex justify-start">
                             <div className="relative overflow-hidden h-48 w-2/3">
-
                                 {renderImage("/casestudy/6.webp")}
-
                                 <motion.div
                                     initial={{ width: "100%" }}
                                     whileInView={{ width: 0 }}
                                     viewport={{ once: false, amount: 0.2 }}
                                     transition={{ duration: 1.5, ease: "easeInOut" }}
-                                    className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
+                                    className="absolute top-0 right-0 h-full bg-primary"
                                     style={{ width: "100%" }}
                                 />
 
@@ -156,7 +152,7 @@ const CaseStudy = () => {
                                 whileInView={{ width: 0 }}
                                 viewport={{ once: false, amount: 0.2 }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
+                                className="absolute top-0 right-0 h-full bg-primary-light"
                                 style={{ width: "100%" }}
                             />
                         </div>
@@ -172,7 +168,10 @@ const CaseStudy = () => {
                         "text-dark"
                     )} */}
 
-                    <Heading level={3} className="p-4">
+                    <Heading level={3} className="p-4 hidden sm:block">
+                        Your Trusted Dentist.
+                    </Heading>
+                    <Heading level={5} className="p-4 block sm:hidden">
                         Your Trusted Dentist.
                     </Heading>
                 </div>
@@ -184,16 +183,15 @@ const CaseStudy = () => {
                         whileInView={{ width: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute top-0 right-0 h-full bg-linear-to-r from-primary to-primary-light"
+                        className="absolute top-0 right-0 h-full bg-primary"
                         style={{ width: "100%" }}
                     />
                 </div>
 
                 <div className="h-48 bg-old-lace flex items-center">
                     {renderText(
-                        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, mollitia.",
+                        "Lorem ipsum dolor, sit amet consectetur adipisicing ",
                         "text-primary"
-
                     )}
                 </div>
             </div>
