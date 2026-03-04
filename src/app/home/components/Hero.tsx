@@ -169,7 +169,7 @@ const Hero = () => {
                         width={400}
                         height={400}
                         className="absolute opacity-50 right-0 sm:left-5 bottom-0 sm:bottom-16
-  w-24 sm:w-32 md:w-40 lg:w-48 xl:w-64
+  w-32 md:w-40 lg:w-48 xl:w-64
   -translate-x-1/2 translate-y-1/2 sm:translate-y-0
   pointer-events-none"
                         priority

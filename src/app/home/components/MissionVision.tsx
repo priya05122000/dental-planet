@@ -243,7 +243,7 @@ export default function MissionVision() {
                                 <Paragraph size="xl" className="text-primary font-semibold  mb-2 tracking-wide leading-snug">
                                     {item.title}
                                 </Paragraph>
-                                <Paragraph size="base" className="  mb-2 tracking-wide leading-snug">
+                                <Paragraph size="base" className="text-light  mb-2 tracking-wide leading-snug">
                                     {item.description}
                                 </Paragraph>
 

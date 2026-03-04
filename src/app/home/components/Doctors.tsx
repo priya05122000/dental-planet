@@ -128,9 +128,8 @@ const Doctors = () => {
     }, [activeIndex])
 
     return (
-        <div className=' bg-dark'>
-
-            <CenterSection >
+        <div className='bg-dark'>
+            <CenterSection>
                 <div className=''>
                     <div ref={sectionRef} className="h-screen hidden lg:block px-6 sm:px-8 lg:px-16 xl:px-20">
                         <div className=' flex flex-col h-full py-10 sm:py-16 '>
@@ -262,7 +261,6 @@ const Doctors = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className='block lg:hidden py-10 sm:py-16'>
                     <div className="mb-8 text-center text-light">
                         <Heading level={4} className="tracking-wide mb-2">
