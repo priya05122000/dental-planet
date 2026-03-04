@@ -114,7 +114,12 @@ const Footer = () => {
                                             Contact
                                         </Paragraph>
                                         <ul className="space-y-1 ">
-                                            <li className="flex items-center gap-2 text-base lg:text-lg font-semibold"><IoCall className="text-primary-light" /> +91 98765 43210</li>
+                                            <li className="flex items-center gap-2 text-sm">
+                                                <IoCall className="text-primary-light" />
+                                                <a href="tel:+919876543210" className="hover:underline">
+                                                    +91 98765 43210
+                                                </a>
+                                            </li>
                                             {/* <li className="flex items-center gap-2 text-base lg:text-lg font-semibold"><MdEmail className="text-primary-light" /> info@dentalplanet.com</li> */}
                                             <li className="flex items-start gap-2"><MdLocationPin className="text-primary-light text-base lg:text-lg font-semibold" /> <Paragraph size="sm">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</Paragraph></li>
                                         </ul>

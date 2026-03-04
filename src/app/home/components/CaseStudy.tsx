@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Paragraph from "@/src/components/common/Paragraph";
 import Heading from "@/src/components/common/Heading";
+import Head from "next/head";
 
 const CaseStudy = () => {
     /* ---------------------------------- */
@@ -60,11 +61,13 @@ const CaseStudy = () => {
 
                     {/* Text + Image */}
                     <div className="grid grid-cols-3">
-                        <div className="h-48 bg-primary flex items-center">
-                            {renderText(
-                                "Lorem ipsum dolor, sit amet consectetur adipisicing ",
+                        <div className="h-48 bg-primary font-bold flex items-center px-4">
+                            {/* {renderText(
+                                "Lorem ipsum dolor, sit amet ",
                                 "text-dark"
-                            )}
+                            )} */}
+
+                            <Heading level={6}> Lorem ipsum dolor, sit amet</Heading>
                         </div>
                         <div className="h-48 col-span-2 relative overflow-hidden">
                             {renderImage("/casestudy/1.webp")}

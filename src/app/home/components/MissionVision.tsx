@@ -273,10 +273,10 @@ export default function MissionVision() {
                                         {item.description.map((desc, i) => (
                                             <li key={i}>
                                                 <div>
-                                                    <Paragraph size="base" className="text-justify">
+                                                    <Paragraph size="sm" className="text-justify">
                                                         <span className="font-semibold">{desc.title} :</span>
                                                     </Paragraph>
-                                                    <Paragraph size="base" className="px-2 text-justify font-light text-light mb-2 tracking-wide leading-snug">
+                                                    <Paragraph size="sm" className="px-2 text-justify font-light text-light mb-2 tracking-wide leading-snug">
                                                         {desc.text}
                                                     </Paragraph>
                                                 </div>
@@ -285,7 +285,7 @@ export default function MissionVision() {
                                         ))}
                                     </ul>
                                 ) : (
-                                    <Paragraph size="base" className="px-2 text-justify font-light text-light mb-2 tracking-wide leading-snug">
+                                    <Paragraph size="sm" className="px-2 text-justify font-light text-light mb-2 tracking-wide leading-snug">
                                         {item.description as string}
                                     </Paragraph>
                                 )}

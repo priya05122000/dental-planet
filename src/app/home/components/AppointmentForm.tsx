@@ -108,7 +108,7 @@ export default function AppointmentForm() {
     };
 
     return (
-        <div id="appointment-form" className="bg-old-lace py-10 sm:py-16 relative overflow-hidden">
+        <div id="appointment-form" className="bg-old-lace py-20 sm:py-24 lg:py-28 relative overflow-hidden">
 
             {/* Decorative teeth image */}
             <Image
@@ -116,7 +116,7 @@ export default function AppointmentForm() {
                 alt="Dental Decoration"
                 width={200}
                 height={200}
-                className="absolute right-0 -bottom-10 sm:top-1/3 w-24 sm:w-32 md:w-40 lg:w-48 pointer-events-none z-0"
+                className="absolute right-0 -bottom-15 sm:top-1/3 w-28 sm:w-32 md:w-40 lg:w-56 pointer-events-none z-0"
                 priority
             />
 
