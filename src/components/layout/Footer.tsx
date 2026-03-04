@@ -11,7 +11,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className="bg-dark text-light">
+        <div id="contact" className="bg-dark text-light">
             <Section>
                 <footer className="pt-10 sm:pt-16 pb-6 space-y-4">
 

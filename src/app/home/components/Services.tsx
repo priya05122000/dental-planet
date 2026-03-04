@@ -71,7 +71,7 @@ export default function Services() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <div className="py-10 sm:py-16 bg-old-lace">
+        <div id="services" className="py-10 sm:py-16 bg-old-lace">
             <CenterSection>
                 <div className="mb-8">
                     <Heading level={4} className="text-dark tracking-widest  mb-2">

@@ -96,7 +96,7 @@ const Hero = () => {
     ];
 
     return (
-        <section className="min-h-screen">
+        <section id="hero" className="min-h-screen">
             <div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 
                 {/* LEFT SIDE */}

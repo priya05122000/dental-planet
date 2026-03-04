@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import CenterSection from "@/src/components/common/CenterSection";
 import Heading from "@/src/components/common/Heading";
@@ -80,8 +80,18 @@ export default function Testimonials() {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="py-10 sm:py-16 bg-off-white">
+    <div id="testimonials" className="py-10 sm:py-16 bg-off-white">
       <CenterSection>
         <div className="mb-8">
           <Heading
@@ -125,7 +135,10 @@ export default function Testimonials() {
                   {item.text}
                 </Paragraph>
                 <div className="sm:hidden flex-col items-center justify-center flex">
-                  <Paragraph size="base" className="text-primary font-bold mt-4">
+                  <Paragraph
+                    size="base"
+                    className="text-primary font-bold mt-4"
+                  >
                     {item.name}
                   </Paragraph>
                   <Span className="text-gray-500 text-xs mt-1">
@@ -148,58 +161,58 @@ export default function Testimonials() {
             {/* Name + Role */}
 
             {/* Avatar Navigation */}
-            <div className="flex justify-center items-center gap-3 flex-wrap">
-              {testimonials.map((item, index) => {
-                const isActive = activeIndex === index;
+            <div className="flex justify-center items-center gap-2 sm:gap-3">
+              {(isMobile ? testimonials.slice(0, 6) : testimonials).map(
+                (item, index) => {
+                  const isActive = activeIndex === index;
 
-                return (
-                  <motion.button
-                    key={item.id}
-                    layout
-                    onClick={() => swiperRef.current?.slideToLoop(index)}
-                    className={`flex items-center overflow-hidden
-          ${isActive ? "bg-dark border-2 border-primary" : "bg-transparent"}
-          h-14 cursor-pointer`}
-                    transition={{
-                      layout: { duration: 0.45, ease: "easeInOut" },
-                    }}
-                  >
-                    {/* Image */}
-                    <motion.div
+                  return (
+                    <motion.button
+                      key={item.id}
                       layout
-                      className={`relative shrink-0 overflow-hidden
-            ${isActive ? "w-14 h-14  md:border-r-2 border-primary" : "w-14 h-14"}
-          `}
+                      onClick={() => swiperRef.current?.slideToLoop(index)}
+                      className={`flex items-center overflow-hidden
+          ${isActive ? "bg-black border-2 border-primary" : "bg-transparent"}
+          h-10 sm:h-14 cursor-pointer`}
+                      transition={{
+                        layout: { duration: 0.45, ease: "easeInOut" },
+                      }}
                     >
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </motion.div>
-
-                    {/* Text */}
-                    {isActive && (
+                      {/* Image */}
                       <motion.div
                         layout
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="px-4 text-left md:block hidden"
+                        className={`relative shrink-0 overflow-hidden
+            ${isActive ? "w-10 h-10 sm:w-14 sm:h-14 md:border-r-2 border-primary" : "w-10 h-10 sm:w-14 sm:h-14"}
+          `}
                       >
-                        <Span className="text-white">
-                          {item.name}
-                        </Span>
-                        <Span className="text-gray-400 block text-xs">
-                          {item.role}
-                        </Span>
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          className="object-cover"
+                        />
                       </motion.div>
-                    )}
-                  </motion.button>
-                );
-              })}
+
+                      {/* Text */}
+                      {isActive && (
+                        <motion.div
+                          layout
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.5 }}
+                          className="px-4 text-left md:block hidden"
+                        >
+                          <Span className="text-white">{item.name}</Span>
+                          <Span className="text-gray-400 block text-xs">
+                            {item.role}
+                          </Span>
+                        </motion.div>
+                      )}
+                    </motion.button>
+                  );
+                },
+              )}
             </div>
           </div>
         </div>

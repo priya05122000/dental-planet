@@ -36,7 +36,7 @@ const CaseStudy = () => {
     return (
         <div>
             {/* ===================== TOP GRID ===================== */}
-            <div className="grid sm:grid-cols-2">
+            <div id="case-studies" className="grid sm:grid-cols-2">
 
                 {/* ---------- LEFT SIDE ---------- */}
                 <div className="bg-off-white">
