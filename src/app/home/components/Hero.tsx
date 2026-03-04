@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import Heading from "@/src/components/common/Heading";
 import Paragraph from "@/src/components/common/Paragraph";
+import { useSmoothScroll } from "@/src/hooks/useSmoothScroll";
 
 /* ===========================
    ODOMETER
@@ -89,11 +90,19 @@ const OdometerNumber = ({ value }: { value: number }) => {
 =========================== */
 
 const Hero = () => {
+
+
     const stats = [
         { value: 500, label: "Customer" },
         { value: 20, label: "Customer" },
         { value: 50, label: "Customer" },
     ];
+
+    const { scrollToSection } = useSmoothScroll();
+
+    const handleScrollTo = (id: string) => {
+        scrollToSection(id);
+    };
 
     return (
         <section id="hero" className="min-h-screen">
@@ -124,7 +133,7 @@ const Hero = () => {
                                 Redefining <br /> Aesthetics
                             </Paragraph>
 
-                            <button className="inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded text-sm lg:text-base font-normal">
+                            <button className="inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded text-sm lg:text-base cursor-pointer font-normal" onClick={() => handleScrollTo("#appointment-form")}>
                                 Book Appointment
                             </button>
                         </div>

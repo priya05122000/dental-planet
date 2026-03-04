@@ -11,7 +11,13 @@ import { FaXTwitter } from "react-icons/fa6";
 import { useSmoothScroll } from "@/src/hooks/useSmoothScroll";
 
 const Footer = () => {
+
+
     const { scrollToSection } = useSmoothScroll();
+
+    const handleScrollTo = (id: string) => {
+        scrollToSection(id);
+    };
     return (
         <div id="contact" className="bg-dark text-light">
             <Section>
@@ -154,7 +160,7 @@ const Footer = () => {
                                         </ul>
                                     </div>
 
-                                    <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer font-normal text-sm lg:text-base  ">
+                                    <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer font-normal text-sm lg:text-base  " onClick={() => handleScrollTo("#appointment-form")}>
                                         Book Appointment
                                     </button>
 
