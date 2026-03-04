@@ -46,6 +46,7 @@ export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [activeArrow, setActiveArrow] = useState<"prev" | "next">("next");
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
@@ -88,7 +89,19 @@ export default function Testimonials() {
               prevEl: ".test-prev",
               nextEl: ".test-next",
             }}
-            onSwiper={(swiper) => (swiperRef.current = swiper)}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+
+              setTimeout(() => {
+                if (
+                  swiper.params.navigation &&
+                  typeof swiper.params.navigation !== "boolean"
+                ) {
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              });
+            }}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // IMPORTANT
           >
             {testimonials.map((item) => (
@@ -135,6 +148,8 @@ export default function Testimonials() {
                     <motion.button
                       key={item.id}
                       layout
+                      type="button"
+                      onMouseDown={(e) => e.preventDefault()}
                       onClick={() => swiperRef.current?.slideToLoop(index)}
                       className={`flex items-center overflow-hidden
           ${isActive ? "bg-black border-2 border-primary" : "bg-transparent"}
@@ -182,13 +197,33 @@ export default function Testimonials() {
           </div>
         </div>
         <div className="flex justify-center gap-2">
-          <button type="button"
-            className="test-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+          <button
+            type="button"
+            onClick={() => {
+              setActiveArrow("prev");
+              swiperRef.current?.slidePrev();
+            }}
+            className={`cursor-pointer p-2 rounded text-light transition
+      ${activeArrow === "prev"
+                ? "bg-primary"
+                : "bg-washed-black/12"
+              }`}
+          >
             <IoIosArrowBack />
           </button>
 
-          <button type="button"
-            className="test-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
+          <button
+            type="button"
+            onClick={() => {
+              setActiveArrow("next");
+              swiperRef.current?.slideNext();
+            }}
+            className={`cursor-pointer p-2 rounded text-light transition
+      ${activeArrow === "next"
+                ? "bg-primary"
+                : "bg-washed-black/12"
+              }`}
+          >
             <IoIosArrowForward />
           </button>
         </div>

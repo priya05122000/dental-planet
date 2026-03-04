@@ -12,7 +12,7 @@ const clinicDescription = [
 
 const OurClinic = () => {
     return (
-        <section id="about">
+        <section id="about" className="bg-primary/5">
 
             <div className="flex flex-col lg:flex-row gap-10 items-stretch">
 

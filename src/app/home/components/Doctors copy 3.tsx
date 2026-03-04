@@ -121,7 +121,7 @@ const DoctorAvatarNav = ({ doctors, activeIndex, swiperRef }: any) => (
             cursor-pointer`}
                 >
                     <div
-                        className={`relative shrink-0 overflow-hidden h-14 w-14
+                        className={`relative shrink-0 overflow-hidden h-20 w-20
               ${isActive ? "md:border-r-2 border-primary" : ""}
             `}
                     >
@@ -131,6 +131,11 @@ const DoctorAvatarNav = ({ doctors, activeIndex, swiperRef }: any) => (
                             fill
                             className="object-cover object-top"
                         />
+                        <div className="absolute bottom-0 right-0">
+                            <div className="bg-linear-to-b text-sm from-primary to-primary-light p-2 text-light">
+                                <GoArrowUpLeft />
+                            </div>
+                        </div>
                     </div>
 
                     {isActive && (
@@ -355,57 +360,90 @@ const Doctors = () => {
                     </div>
 
 
+                    <Swiper
+                        modules={[Autoplay, Navigation]}
+                        slidesPerView={1}
+                        loop
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }}
+                        navigation={{
+                            prevEl: ".custom-prev",
+                            nextEl: ".custom-next",
+                        }}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                    >
 
+                        {doctors.map((item) => (
 
-                    {doctors.map((item) => (
+                            <SwiperSlide key={item.id}>
 
-                        <div key={item.id}>
+                                <div className="grid grid-cols-2 items-center text-center gap-4 ">
 
-                            <div className="grid grid-cols-2 items-center text-center mb-8 gap-0">
+                                    <div className="h-52 w-36 relative">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.name}
+                                            width={200}
+                                            height={200}
+                                            className="object-cover object-top h-full w-full rounded"
+                                        />
 
-                                <div className="h-52 w-36 relative">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.name}
-                                        width={200}
-                                        height={200}
-                                        className="object-cover object-top h-full w-full rounded"
-                                    />
-
-                                    <Heading level={5} className="text-light w-16 font-semibold absolute right-0 top-1/4 -translate-y-1/2 translate-x-1/2">
-                                        {item.name}
-                                    </Heading>
-                                </div>
-
-                                <div className=' h-full flex items-end text-left'>
-
-                                    <div className='space-y-1'>
-                                        <Paragraph size="xl" className="text-light leading-5">
-                                            {item.role}
-                                        </Paragraph>
-
-                                        <Paragraph className="text-light text-[12px]">
-                                            {item.degree}
-                                        </Paragraph>
-
-                                        <Paragraph size="sm" className="text-light">
-                                            {item.description}
-                                        </Paragraph>
+                                        <Heading level={5} className="text-light w-16 font-semibold absolute right-0 top-1/4 -translate-y-1/2 translate-x-1/2">
+                                            {item.name}
+                                        </Heading>
                                     </div>
 
+                                    <div className=' h-full flex items-end text-left'>
+
+                                        <div className='space-y-1'>
+                                            <Paragraph size="xl" className="text-light leading-5">
+                                                {item.role}
+                                            </Paragraph>
+
+                                            <Paragraph className="text-light text-[12px]">
+                                                {item.degree}
+                                            </Paragraph>
+
+                                            <Paragraph size="sm" className="text-light">
+                                                {item.description}
+                                            </Paragraph>
+                                        </div>
+
+                                    </div>
+
+
+
                                 </div>
 
+                            </SwiperSlide>
 
+                        ))}
 
-                            </div>
-
-                        </div>
-
-                    ))}
-
+                    </Swiper>
 
 
 
+                    <DoctorAvatarNav
+                        doctors={doctors}
+                        activeIndex={activeIndex}
+                        swiperRef={swiperRef}
+                    />
+
+                    {/*
+                    <div className="flex justify-center gap-2">
+
+                        <button className="custom-prev p-2 bg-light/20 text-white rounded">
+                            <IoIosArrowBack />
+                        </button>
+
+                        <button className="custom-next p-2 bg-primary text-white rounded">
+                            <IoIosArrowForward />
+                        </button>
+
+                    </div> */}
 
                 </div>
 

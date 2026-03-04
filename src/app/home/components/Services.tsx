@@ -11,15 +11,13 @@ import Paragraph from "@/src/components/common/Paragraph";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-
 // ================= DATA =================
 
 const services = [
     {
         id: 1,
         service: "Dental Implants",
-        text: `Restore missing teeth with advanced dental implants. Our implant specialists provide single tooth implants, full mouth dental implants, and long-lasting solutions for missing teeth.
-`,
+        text: `Restore missing teeth with advanced dental implants. Our implant specialists provide single tooth implants, full mouth dental implants, and long-lasting solutions for missing teeth.`,
     },
     {
         id: 2,
@@ -29,7 +27,7 @@ const services = [
     {
         id: 3,
         service: "Orthodontic Treatment & Braces",
-        text: `Correct crooked teeth and alignment issues with braces, clear aligners, and modern orthodontic treatment for both adults and teenagers.`,
+        text: `Correct crooked teeth and alignment issues with braces, clear aligners, and modern orthodontic treatment.`,
     },
     {
         id: 4,
@@ -39,25 +37,24 @@ const services = [
     {
         id: 5,
         service: "Teeth Cleaning & Preventive Care",
-        text: `Maintain oral hygiene with professional teeth cleaning, dental checkups, and cavity prevention treatments.`,
+        text: `Maintain oral hygiene with professional teeth cleaning and preventive dental care.`,
     },
     {
         id: 6,
         service: "Pediatric Dentistry",
-        text: `Our child-friendly dental clinic provides gentle dental care for children including cavity treatment, preventive care, and early orthodontic evaluation.`,
+        text: `Our child-friendly dental clinic provides gentle dental care for children.`,
     },
     {
         id: 7,
         service: "Tooth Extraction & Wisdom Tooth Removal",
-        text: `Safe and painless tooth extraction and wisdom tooth removal procedures performed by experienced dentists.`,
+        text: `Safe and painless tooth extraction and wisdom tooth removal procedures.`,
     },
     {
         id: 8,
         service: "Gum Treatment",
-        text: `Advanced gum treatment for bleeding gums, gum infections, and periodontal care.`,
-    }
+        text: `Advanced gum treatment for bleeding gums and periodontal care.`,
+    },
 ];
-
 
 // ================= HEADER =================
 
@@ -72,24 +69,31 @@ const SectionHeader = () => (
             className="text-dark uppercase font-bold tracking-widest max-w-2xl"
         >
             Comprehensive Dental Care for Your Whole Family
-
         </Paragraph>
     </div>
 );
 
-
 // ================= SERVICE TABS =================
 
-const ServiceTabs = ({ services, activeIndex, onClick, tabRefs }: any) => (
-    <div className="w-full overflow-x-auto scrollbar-hide">
+const ServiceTabs = ({
+    services,
+    activeIndex,
+    onClick,
+    tabRefs,
+    containerRef,
+}: any) => (
+    <div ref={containerRef} className="w-full overflow-x-auto scrollbar-hide">
         <div className="flex gap-2 w-max">
             {services.map((item: any, index: number) => (
                 <button
                     key={item.id}
                     ref={(el) => { tabRefs.current[index] = el }}
                     onClick={() => onClick(index)}
-                    className={`relative px-2 py-0.5 border border-dark/10 rounded shadow-md cursor-pointer transition-all duration-300 whitespace-nowrap shrink-0
-          ${activeIndex === index ? "bg-dark text-light" : "bg-washed-black/12"}`}
+                    className={`px-2 py-0.5 border border-dark/10 rounded shadow-md whitespace-nowrap shrink-0 transition
+          ${activeIndex === index
+                            ? "bg-dark text-light"
+                            : "bg-washed-black/12"
+                        }`}
                 >
                     <Paragraph size="sm">{item.service}</Paragraph>
                 </button>
@@ -97,7 +101,6 @@ const ServiceTabs = ({ services, activeIndex, onClick, tabRefs }: any) => (
         </div>
     </div>
 );
-
 
 // ================= SERVICE CONTENT =================
 
@@ -109,36 +112,41 @@ const ServiceContent = ({ item }: any) => (
         >
             {item.text}
         </Paragraph>
-
-        <Paragraph size="base" className="text-dark">
-            {item.subtext}
-        </Paragraph>
     </>
 );
-
 
 // ================= MAIN COMPONENT =================
 
 export default function Services() {
     const swiperRef = useRef<SwiperType | null>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
     const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const tabsContainerRef = useRef<HTMLDivElement | null>(null);
 
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeArrow, setActiveArrow] = useState<"prev" | "next">("next");
+
+    // Auto scroll active tab horizontally
     useEffect(() => {
+        const container = tabsContainerRef.current;
         const activeTab = tabRefs.current[activeIndex];
-        if (activeTab) {
-            activeTab.scrollIntoView({
-                behavior: "smooth",
-                inline: "start",
-                block: "nearest"
-            });
-        }
+
+        if (!container || !activeTab) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const tabRect = activeTab.getBoundingClientRect();
+
+        const scrollLeft =
+            container.scrollLeft + (tabRect.left - containerRect.left);
+
+        container.scrollTo({
+            left: scrollLeft,
+            behavior: "smooth",
+        });
     }, [activeIndex]);
 
     return (
         <div id="services" className="py-10 sm:py-16 bg-old-lace">
             <CenterSection>
-
                 <SectionHeader />
 
                 {/* Tabs */}
@@ -146,14 +154,14 @@ export default function Services() {
                     services={services}
                     activeIndex={activeIndex}
                     tabRefs={tabRefs}
+                    containerRef={tabsContainerRef}
                     onClick={(index: number) =>
                         swiperRef.current?.slideToLoop(index)
                     }
                 />
 
-                {/* Swiper Section */}
+                {/* Swiper */}
                 <div className="my-10 sm:flex gap-8">
-
                     {/* Service Name */}
                     <div className="flex sm:justify-center mb-4 sm:mb-0">
                         <div className="flex w-56 text-dark rounded">
@@ -166,12 +174,12 @@ export default function Services() {
                     <Swiper
                         modules={[Autoplay, Navigation]}
                         slidesPerView={1}
-                        loop={true}
+                        loop
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,
                         }}
-                        grabCursor={true}
+                        grabCursor
                         navigation={{
                             prevEl: ".services-prev",
                             nextEl: ".services-next",
@@ -190,16 +198,70 @@ export default function Services() {
                 </div>
 
                 {/* Navigation */}
-                <div className="flex justify-end gap-2">
-                    <button type="button" className="services-prev cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+                {/* <div className="flex justify-end gap-2">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActiveArrow("prev");
+                            swiperRef.current?.slidePrev();
+                        }}
+                        // className="services-prev cursor-pointer p-2 rounded bg-washed-black/12 text-white"
+                        className={`cursor-pointer p-2 rounded text-white transition
+      ${activeArrow === "prev"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
+                            }`}
+                    >
                         <IoIosArrowBack />
                     </button>
 
-                    <button type="button" className="services-next text-white cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/58 transition">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActiveArrow("next");
+                            swiperRef.current?.slideNext();
+                        }}
+                        className={`cursor-pointer p-2 rounded text-white transition
+      ${activeArrow === "next"
+                                ? "bg-washed-black/12"
+                                : "bg-washed-black/58"
+                            }`}
+                    >
+                        <IoIosArrowForward />
+                    </button>
+                </div> */}
+
+                <div className="flex justify-end gap-2">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActiveArrow("prev");
+                            swiperRef.current?.slidePrev();
+                        }}
+                        className={`cursor-pointer p-2 rounded text-light transition
+      ${activeArrow === "prev"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
+                            }`}
+                    >
+                        <IoIosArrowBack />
+                    </button>
+
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActiveArrow("next");
+                            swiperRef.current?.slideNext();
+                        }}
+                        className={`cursor-pointer p-2 rounded text-light transition
+      ${activeArrow === "next"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
+                            }`}
+                    >
                         <IoIosArrowForward />
                     </button>
                 </div>
-
             </CenterSection>
         </div>
     );

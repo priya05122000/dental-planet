@@ -51,6 +51,7 @@ export default function MissionVision() {
     const containerRef = useRef<HTMLDivElement | null>(null)
     const contentRefs = useRef<HTMLDivElement[]>([])
     const timelineRef = useRef<gsap.core.Timeline | null>(null)
+    const [activeArrow, setActiveArrow] = useState<"prev" | "next">("next");
 
     const [activeIndex, setActiveIndex] = useState(0)
 
@@ -296,11 +297,33 @@ export default function MissionVision() {
                 </div>
 
                 <div className="flex justify-end gap-2">
-                    <button type="button" className="mv-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/58 text-white transition">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActiveArrow("prev");
+                            swiperRef.current?.slidePrev();
+                        }}
+                        className={`cursor-pointer p-2 rounded text-light transition
+      ${activeArrow === "prev"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
+                            }`}
+                    >
                         <IoIosArrowBack />
                     </button>
 
-                    <button type="button" className="mv-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setActiveArrow("next");
+                            swiperRef.current?.slideNext();
+                        }}
+                        className={`cursor-pointer p-2 rounded text-light transition
+      ${activeArrow === "next"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
+                            }`}
+                    >
                         <IoIosArrowForward />
                     </button>
                 </div>
