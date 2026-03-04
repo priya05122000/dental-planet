@@ -8,16 +8,17 @@ import React, { useEffect, useRef, useState } from 'react'
 import { GoArrowUpLeft } from 'react-icons/go'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Section from '@/src/components/common/Section'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const Doctors = () => {
 
-    const sectionRef = useRef<HTMLDivElement>(null)
-    const scrollTriggerRef = useRef<ScrollTrigger | null>(null)
-
+    const pinRef = useRef<HTMLDivElement>(null)
     const imageRef = useRef<HTMLDivElement>(null)
     const textRef = useRef<HTMLDivElement>(null)
+
+    const [activeIndex, setActiveIndex] = useState(0)
 
     const doctors = [
         {
@@ -50,51 +51,47 @@ const Doctors = () => {
         },
     ]
 
-    const [activeIndex, setActiveIndex] = useState(0)
 
     useEffect(() => {
+
         const total = doctors.length
 
         const trigger = ScrollTrigger.create({
-            trigger: sectionRef.current,
+            trigger: pinRef.current,
             start: "top top",
-            end: `+=${window.innerHeight * total}`,
+            end: `+=${window.innerHeight * (total - 1)}`,
             pin: true,
             scrub: true,
             anticipatePin: 1,
+            invalidateOnRefresh: true,
             onUpdate: (self) => {
 
-                const index = Math.min(
-                    total - 1,
-                    Math.floor(self.progress * total)
-                )
-
+                const index = Math.round(self.progress * (total - 1))
                 setActiveIndex(index)
+
             }
         })
-
-        scrollTriggerRef.current = trigger
 
         return () => trigger.kill()
 
     }, [])
 
 
-    // 🔥 ANIMATION WHEN INDEX CHANGES
+    // smooth animation
     useEffect(() => {
 
         const tl = gsap.timeline()
 
         tl.fromTo(
             imageRef.current,
-            { opacity: 0, scale: 1.1 },
+            { opacity: 0, scale: 1.05 },
             { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }
         )
 
         tl.fromTo(
             textRef.current,
             { y: 40, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+            { y: 0, opacity: 1, duration: 0.5 },
             "-=0.4"
         )
 
@@ -102,127 +99,131 @@ const Doctors = () => {
 
 
     return (
-        <div id="doctor" className='py-10 sm:py-16 bg-dark'>
+
+        <section id="doctor" className=' bg-dark'>
             <CenterSection>
+                {/* PINNED FULL SCREEN */}
+                <div ref={pinRef} className="h-screen ">
 
-                {/* Heading */}
-                <div className="mb-12 text-light text-center">
-                    <Heading level={4} className="tracking-wide mb-2">
-                        Doctors
-                    </Heading>
+                    <div className=' flex flex-col h-full py-10 sm:py-16 '>
+                        <div className='flex flex-col justify-between h-full gap-10'>
+                            {/* heading */}
+                            <div className=" text-light text-center ">
 
-                    <Paragraph
-                        size="lg"
-                        className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
-                    >
-                        Professional teeth cleaning
-                    </Paragraph>
-                </div>
-
-
-                <div ref={sectionRef} className='grid lg:grid-cols-2 gap-10 bg-amber-800 slide-image'>
-
-                    {/* LEFT IMAGE */}
-                    <div
-                        ref={imageRef}
-                        className="relative aspect-3/4 overflow-hidden shadow-lg border border-light rounded"
-                    >
-                        <Image
-                            key={activeIndex}
-                            src={doctors[activeIndex].image}
-                            alt="Doctor"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-
-
-                    {/* RIGHT CONTENT */}
-                    <div className="flex flex-col justify-between gap-8 text-white">
-
-                        <div ref={textRef} className="text-justify relative flex-1">
-
-                            <div className='h-full flex items-center'>
-                                <div className='max-w-xs ml-auto'>
-
-                                    <div className="mb-4">
-                                        <Paragraph size='lg' className='font-bold tracking-widest'>
-                                            {doctors[activeIndex].role}
-                                        </Paragraph>
-
-                                        <Paragraph size='sm' className='tracking-widest'>
-                                            {doctors[activeIndex].degree}
-                                        </Paragraph>
-                                    </div>
-
-                                    <Paragraph size='base'>
-                                        {doctors[activeIndex].description}
-                                    </Paragraph>
-
-                                </div>
-                            </div>
-
-
-                            <div className='absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2 pointer-events-none'>
-                                <Heading level={4} className='font-bold tracking-widest'>
-                                    {doctors[activeIndex].name}
+                                <Heading level={4} className="tracking-wide mb-2">
+                                    Doctors
                                 </Heading>
+
+                                <Paragraph
+                                    size="lg"
+                                    className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
+                                >
+                                    Professional teeth cleaning
+                                </Paragraph>
+
                             </div>
 
-                        </div>
 
+                            {/* DOCTOR SECTION (smaller height) */}
+                            <div className="grid lg:grid-cols-2 flex-1 gap-10   rounded-lg">
 
-                        {/* SMALL GRID */}
-                        <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
-                            {doctors.map((doctor, index) => (
+                                {/* IMAGE */}
                                 <div
-                                    key={index}
-                                    className={`relative aspect-square overflow-hidden shadow-lg rounded cursor-pointer transition-all duration-300
-                                    ${activeIndex === index
-                                            ? "ring-1 ring-primary"
-                                            : "opacity-70 hover:opacity-100"
-                                        }`}
+                                    ref={imageRef}
+                                    className="relative h-full overflow-hidden shadow-lg border border-light rounded"
                                 >
 
                                     <Image
-                                        src={doctor.image}
-                                        alt=""
+                                        key={activeIndex}
+                                        src={doctors[activeIndex].image}
+                                        alt="Doctor"
                                         fill
                                         className="object-cover object-top"
                                     />
 
-                                    <div className='absolute bottom-0 right-0'>
-                                        <div
-                                            className='bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light'
-                                            onClick={() => {
+                                </div>
 
-                                                if (!scrollTriggerRef.current) return
 
-                                                const trigger = scrollTriggerRef.current
-                                                const total = doctors.length
+                                {/* CONTENT */}
+                                <div className="flex flex-col justify-between text-white">
 
-                                                const progress = index / (total - 1)
+                                    <div ref={textRef} className="flex-1 flex items-center relative">
 
-                                                const scrollPosition =
-                                                    trigger.start + progress * (trigger.end - trigger.start)
+                                        <div className="max-w-xs ml-auto">
 
-                                                window.scrollTo(0, scrollPosition)
+                                            <Paragraph
+                                                size="lg"
+                                                className="font-bold tracking-widest mb-2"
+                                            >
+                                                {doctors[activeIndex].role}
+                                            </Paragraph>
 
-                                                trigger.update()
+                                            <Paragraph size="sm" className="tracking-widest mb-4">
+                                                {doctors[activeIndex].degree}
+                                            </Paragraph>
 
-                                            }}
-                                        >
-                                            <GoArrowUpLeft />
+                                            <Paragraph size="base">
+                                                {doctors[activeIndex].description}
+                                            </Paragraph>
+
                                         </div>
+
+
+                                        <div className="absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
+
+                                            <Heading level={4} className="font-bold tracking-widest">
+                                                {doctors[activeIndex].name}
+                                            </Heading>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    {/* THUMBNAILS */}
+                                    <div className="grid grid-cols-4 gap-4 mt-6">
+
+                                        {doctors.map((doctor, index) => (
+
+                                            <div
+                                                key={index}
+                                                className={`relative aspect-square overflow-hidden rounded cursor-pointer transition-all
+                    ${activeIndex === index ? "ring-2 ring-primary" : "opacity-70 hover:opacity-100"}
+                    `}
+                                            >
+
+                                                <Image
+                                                    src={doctor.image}
+                                                    alt=""
+                                                    fill
+                                                    className="object-cover object-top"
+                                                />
+
+                                                <div className="absolute bottom-0 right-0 bg-linear-to-b from-primary to-primary-light text-light p-2">
+                                                    <GoArrowUpLeft />
+                                                </div>
+
+                                            </div>
+
+                                        ))}
+
                                     </div>
 
                                 </div>
-                            ))}
+
+                            </div>
                         </div>
+
+
                     </div>
+
+
                 </div>
+
             </CenterSection>
-        </div>
+
+        </section>
+
     )
 }
 
