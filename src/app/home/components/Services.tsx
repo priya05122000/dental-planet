@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 
 import CenterSection from "@/src/components/common/CenterSection";
@@ -80,12 +80,13 @@ const SectionHeader = () => (
 
 // ================= SERVICE TABS =================
 
-const ServiceTabs = ({ services, activeIndex, onClick }: any) => (
+const ServiceTabs = ({ services, activeIndex, onClick, tabRefs }: any) => (
     <div className="w-full overflow-x-auto scrollbar-hide">
         <div className="flex gap-2 w-max">
             {services.map((item: any, index: number) => (
                 <button
                     key={item.id}
+                    ref={(el) => { tabRefs.current[index] = el }}
                     onClick={() => onClick(index)}
                     className={`relative px-2 py-0.5 border border-dark/10 rounded shadow-md cursor-pointer transition-all duration-300 whitespace-nowrap shrink-0
           ${activeIndex === index ? "bg-dark text-light" : "bg-washed-black/12"}`}
@@ -121,6 +122,18 @@ const ServiceContent = ({ item }: any) => (
 export default function Services() {
     const swiperRef = useRef<SwiperType | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+    useEffect(() => {
+        const activeTab = tabRefs.current[activeIndex];
+        if (activeTab) {
+            activeTab.scrollIntoView({
+                behavior: "smooth",
+                inline: "start",
+                block: "nearest"
+            });
+        }
+    }, [activeIndex]);
 
     return (
         <div id="services" className="py-10 sm:py-16 bg-old-lace">
@@ -132,6 +145,7 @@ export default function Services() {
                 <ServiceTabs
                     services={services}
                     activeIndex={activeIndex}
+                    tabRefs={tabRefs}
                     onClick={(index: number) =>
                         swiperRef.current?.slideToLoop(index)
                     }
@@ -159,8 +173,8 @@ export default function Services() {
                         }}
                         grabCursor={true}
                         navigation={{
-                            prevEl: ".custom-prev",
-                            nextEl: ".custom-next",
+                            prevEl: ".services-prev",
+                            nextEl: ".services-next",
                         }}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) =>
@@ -177,11 +191,11 @@ export default function Services() {
 
                 {/* Navigation */}
                 <div className="flex justify-end gap-2">
-                    <button className="custom-prev cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+                    <button type="button" className="services-prev cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
                         <IoIosArrowBack />
                     </button>
 
-                    <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/58 transition">
+                    <button type="button" className="services-next text-white cursor-pointer p-2 flex items-center justify-center rounded bg-washed-black/58 transition">
                         <IoIosArrowForward />
                     </button>
                 </div>

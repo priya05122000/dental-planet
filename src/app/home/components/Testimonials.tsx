@@ -85,8 +85,8 @@ export default function Testimonials() {
             }}
             grabCursor={true}
             navigation={{
-              prevEl: ".custom-prev",
-              nextEl: ".custom-next",
+              prevEl: ".test-prev",
+              nextEl: ".test-next",
             }}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // IMPORTANT
@@ -182,11 +182,13 @@ export default function Testimonials() {
           </div>
         </div>
         <div className="flex justify-center gap-2">
-          <button className="custom-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
+          <button type="button"
+            className="test-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/12 text-white transition">
             <IoIosArrowBack />
           </button>
 
-          <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
+          <button type="button"
+            className="test-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
             <IoIosArrowForward />
           </button>
         </div>

@@ -256,8 +256,8 @@ export default function MissionVision() {
                         }}
                         grabCursor={true}
                         navigation={{
-                            prevEl: ".custom-prev",
-                            nextEl: ".custom-next",
+                            prevEl: ".mv-prev",
+                            nextEl: ".mv-next",
                         }}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // IMPORTANT
@@ -293,15 +293,14 @@ export default function MissionVision() {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-
-
                 </div>
+
                 <div className="flex justify-end gap-2">
-                    <button className="custom-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/58 text-white transition">
+                    <button type="button" className="mv-prev cursor-pointer  p-2 flex items-center justify-center rounded bg-washed-black/58 text-white transition">
                         <IoIosArrowBack />
                     </button>
 
-                    <button className="custom-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
+                    <button type="button" className="mv-next text-white cursor-pointer p-2 flex items-center justify-center rounded  bg-primary  transition">
                         <IoIosArrowForward />
                     </button>
                 </div>
