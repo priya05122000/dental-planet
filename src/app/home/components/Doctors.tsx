@@ -120,7 +120,7 @@ const Doctors = () => {
                 </div>
 
 
-                <div ref={sectionRef} className='grid lg:grid-cols-2 gap-10'>
+                <div ref={sectionRef} className='grid lg:grid-cols-2 gap-10 bg-amber-800 slide-image'>
 
                     {/* LEFT IMAGE */}
                     <div
@@ -219,10 +219,8 @@ const Doctors = () => {
                                 </div>
                             ))}
                         </div>
-
                     </div>
                 </div>
-
             </CenterSection>
         </div>
     )

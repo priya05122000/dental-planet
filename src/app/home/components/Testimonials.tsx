@@ -158,7 +158,7 @@ export default function Testimonials() {
                     layout
                     onClick={() => swiperRef.current?.slideToLoop(index)}
                     className={`flex items-center overflow-hidden
-          ${isActive ? "bg-black border-2 border-primary" : "bg-transparent"}
+          ${isActive ? "bg-dark border-2 border-primary" : "bg-transparent"}
           h-14 cursor-pointer`}
                     transition={{
                       layout: { duration: 0.45, ease: "easeInOut" },

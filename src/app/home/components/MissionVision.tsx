@@ -114,7 +114,7 @@ export default function MissionVision() {
         <>
             <section
                 ref={containerRef}
-                className="h-screen hidden  bg-black text-white sm:flex items-center relative overflow-hidden"
+                className="h-screen hidden  bg-dark text-white sm:flex items-center relative overflow-hidden"
             >
                 {/* LEFT SIDE NAV */}
                 <div className="w-1/3 pl-16 space-y-6 relative z-10 ">

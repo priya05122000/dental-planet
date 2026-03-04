@@ -100,7 +100,7 @@ const Hero = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 
                 {/* LEFT SIDE */}
-                <div className="bg-black px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-2 order-2 sm:order-1">
+                <div className="bg-dark px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-2 order-2 sm:order-1">
 
                     {/* Empty top (desktop only spacing) */}
                     <div className="hidden md:block" />

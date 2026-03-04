@@ -182,7 +182,7 @@ export default function Header() {
                                 animate="open"
                                 exit="closed"
                                 variants={menuVariants}
-                                className="fixed inset-0 z-40 bg-white dark:bg-black lg:hidden flex flex-col items-center justify-center overflow-hidden"
+                                className="fixed inset-0 z-40 bg-white dark:bg-dark lg:hidden flex flex-col items-center justify-center overflow-hidden"
                             >
                                 {/* Close Button */}
                                 <button
