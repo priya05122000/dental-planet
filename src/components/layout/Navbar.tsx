@@ -137,7 +137,7 @@ export default function Header() {
                 </ul>
               </nav>
 
-              <button className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded cursor-pointer text-sm lg:text-base font-semibold hidden lg:flex" onClick={() => handleScrollTo("#appointment-form")}>
+              <button className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded cursor-pointer text-sm lg:text-base font-normal hidden lg:flex" onClick={() => handleScrollTo("#appointment-form")}>
                 Book Appointment
               </button>
             </div>

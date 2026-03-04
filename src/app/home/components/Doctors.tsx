@@ -309,7 +309,7 @@ const Doctors = () => {
 
                                         <div className="absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2 pointer-events-none">
 
-                                            <Heading level={4} className="font-bold tracking-widest">
+                                            <Heading level={5} className="font-bold tracking-widest">
                                                 {doctors[activeIndex].name}
                                             </Heading>
 

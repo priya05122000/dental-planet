@@ -124,7 +124,7 @@ const Hero = () => {
                                 Redefining <br /> Aesthetics
                             </Paragraph>
 
-                            <button className="inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded text-sm lg:text-base">
+                            <button className="inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded text-sm lg:text-base font-normal">
                                 Book Appointment
                             </button>
                         </div>

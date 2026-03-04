@@ -110,7 +110,7 @@ const Footer = () => {
                                 <div className="space-y-4">
                                     {/* Contact Info */}
                                     <div>
-                                        <Paragraph size="xl" className=" text-primary font-medium mb-2 " style={{ letterSpacing: "1rem" }}>
+                                        <Paragraph size="xl" className=" text-primary  font-medium mb-2 " style={{ letterSpacing: ".3rem" }}>
                                             Contact
                                         </Paragraph>
                                         <ul className="space-y-1 ">
@@ -121,7 +121,7 @@ const Footer = () => {
                                     </div>
 
                                     <div >
-                                        <Paragraph size="xl" className=" text-primary font-medium mb-2 " style={{ letterSpacing: "1rem" }}>
+                                        <Paragraph size="xl" className=" text-primary font-medium mb-2 " style={{ letterSpacing: "0.3rem" }}>
                                             Opening Hours
                                         </Paragraph>
 
@@ -149,7 +149,7 @@ const Footer = () => {
                                         </ul>
                                     </div>
 
-                                    <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer text-base font-semibold ">
+                                    <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer font-normal text-sm lg:text-base  ">
                                         Book Appointment
                                     </button>
 
