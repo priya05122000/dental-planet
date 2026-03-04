@@ -240,9 +240,9 @@ export default function MissionVision() {
                         {data.map((item) => (
                             <SwiperSlide key={item.id}>
 
-                                <Paragraph size="xl" className="text-primary font-semibold  mb-2 tracking-wide leading-snug">
+                                {/* <Paragraph size="xl" className="text-primary font-semibold  mb-2 tracking-wide leading-snug">
                                     {item.title}
-                                </Paragraph>
+                                </Paragraph> */}
                                 <Paragraph size="base" className="text-light  mb-2 tracking-wide leading-snug">
                                     {item.description}
                                 </Paragraph>
