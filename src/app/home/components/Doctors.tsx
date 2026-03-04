@@ -9,8 +9,6 @@ import { GoArrowUpLeft } from 'react-icons/go'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from "framer-motion";
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -98,7 +96,6 @@ const Doctors = () => {
 
     }, [])
 
-
     // 🔥 ANIMATION WHEN INDEX CHANGES
     useEffect(() => {
         if (window.innerWidth < 1024) return
@@ -130,141 +127,142 @@ const Doctors = () => {
 
     }, [activeIndex])
 
-
     return (
         <div className=' bg-dark'>
-            <CenterSection>
 
-                <div ref={sectionRef} className="h-screen hidden lg:block">
+            <CenterSection >
+                <div className=''>
+                    <div ref={sectionRef} className="h-screen hidden lg:block">
+                        <div className=' flex flex-col h-full py-10 sm:py-16 '>
+                            <div className='flex flex-col justify-between h-full gap-10'>
+                                {/* Heading */}
+                                <div className=" text-light text-center ">
 
-                    <div className=' flex flex-col h-full py-10 sm:py-16 '>
-                        <div className='flex flex-col justify-between h-full gap-10'>
-                            {/* Heading */}
-                            <div className=" text-light text-center ">
+                                    <Heading level={4} className="tracking-wide mb-2">
+                                        Doctors
+                                    </Heading>
 
-                                <Heading level={4} className="tracking-wide mb-2">
-                                    Doctors
-                                </Heading>
+                                    <Paragraph
+                                        size="lg"
+                                        className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
+                                    >
+                                        Professional teeth cleaning
+                                    </Paragraph>
 
-                                <Paragraph
-                                    size="lg"
-                                    className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
-                                >
-                                    Professional teeth cleaning
-                                </Paragraph>
-
-                            </div>
-
-                            <div className='grid lg:grid-cols-2 flex-1 gap-10   rounded-lg'>
-
-                                {/* LEFT IMAGE */}
-                                <div
-                                    ref={imageRef}
-                                    className=" relative h-full overflow-hidden shadow-lg border border-light rounded will-change-transform"
-                                >
-                                    <Image
-                                        key={activeIndex}
-                                        src={doctors[activeIndex].image}
-                                        alt="Doctor"
-                                        fill
-                                        className="object-cover object-top transition-transform duration-700"
-                                    />
                                 </div>
 
+                                <div className='grid lg:grid-cols-2 flex-1 gap-10   rounded-lg'>
 
-                                {/* RIGHT CONTENT */}
-                                <div className="flex flex-col justify-between  text-white">
-
-                                    <div ref={textRef} className="flex-1 flex items-center relative">
-
-
-                                        <div className='max-w-xs ml-auto'>
-
-                                            <div className="mb-4">
-                                                <Paragraph size='lg' className='font-bold tracking-widest'>
-                                                    {doctors[activeIndex].role}
-                                                </Paragraph>
-
-                                                <Paragraph size='sm' className='tracking-widest'>
-                                                    {doctors[activeIndex].degree}
-                                                </Paragraph>
-                                            </div>
-
-                                            <Paragraph size='base'>
-                                                {doctors[activeIndex].description}
-                                            </Paragraph>
-
-                                        </div>
-
-
-                                        <div className='absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2 pointer-events-none'>
-                                            <Heading level={4} className='font-bold tracking-widest'>
-                                                {doctors[activeIndex].name}
-                                            </Heading>
-                                        </div>
-
+                                    {/* LEFT IMAGE */}
+                                    <div
+                                        ref={imageRef}
+                                        className=" relative h-full overflow-hidden shadow-lg border border-light rounded will-change-transform"
+                                    >
+                                        <Image
+                                            key={activeIndex}
+                                            src={doctors[activeIndex].image}
+                                            alt="Doctor"
+                                            fill
+                                            className="object-cover object-top transition-transform duration-700"
+                                        />
                                     </div>
 
 
-                                    {/* SMALL GRID */}
-                                    <div className="grid grid-cols-4 gap-4 mt-6">
-                                        {doctors.map((doctor, index) => (
-                                            <div
-                                                key={index}
+                                    {/* RIGHT CONTENT */}
+                                    <div className="flex flex-col justify-between  text-white">
 
-                                                onClick={() => {
-
-                                                    if (!scrollTriggerRef.current) return
-
-                                                    const trigger = scrollTriggerRef.current
-                                                    const total = doctors.length
-
-                                                    const progress = index / (total - 1)
-
-                                                    const scrollPosition =
-                                                        trigger.start + progress * (trigger.end - trigger.start)
-
-                                                    window.scrollTo(0, scrollPosition)
-
-                                                    trigger.update()
-
-                                                }}
-                                                className={`relative aspect-square overflow-hidden shadow-lg rounded cursor-pointer transition-all duration-300
-                                    ${activeIndex === index
-                                                        ? "ring-1 ring-primary"
-                                                        : "opacity-70 hover:opacity-100"
-                                                    }`}
-                                            >
-
-                                                <Image
-                                                    src={doctor.image}
-                                                    alt=""
-                                                    fill
-                                                    className="object-cover object-top"
-                                                />
-
-                                                <div className='absolute bottom-0 right-0'>
-                                                    <div
-                                                        className='bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light'
+                                        <div ref={textRef} className="flex-1 flex items-center relative">
 
 
-                                                    >
-                                                        <GoArrowUpLeft />
-                                                    </div>
+                                            <div className='max-w-xs ml-auto'>
+
+                                                <div className="mb-4">
+                                                    <Paragraph size='lg' className='font-bold tracking-widest'>
+                                                        {doctors[activeIndex].role}
+                                                    </Paragraph>
+
+                                                    <Paragraph size='sm' className='tracking-widest'>
+                                                        {doctors[activeIndex].degree}
+                                                    </Paragraph>
                                                 </div>
 
-                                            </div>
-                                        ))}
-                                    </div>
+                                                <Paragraph size='base'>
+                                                    {doctors[activeIndex].description}
+                                                </Paragraph>
 
+                                            </div>
+
+
+                                            <div className='absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2 pointer-events-none'>
+                                                <Heading level={4} className='font-bold tracking-widest'>
+                                                    {doctors[activeIndex].name}
+                                                </Heading>
+                                            </div>
+
+                                        </div>
+
+
+                                        {/* SMALL GRID */}
+                                        <div className="grid grid-cols-4 gap-4 mt-6">
+                                            {doctors.map((doctor, index) => (
+                                                <div
+                                                    key={index}
+
+                                                    onClick={() => {
+
+                                                        if (!scrollTriggerRef.current) return
+
+                                                        const trigger = scrollTriggerRef.current
+                                                        const total = doctors.length
+
+                                                        const progress = index / (total - 1)
+
+                                                        const scrollPosition =
+                                                            trigger.start + progress * (trigger.end - trigger.start)
+
+                                                        window.scrollTo(0, scrollPosition)
+
+                                                        trigger.update()
+
+                                                    }}
+                                                    className={`relative aspect-square overflow-hidden shadow-lg rounded cursor-pointer transition-all duration-300
+                                    ${activeIndex === index
+                                                            ? "ring-1 ring-primary"
+                                                            : "opacity-70 hover:opacity-100"
+                                                        }`}
+                                                >
+
+                                                    <Image
+                                                        src={doctor.image}
+                                                        alt=""
+                                                        fill
+                                                        className="object-cover object-top"
+                                                    />
+
+                                                    <div className='absolute bottom-0 right-0'>
+                                                        <div
+                                                            className='bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light'
+
+
+                                                        >
+                                                            <GoArrowUpLeft />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                    </div>
                                 </div>
+
                             </div>
 
+
                         </div>
-
-
                     </div>
                 </div>
+
                 <div className='block lg:hidden py-10 sm:py-16'>
                     <div className="mb-8 text-center text-light">
                         <Heading level={4} className="tracking-wide mb-2">
@@ -398,8 +396,6 @@ const Doctors = () => {
                         </button>
                     </div>
                 </div>
-
-
             </CenterSection>
         </div>
     )

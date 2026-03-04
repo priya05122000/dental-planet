@@ -89,12 +89,11 @@ export default function InstagramClient() {
                                 <Image src={images[3]} alt="" fill className="object-cover object-top" />
                             </motion.div>
                         </div>
-
                     </div>
 
                     {/* RIGHT SIDE TALL IMAGE */}
                     <motion.div
-                        animate={{ scale: [1, 0.9, 1] }}
+                        animate={{ scale: [1, 0.96, 1] }}
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                         className="relative rounded overflow-hidden"
                     >

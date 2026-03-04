@@ -130,7 +130,7 @@ export default function Testimonials() {
               <SwiperSlide key={item.id}>
                 <Paragraph
                   size="lg"
-                  className="max-w-2xl lg:max-w-3xl mx-auto text-dark  tracking-wide leading-snug"
+                  className="max-w-2xl lg:max-w-3xl mx-auto text-dark text-center  tracking-wide leading-snug"
                 >
                   {item.text}
                 </Paragraph>
