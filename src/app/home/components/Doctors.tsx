@@ -132,7 +132,7 @@ const Doctors = () => {
 
             <CenterSection >
                 <div className=''>
-                    <div ref={sectionRef} className="h-screen hidden lg:block">
+                    <div ref={sectionRef} className="h-screen hidden lg:block px-6 sm:px-8 lg:px-16 xl:px-20">
                         <div className=' flex flex-col h-full py-10 sm:py-16 '>
                             <div className='flex flex-col justify-between h-full gap-10'>
                                 {/* Heading */}
