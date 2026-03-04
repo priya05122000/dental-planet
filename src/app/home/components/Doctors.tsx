@@ -78,7 +78,7 @@ const Doctors = () => {
     const smallDoctors = doctors
 
     return (
-        <div className='py-10 sm:py-16 bg-dark'>
+        <div id="doctor" className='py-10 sm:py-16 bg-dark'>
             <CenterSection>
 
                 {/* Heading */}

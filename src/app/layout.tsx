@@ -8,6 +8,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { ToastContainer } from "react-toastify";
 import Footer from "../components/layout/Footer";
 import Navbar from "../components/layout/Navbar";
+import { ReactLenis } from "lenis/react";
 
 const abcSans = localFont({
   src: [
@@ -43,14 +44,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={abcSans.className}>
       <body className="antialiased">
+        <ReactLenis
+          root
+          options={{
+            lerp: 0.1,
+            duration: 1.2,
+            smoothWheel: true,
+          }}
+        >
+          <ToastContainer position="top-right" autoClose={3000} theme="light" />
 
-        <ToastContainer position="top-right" autoClose={3000} theme="light" />
-
-        <Navbar />
-        {children}
-        <Footer />
-
-
+          <Navbar />
+          {children}
+          <Footer />
+        </ReactLenis>
       </body>
     </html>
   );

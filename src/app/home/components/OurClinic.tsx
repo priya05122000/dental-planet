@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const OurClinic = () => {
     return (
-        <div className=" ">
+        <div id="about" className=" ">
             <div>
 
                 <div className="flex flex-col lg:flex-row gap-10 items-stretch">
