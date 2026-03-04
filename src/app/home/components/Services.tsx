@@ -104,7 +104,7 @@ export default function Services() {
                         {/* Name + Role */}
                         <div className="flex w-56 text-dark rounded">
                             <Paragraph className=" text-primary">
-                                &#9679;  {services[activeIndex].service}
+                                &#9642;  {services[activeIndex].service}
                             </Paragraph>
                         </div>
                     </div>
