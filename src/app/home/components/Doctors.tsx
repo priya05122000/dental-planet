@@ -333,34 +333,21 @@ const Doctors = () => {
                                             />
 
                                         ))}
-
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
 
 
-
                 {/* ================= MOBILE ================= */}
-
                 <div className="block lg:hidden py-10 sm:py-16">
-
                     <div className="mb-8 text-center text-light">
                         <SectionHeader />
                     </div>
-
-
-
-
                     {doctors.map((item) => (
-
                         <div key={item.id}>
-
                             <div className="grid grid-cols-2 items-center text-center mb-8 gap-0">
 
                                 <div className="h-52 w-36 relative">
