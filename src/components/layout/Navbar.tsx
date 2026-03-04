@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useLenis } from "lenis/react";
 import Image from "next/image";
+import { useSmoothScroll } from "@/src/hooks/useSmoothScroll";
 
 const navItems = [
   { name: "Services", href: "#services" },
@@ -19,6 +20,8 @@ export default function Header() {
   // const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lenis = useLenis();
+
+  const { scrollToSection } = useSmoothScroll();
 
   // Hide header on scroll down
   // useEffect(() => {
@@ -52,16 +55,7 @@ export default function Header() {
   }, []);
 
   const handleScrollTo = (id: string) => {
-    const element = document.querySelector(id) as HTMLElement | null;
-
-    if (element && lenis) {
-      lenis.scrollTo(element, {
-        offset: -80,
-        duration: 1.2,
-        easing: (t: number) => 1 - Math.pow(1 - t, 3),
-      });
-    }
-
+    scrollToSection(id);
     setIsMobileMenuOpen(false);
   };
   /* ---------------- Animations ---------------- */
@@ -99,9 +93,8 @@ export default function Header() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className={`fixed top-0 left-0 right-0 px-0 sm:px-2 lg:px-0 z-50 flex justify-center  transition-all duration-300 ${
-            scrolled ? "bg-dark shadow-lg py-2" : "bg-transparent py-2 lg:py-4"
-          }`}
+          className={`fixed top-0 left-0 right-0 px-0 sm:px-2 lg:px-0 z-50 flex justify-center  transition-all duration-300 ${scrolled ? "bg-dark shadow-lg py-2" : "bg-transparent py-2 lg:py-4"
+            }`}
         >
           <div
             className="w-full px-6 sm:px-4 lg:px-12  rounded

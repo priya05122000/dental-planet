@@ -8,12 +8,14 @@ import { IoCall } from "react-icons/io5";
 import { MdEmail, MdLocationPin } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { useSmoothScroll } from "@/src/hooks/useSmoothScroll";
 
 const Footer = () => {
+    const { scrollToSection } = useSmoothScroll();
     return (
         <div id="contact" className="bg-dark text-light">
             <Section>
-                <footer className="pt-10 sm:pt-16 pb-6 space-y-4">
+                <footer className="pt-10 sm:pt-16 pb-6 space-y-8">
 
                     {/* Main Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-16 ">
@@ -42,13 +44,45 @@ const Footer = () => {
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore placeat laborum assumenda eaque incidunt non sequi deserunt ex. Officiis, aspernatur?
                             </Paragraph>
 
-                            <div className="mt-4">
+                            <div className="mt-8">
+                                <ul className="space-y-1.5 text-body text-sm font-normal">
 
-                                <ul className="space-y-1.5 text-body text-sm">
-                                    <li><Link href="/">Home</Link></li>
-                                    <li><Link href="/about">About Us</Link></li>
-                                    <li><Link href="/services">Doctor</Link></li>
-                                    <li><Link href="/contact">Services</Link></li>
+                                    <li>
+                                        <button
+                                            onClick={() => scrollToSection("#services")}
+                                            className="hover:text-primary transition cursor-pointer"
+                                        >
+                                            Services
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            onClick={() => scrollToSection("#about")}
+                                            className="hover:text-primary transition cursor-pointer"
+                                        >
+                                            About us
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            onClick={() => scrollToSection("#case-studies")}
+                                            className="hover:text-primary transition cursor-pointer"
+                                        >
+                                            Casestudy
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            onClick={() => scrollToSection("#contact")}
+                                            className="hover:text-primary transition cursor-pointer"
+                                        >
+                                            Contact us
+                                        </button>
+                                    </li>
+
                                 </ul>
                             </div>
 
@@ -76,21 +110,18 @@ const Footer = () => {
                                 <div className="space-y-4">
                                     {/* Contact Info */}
                                     <div>
-                                        <Paragraph size="xl" className="tracking-widest text-primary font-medium mb-2 ">
+                                        <Paragraph size="xl" className=" text-primary font-medium mb-2 " style={{ letterSpacing: "1rem" }}>
                                             Contact
                                         </Paragraph>
                                         <ul className="space-y-1 ">
                                             <li className="flex items-center gap-2 text-base lg:text-lg font-semibold"><IoCall className="text-primary-light" /> +91 98765 43210</li>
-                                            <li className="flex items-center gap-2 text-base lg:text-lg font-semibold"><MdEmail className="text-primary-light" /> info@dentalplanet.com</li>
+                                            {/* <li className="flex items-center gap-2 text-base lg:text-lg font-semibold"><MdEmail className="text-primary-light" /> info@dentalplanet.com</li> */}
                                             <li className="flex items-start gap-2"><MdLocationPin className="text-primary-light text-base lg:text-lg font-semibold" /> <Paragraph size="sm">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</Paragraph></li>
                                         </ul>
                                     </div>
 
                                     <div >
-                                        <Paragraph
-                                            size="xl"
-                                            className="tracking-widest text-primary font-medium mb-3"
-                                        >
+                                        <Paragraph size="xl" className=" text-primary font-medium mb-2 " style={{ letterSpacing: "1rem" }}>
                                             Opening Hours
                                         </Paragraph>
 
