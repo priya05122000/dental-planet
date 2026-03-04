@@ -71,7 +71,6 @@ export default function MissionVision() {
                 },
             })
 
-
             sections.forEach((section, i) => {
                 if (i === 0) return
 
