@@ -16,6 +16,9 @@ const Doctors = () => {
     const sectionRef = useRef<HTMLDivElement>(null)
     const scrollTriggerRef = useRef<ScrollTrigger | null>(null)
 
+    const imageRef = useRef<HTMLDivElement>(null)
+    const textRef = useRef<HTMLDivElement>(null)
+
     const doctors = [
         {
             name: "Dr.Arjun Mehta",
@@ -45,7 +48,6 @@ const Doctors = () => {
             description: "Expert in advanced surgical procedures.",
             image: "/doctors/doctor4.jpg",
         },
-
     ]
 
     const [activeIndex, setActiveIndex] = useState(0)
@@ -61,21 +63,43 @@ const Doctors = () => {
             scrub: true,
             anticipatePin: 1,
             onUpdate: (self) => {
+
                 const index = Math.min(
                     total - 1,
                     Math.floor(self.progress * total)
                 )
+
                 setActiveIndex(index)
             }
         })
+
         scrollTriggerRef.current = trigger
 
         return () => trigger.kill()
+
     }, [])
 
-    // const smallDoctors = doctors.slice(1)
 
-    const smallDoctors = doctors
+    // 🔥 ANIMATION WHEN INDEX CHANGES
+    useEffect(() => {
+
+        const tl = gsap.timeline()
+
+        tl.fromTo(
+            imageRef.current,
+            { opacity: 0, scale: 1.1 },
+            { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }
+        )
+
+        tl.fromTo(
+            textRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" },
+            "-=0.4"
+        )
+
+    }, [activeIndex])
+
 
     return (
         <div className='py-10 sm:py-16 bg-dark'>
@@ -86,38 +110,41 @@ const Doctors = () => {
                     <Heading level={4} className="tracking-wide mb-2">
                         Doctors
                     </Heading>
+
                     <Paragraph
                         size="lg"
                         className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
                     >
                         Professional teeth cleaning
                     </Paragraph>
-
                 </div>
 
-                {/* === PINNED SECTION === */}
-                <div ref={sectionRef} className='grid lg:grid-cols-2  gap-10 '>
 
-                    {/* LEFT SIDE */}
-                    <div className="relative aspect-3/4  overflow-hidden shadow-lg border border-light rounded">
+                <div ref={sectionRef} className='grid lg:grid-cols-2 gap-10'>
+
+                    {/* LEFT IMAGE */}
+                    <div
+                        ref={imageRef}
+                        className="relative aspect-3/4 overflow-hidden shadow-lg border border-light rounded"
+                    >
                         <Image
                             key={activeIndex}
                             src={doctors[activeIndex].image}
                             alt="Doctor"
                             fill
-                            className="object-cover transition-opacity duration-500"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
-                            priority
+                            className="object-cover"
                         />
                     </div>
 
-                    {/* RIGHT SIDE */}
-                    <div className="flex flex-col justify-between gap-8 text-white ">
 
-                        {/* Top Changing Content */}
-                        <div className="  text-justify relative  flex-1">
-                            <div className=' h-full flex  items-center'>
-                                <div className='max-w-xs ml-auto  '>
+                    {/* RIGHT CONTENT */}
+                    <div className="flex flex-col justify-between gap-8 text-white">
+
+                        <div ref={textRef} className="text-justify relative flex-1">
+
+                            <div className='h-full flex items-center'>
+                                <div className='max-w-xs ml-auto'>
+
                                     <div className="mb-4">
                                         <Paragraph size='lg' className='font-bold tracking-widest'>
                                             {doctors[activeIndex].role}
@@ -131,57 +158,64 @@ const Doctors = () => {
                                     <Paragraph size='base'>
                                         {doctors[activeIndex].description}
                                     </Paragraph>
+
                                 </div>
                             </div>
 
 
-
-                            {/* Background Title */}
-                            <div className='absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2  pointer-events-none'>
-                                <Heading level={4} className='font-bold tracking-widest '>
+                            <div className='absolute top-1/2 w-56 -left-8 -translate-y-1/2 -translate-x-1/2 pointer-events-none'>
+                                <Heading level={4} className='font-bold tracking-widest'>
                                     {doctors[activeIndex].name}
                                 </Heading>
                             </div>
+
                         </div>
 
-                        {/* Bottom Small Grid (Pinned Below Content) */}
-                        <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 '>
-                            {smallDoctors.map((doctor, index) => (
+
+                        {/* SMALL GRID */}
+                        <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
+                            {doctors.map((doctor, index) => (
                                 <div
                                     key={index}
-                                    // onClick={() => setActiveIndex(index)}
-
                                     className={`relative aspect-square overflow-hidden shadow-lg rounded cursor-pointer transition-all duration-300
-            ${activeIndex === index ? "ring-1 ring-primary " : "opacity-70 hover:opacity-100"}`}
+                                    ${activeIndex === index
+                                            ? "ring-1 ring-primary"
+                                            : "opacity-70 hover:opacity-100"
+                                        }`}
                                 >
+
                                     <Image
                                         src={doctor.image}
-                                        alt={`Doctor ${index + 1}`}
+                                        alt=""
                                         fill
-                                        className="object-cover object-top transition duration-700"
-                                        sizes="(max-width: 1024px) 50vw, 25vw"
+                                        className="object-cover object-top"
                                     />
 
                                     <div className='absolute bottom-0 right-0'>
-                                        <div className='bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light' onClick={() => {
-                                            if (!scrollTriggerRef.current) return
+                                        <div
+                                            className='bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light'
+                                            onClick={() => {
 
-                                            const trigger = scrollTriggerRef.current
-                                            const total = doctors.length
+                                                if (!scrollTriggerRef.current) return
 
-                                            // divide properly by total - 1
-                                            const progress = index / (total - 1)
+                                                const trigger = scrollTriggerRef.current
+                                                const total = doctors.length
 
-                                            const scrollPosition =
-                                                trigger.start + progress * (trigger.end - trigger.start)
+                                                const progress = index / (total - 1)
 
-                                            window.scrollTo(0, scrollPosition)
-                                            trigger.update()
+                                                const scrollPosition =
+                                                    trigger.start + progress * (trigger.end - trigger.start)
 
-                                        }}>
+                                                window.scrollTo(0, scrollPosition)
+
+                                                trigger.update()
+
+                                            }}
+                                        >
                                             <GoArrowUpLeft />
                                         </div>
                                     </div>
+
                                 </div>
                             ))}
                         </div>
