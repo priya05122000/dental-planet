@@ -41,7 +41,7 @@ const CaseStudy = () => {
                 <div className="bg-off-white">
 
                     {/* Top Text */}
-                    <div className="h-40 px-4 lg:px-12 items-center flex">
+                    <div className="h-48 px-4 lg:px-12 items-center flex">
                         {/* {renderText(
                             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe deleniti adipisci similique nobis!",
                         )} */}
@@ -61,14 +61,14 @@ const CaseStudy = () => {
 
                     {/* Text + Image */}
                     <div className="grid grid-cols-3">
-                        <div className="h-40 bg-primary flex items-center">
+                        <div className="h-48 bg-primary flex items-center">
                             {renderText(
                                 "Professional teeth cleaning",
                                 "text-dark"
                             )}
                         </div>
-                        <div className="h-40 col-span-2 relative overflow-hidden">
-                            {renderImage("/doctors/1.jpg")}
+                        <div className="h-48 col-span-2 relative overflow-hidden">
+                            {renderImage("/casestudy/1.webp")}
 
                             <motion.div
                                 initial={{ width: "100%" }}
@@ -83,13 +83,13 @@ const CaseStudy = () => {
 
                     {/* Big Image + Small Stack */}
                     <div className="grid grid-cols-3">
-                        <div className="h-80 col-span-2">
-                            {renderImage("/doctors/smiling-woman-dentist-chair.jpg")}
+                        <div className="h-96 col-span-2">
+                            {renderImage("/casestudy/2.webp")}
                         </div>
 
                         <div>
-                            <div className="h-40 relative overflow-hidden">
-                                {renderImage("/doctors/female-doctor.jpg")}
+                            <div className="h-48 relative overflow-hidden">
+                                {renderImage("/casestudy/3.webp")}
 
                                 <motion.div
                                     initial={{ width: "100%" }}
@@ -100,8 +100,8 @@ const CaseStudy = () => {
                                     style={{ width: "100%" }}
                                 />
                             </div>
-                            <div className="h-40 relative overflow-hidden">
-                                {renderImage("/doctors/portrait-man-doctor.jpg")}
+                            <div className="h-48 relative overflow-hidden">
+                                {renderImage("/casestudy/4.webp")}
 
                                 <motion.div
                                     initial={{ width: "100%" }}
@@ -120,16 +120,16 @@ const CaseStudy = () => {
                 <div className="flex flex-col">
 
                     {/* Large Image with Overlay */}
-                    <div className="h-120 w-full relative overflow-hidden">
+                    <div className="h-144 w-full relative overflow-hidden">
                         {renderImage(
-                            "/doctors/close-up-female-1.jpg",
+                            "/casestudy/5.webp",
                             "w-full h-full object-cover"
                         )}
 
                         <div className="absolute bottom-0 w-full flex justify-start">
-                            <div className="relative overflow-hidden h-40 w-2/3  bg-dark">
+                            <div className="relative overflow-hidden h-48 w-2/3  bg-dark">
 
-                                {renderImage("/doctors/before_after.webp")}
+                                {renderImage("/casestudy/6.webp")}
 
                                 <motion.div
                                     initial={{ width: "100%" }}
@@ -146,13 +146,13 @@ const CaseStudy = () => {
 
                     {/* Text + Image */}
                     <div className="grid grid-cols-3">
-                        <div className="h-40 col-span-2 bg-dark text-light flex items-center">
+                        <div className="h-48 col-span-2 bg-dark text-light flex items-center">
                             {renderText(
                                 "Professional teeth cleaning.",
                             )}
                         </div>
-                        <div className="h-40 relative overflow-hidden">
-                            {renderImage("/doctors/before_after.webp")}
+                        <div className="h-48 relative overflow-hidden">
+                            {renderImage("/casestudy/7.webp")}
 
                             <motion.div
                                 initial={{ width: "100%" }}
@@ -169,15 +169,15 @@ const CaseStudy = () => {
 
             {/* ===================== BOTTOM GRID ===================== */}
             <div className="grid grid-cols-3">
-                <div className="h-40 bg-off-white flex items-center">
+                <div className="h-48 bg-off-white flex items-center">
                     {renderText(
                         " Professional teeth cleaning.",
                         "text-dark"
                     )}
                 </div>
 
-                <div className="h-40 relative overflow-hidden">
-                    {renderImage("/doctors/doctor-holds-prosthesis.jpg")}
+                <div className="h-48 relative overflow-hidden">
+                    {renderImage("/casestudy/8.webp")}
                     <motion.div
                         initial={{ width: "100%" }}
                         whileInView={{ width: 0 }}
@@ -188,7 +188,7 @@ const CaseStudy = () => {
                     />
                 </div>
 
-                <div className="h-40 bg-old-lace flex items-center">
+                <div className="h-48 bg-old-lace flex items-center">
                     {renderText(
                         "Professional teeth cleaning.",
                         "text-primary"
