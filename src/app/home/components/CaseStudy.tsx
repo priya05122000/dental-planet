@@ -34,7 +34,7 @@ const CaseStudy = () => {
     );
 
     return (
-        <div>
+        <div className="w-full overflow-x-hidden">
             {/* ===================== TOP GRID ===================== */}
             <div id="case-studies" className="grid grid-cols-1 lg:grid-cols-2">
                 {/* ---------- LEFT SIDE ---------- */}

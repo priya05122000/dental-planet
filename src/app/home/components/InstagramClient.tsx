@@ -38,14 +38,11 @@ export default function InstagramClient() {
                         </Paragraph>
                     </div>
                     <div className="mt-4 sm:mt-0">
-                        <Paragraph size="base" className="">
+                        <Paragraph size="xl" className="font-semibold">
                             Orthodontics is a specialized branch of dentistry focused on diagnosing, preventing, and treating misaligned teeth and jaws (malocclusions) to improve oral function, health, and facial aesthetics.
 
                         </Paragraph>
-                        <Paragraph size="base" className="">
-                            Orthodontics is a specialized branch of dentistry focused on diagnosing, preventing, and treating misaligned teeth and jaws (malocclusions) to improve oral function, health, and facial aesthetics.
 
-                        </Paragraph>
                     </div>
                 </div>
 

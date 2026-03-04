@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
-import { div } from "framer-motion/client"
 import Section from "@/src/components/common/Section"
 import type { Swiper as SwiperType } from "swiper";
 import Paragraph from "@/src/components/common/Paragraph"
@@ -44,7 +43,7 @@ export default function MissionVision() {
 
     const swiperRef = useRef<SwiperType | null>(null);
 
-
+    const leftRefs = useRef<HTMLDivElement[]>([])
     useEffect(() => {
         if (!containerRef.current) return
 
@@ -62,12 +61,21 @@ export default function MissionVision() {
                     end: `+=${sections.length * 100}%`,
                     scrub: true,
                     pin: true,
+                    anticipatePin: 1,
                     onUpdate: (self) => {
-                        const index = Math.round(
-                            self.progress * (sections.length - 1)
+                        // prevent auto change on page load
+                        if (self.progress < 0.05) {
+                            setActiveIndex(0)
+                            return
+                        }
+
+                        const index = Math.min(
+                            sections.length - 1,
+                            Math.floor(self.progress * sections.length)
                         )
+
                         setActiveIndex(index)
-                    },
+                    }
                 },
             })
 
@@ -92,8 +100,33 @@ export default function MissionVision() {
             timelineRef.current = tl
         }, containerRef)
 
-        return () => ctx.revert()
+        return () => {
+            ScrollTrigger.getAll().forEach((t) => t.kill())
+            ctx.revert()
+        }
     }, [])
+
+    useEffect(() => {
+        const items = leftRefs.current
+
+        items.forEach((el, i) => {
+            if (i === activeIndex) {
+                gsap.to(el, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.4,
+                    color: "#ffffff",
+                })
+            } else {
+                gsap.to(el, {
+                    opacity: 0.4,
+                    x: -10,
+                    duration: 0.4,
+                    color: "#9ca3af",
+                })
+            }
+        })
+    }, [activeIndex])
 
     // Manual navigation click
     const handleClick = (index: number) => {
@@ -121,11 +154,12 @@ export default function MissionVision() {
                     {data.map((item, index) => (
                         <div
                             key={index}
+                            ref={(el) => {
+                                if (!el) return
+                                leftRefs.current[index] = el
+                            }}
                             onClick={() => handleClick(index)}
-                            className={`cursor-pointer transition-all duration-300 ${activeIndex === index
-                                ? "opacity-100 text-white"
-                                : "opacity-40 text-gray-400"
-                                }`}
+                            className="cursor-pointer"
                         >
                             {item.title}
                         </div>
