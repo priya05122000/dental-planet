@@ -340,7 +340,6 @@ const Doctors = () => {
                     </div>
                 </div>
 
-
                 {/* ================= MOBILE ================= */}
                 <div className="block lg:hidden py-10 sm:py-16">
                     <div className="mb-8 text-center text-light">
