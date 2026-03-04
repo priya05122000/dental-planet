@@ -153,7 +153,7 @@ const Hero = () => {
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className="relative md:col-span-2 bg-amber-600 min-h-[60vh] md:min-h-full order-1 sm:order-2">
+                <div className="relative md:col-span-2 min-h-[60vh] md:min-h-full order-1 sm:order-2">
                     <Image
                         src="/hero/Group-1.png"
                         alt="Clinic Interior"
@@ -168,8 +168,8 @@ const Hero = () => {
                         alt="Dental Planet Logo"
                         width={400}
                         height={400}
-                        className="absolute  opacity-50 -right-15 sm:left-5 -bottom-10 sm:bottom-16
-  w-40 lg:w-48 xl:w-64
+                        className="absolute opacity-50 -right-10 sm:left-5 -bottom-10 sm:bottom-16
+  w-36 md:w-40 lg:w-48 xl:w-64
   -translate-x-1/2 translate-y-1/2 sm:translate-y-0
   pointer-events-none"
                         priority
