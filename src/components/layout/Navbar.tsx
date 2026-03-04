@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useLenis } from "lenis/react";
@@ -16,6 +16,7 @@ const navItems = [
 
 export default function Header() {
     const [showHeader, setShowHeader] = useState(true);
+    const [scrolled, setScrolled] = useState(false);
     // const [lastScrollY, setLastScrollY] = useState(0);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const lenis = useLenis();
@@ -39,6 +40,20 @@ export default function Header() {
     //     return () => window.removeEventListener("scroll", handleScroll);
     // }, [lastScrollY]);
 
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     const handleScrollTo = (id: string) => {
         if (lenis) {
             lenis.scrollTo(id);
@@ -50,11 +65,11 @@ export default function Header() {
 
     const menuVariants: Variants = {
         open: {
-            clipPath: "circle(1200px at 90% 5%)",
+            clipPath: "circle(1200px at 100% 0%)",
             transition: { type: "spring", stiffness: 20 },
         },
         closed: {
-            clipPath: "circle(20px at 90% 5%)",
+            clipPath: "circle(0px at 100% 0%)",
             transition: { type: "spring", stiffness: 400, damping: 40 },
         },
     };
@@ -82,13 +97,13 @@ export default function Header() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -100, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4"
-                >
+                    className={`fixed top-0 left-0 right-0 px-0 sm:px-2 lg:px-0 z-50 flex justify-center  transition-all duration-300 ${scrolled ? "bg-dark shadow-lg py-2" : "bg-transparent py-2 lg:py-4"
+                        }`}                >
 
                     <div
-                        className="w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto rounded
-            bg-light/10 backdrop-blur-sm
-            flex items-center justify-between p-2 transition-all"
+                        className="w-full px-6 sm:px-4 lg:px-12  rounded
+
+            flex items-center justify-between py-2 transition-all"
                     >
                         {/* Logo */}
                         <button
@@ -106,30 +121,33 @@ export default function Header() {
                             </div>
                         </button>
 
-                        {/* Desktop Nav */}
-                        <nav className="hidden md:flex flex-1 justify-center">
-                            <ul className="flex space-x-6">
-                                {navItems.map((item) => (
-                                    <li
-                                        key={item.name}
-                                        className="relative group text-sm font-medium text-light"
-                                    >
-                                        <button
-                                            onClick={() => handleScrollTo(item.href)}
-                                            className="hover:text-primary cursor-pointer  transition"
+                        <div className="hidden lg:flex items-center gap-8">
+                            {/* Desktop Nav */}
+                            <nav >
+                                <ul className="flex space-x-6">
+                                    {navItems.map((item) => (
+                                        <li
+                                            key={item.name}
+                                            className="relative group text-sm font-medium text-light"
                                         >
-                                            {item.name}
-                                        </button>
+                                            <button
+                                                onClick={() => handleScrollTo(item.href)}
+                                                className="hover:text-primary cursor-pointer  transition"
+                                            >
+                                                {item.name}
+                                            </button>
 
 
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
 
-                        <button className="bg-linear-to-r from-primary to-primary-light text-dark py-2 px-4 rounded cursor-pointer text-base font-semibold hidden md:flex">
-                            Book Appointment
-                        </button>
+                            <button className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded cursor-pointer text-sm lg:text-base font-semibold hidden lg:flex">
+                                Book Appointment
+                            </button>
+                        </div>
+
 
 
                         {/* Theme Toggle */}
@@ -149,7 +167,7 @@ export default function Header() {
                         {/* Mobile Hamburger */}
                         <button
                             onClick={() => setIsMobileMenuOpen(true)}
-                            className="md:hidden text-light "
+                            className="lg:hidden text-light "
                         >
                             <FaBars size={22} />
                         </button>
@@ -164,12 +182,12 @@ export default function Header() {
                                 animate="open"
                                 exit="closed"
                                 variants={menuVariants}
-                                className="fixed inset-0 z-40 bg-white dark:bg-black md:hidden flex flex-col items-center justify-center"
+                                className="fixed inset-0 z-40 bg-white dark:bg-black lg:hidden flex flex-col items-center justify-center overflow-hidden"
                             >
                                 {/* Close Button */}
                                 <button
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className="absolute top-8 right-8 text-light "
+                                    className="absolute top-8 right-4 text-light "
                                 >
                                     <FaTimes size={28} />
                                 </button>

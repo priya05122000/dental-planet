@@ -36,13 +36,13 @@ const CaseStudy = () => {
     return (
         <div>
             {/* ===================== TOP GRID ===================== */}
-            <div className="grid grid-cols-2">
+            <div className="grid sm:grid-cols-2">
 
                 {/* ---------- LEFT SIDE ---------- */}
                 <div className="bg-off-white">
 
                     {/* Top Text */}
-                    <div className="h-40 px-0 md:px-4 lg:px-12 items-center flex">
+                    <div className="h-40 px-4 lg:px-12 items-center flex">
                         {/* {renderText(
                             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe deleniti adipisci similique nobis!",
                         )} */}

@@ -100,7 +100,7 @@ const Hero = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 
                 {/* LEFT SIDE */}
-                <div className="bg-black px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-2">
+                <div className="bg-black px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-2 order-2 sm:order-1">
 
                     {/* Empty top (desktop only spacing) */}
                     <div className="hidden md:block" />
@@ -112,7 +112,7 @@ const Hero = () => {
                         <div>
                             <Paragraph
                                 size="lg"
-                                className="uppercase text-light/50 tracking-[1rem] md:tracking-[2rem]"
+                                className="uppercase text-light/50 tracking-[1.2rem] xl:tracking-[2rem]"
                             >
                                 Dental
                             </Paragraph>
@@ -124,13 +124,13 @@ const Hero = () => {
                                 Redefining <br /> Aesthetics
                             </Paragraph>
 
-                            <button className="hidden md:inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded">
+                            <button className="inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded text-sm lg:text-base">
                                 Book Appointment
                             </button>
                         </div>
 
                         {/* Stats */}
-                        <div className="mb-10 border z-10 border-light/20 rounded p-4 flex flex-col sm:flex-row justify-between gap-20 md:absolute md:bottom-0 ">
+                        <div className="sm:mb-10 border z-10 border-light/20 rounded  p-2 xl:p-4 flex flex-row justify-between gap-10 xl:gap-20 md:absolute md:bottom-0 ">
 
                             {stats.map((item, i) => (
                                 <div key={i}>
@@ -153,7 +153,7 @@ const Hero = () => {
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className="relative md:col-span-2 min-h-[60vh] md:min-h-full">
+                <div className="relative md:col-span-2 min-h-[60vh] md:min-h-full order-1 sm:order-2">
                     <Image
                         src="/hero/Group-1.png"
                         alt="Clinic Interior"
@@ -166,9 +166,12 @@ const Hero = () => {
                     <Image
                         src="/design/bannerteeth.png"
                         alt="Dental Planet Logo"
-                        width={250}
-                        height={250}
-                        className="absolute left-5 bottom-16 -translate-x-1/2 pointer-events-none hidden md:block"
+                        width={400}
+                        height={400}
+                        className="absolute right-0 sm:left-5 bottom-0 sm:bottom-16
+  w-24 sm:w-32 md:w-40 lg:w-48 xl:w-64
+  -translate-x-1/2 translate-y-1/2 sm:translate-y-0
+  pointer-events-none"
                         priority
                     />
                 </div>

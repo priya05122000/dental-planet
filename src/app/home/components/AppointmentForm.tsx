@@ -79,7 +79,6 @@ export default function AppointmentForm() {
             setLoading(true);
 
             const token = await executeRecaptcha("appointment_submit");
-            console.log("Captcha token:", token);
 
             const res = await fetch("/api/contact", {
                 method: "POST",
@@ -109,37 +108,45 @@ export default function AppointmentForm() {
     };
 
     return (
-        <div className="bg-old-lace py-10 sm:py-16 relative ">
-            <div className=" relative ">
+        <div className="bg-old-lace py-10 sm:py-16 relative overflow-hidden">
+
+            {/* Decorative teeth image */}
+            <Image
+                src="/design/teeth.webp"
+                alt="Dental Decoration"
+                width={200}
+                height={200}
+                className="absolute right-0 -bottom-10 sm:top-1/3 w-24 sm:w-32 md:w-40 lg:w-48 pointer-events-none z-0"
+                priority
+            />
+
+            {/* Content */}
+            <div className="relative z-10">
                 <CenterSection>
-                    <div className="mb-10">
-                        <div className="relative flex flex-col items-center justify-center text-center ">
-                            {/* Heading */}
 
-                            <Heading
-                                level={4}
-                                className="text-dark tracking-wide mb-2"
-                            >
-                                Make an  Appointment
-                            </Heading>
+                    <div className="mb-10 text-center">
+                        <Heading level={4} className="text-dark tracking-wide mb-2">
+                            Make an Appointment
+                        </Heading>
 
-                            <Paragraph size="lg" className="text-dark uppercase font-bold tracking-widest max-w-2xl">
-                                Professional teeth cleaning
-                            </Paragraph>
-                        </div>
+                        <Paragraph
+                            size="lg"
+                            className="text-dark uppercase font-bold tracking-widest max-w-2xl mx-auto"
+                        >
+                            Professional teeth cleaning
+                        </Paragraph>
                     </div>
 
                     <form
                         onSubmit={handleSubmit}
                         autoComplete="off"
-                        className="space-y-4 max-w-4xl  mx-auto"
+                        className="space-y-4 max-w-4xl mx-auto"
                     >
+
                         <div className="grid gap-4 sm:grid-cols-3 text-base">
 
                             <input
                                 type="text"
-                                name="no-autofill-name"
-                                autoComplete="off"
                                 placeholder="Name *"
                                 value={form.name}
                                 onChange={(e) => handleChange("name", e.target.value)}
@@ -153,10 +160,8 @@ export default function AppointmentForm() {
 
                                 <input
                                     type="tel"
-                                    name="no-autofill-mobile"
-                                    inputMode="numeric"
-                                    autoComplete="off"
                                     placeholder="Mobile *"
+                                    inputMode="numeric"
                                     value={form.mobile}
                                     onChange={(e) => handleChange("mobile", e.target.value)}
                                     className="rounded-tr rounded-br border border-dark/20 px-3 py-2 w-full focus:outline-none"
@@ -165,8 +170,6 @@ export default function AppointmentForm() {
 
                             <input
                                 type="text"
-                                name="no-autofill-email"
-                                autoComplete="off"
                                 placeholder="Email"
                                 value={form.email}
                                 onChange={(e) => handleChange("email", e.target.value)}
@@ -174,36 +177,24 @@ export default function AppointmentForm() {
                             />
                         </div>
 
-
                         <textarea
-                            name="no-autofill-message"
-                            autoComplete="off"
                             placeholder="Message"
                             value={form.message}
                             onChange={(e) => handleChange("message", e.target.value)}
                             className="rounded border border-dark/20 px-3 py-2 w-full focus:outline-none"
                         />
+
                         <div className="flex justify-center">
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-3 rounded cursor-pointer text-base font-semibold   disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? "Booking..." : "Book Appointment"}
                             </button>
                         </div>
 
-
                     </form>
-
-                    <Image
-                        src="/design/teeth.webp"
-                        alt="Dental Planet Logo"
-                        width={200}
-                        height={200}
-                        className="absolute right-0 top-1/4  pointer-events-none "
-                        priority
-                    />
                 </CenterSection>
             </div>
 
