@@ -16,7 +16,7 @@ const HomePage = () => {
             <Hero />
             <Services />
             <OurClinic />
-            <Doctors />
+            {/* <Doctors /> */}
             <CaptchaWrapper>
                 <AppointmentForm />
             </CaptchaWrapper>

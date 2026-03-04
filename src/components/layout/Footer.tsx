@@ -16,7 +16,7 @@ const Footer = () => {
                 <footer className="pt-10 sm:pt-16 pb-6 space-y-4">
 
                     {/* Main Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 ">
+                    <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-16 ">
 
                         {/* LEFT SIDE (Small) */}
                         <div className="">
@@ -31,13 +31,7 @@ const Footer = () => {
                                         className="w-1/2 h-full"
                                     />
                                 </div>
-
-
                             </div>
-
-
-
-
                         </div>
 
                         {/* RIGHT SIDE (Large) */}
@@ -62,7 +56,7 @@ const Footer = () => {
 
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16">
                         <div >
                             {/* Google Map */}
                             <div className="rounded overflow-hidden h-full">
