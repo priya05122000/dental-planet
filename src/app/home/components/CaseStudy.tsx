@@ -89,7 +89,7 @@ const CaseStudy = () => {
                     <div className="h-48 px-4 lg:px-12 flex items-center">
                         <div>
                             <Heading level={4} className="text-light mb-2 tracking-wide">
-                                Case Study
+                                Modern Dental Clinic
                             </Heading>
 
                             <Paragraph

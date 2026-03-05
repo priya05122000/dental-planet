@@ -114,10 +114,12 @@ export default function MissionVision() {
             timelineRef.current = tl
         }, containerRef)
 
-        return () => {
-            ScrollTrigger.getAll().forEach((t) => t.kill())
-            ctx.revert()
-        }
+        // return () => {
+        //     ScrollTrigger.getAll().forEach((t) => t.kill())
+        //     ctx.revert()
+        // }
+
+        return () => ctx.revert()
     }, [])
 
     useEffect(() => {

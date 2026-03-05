@@ -133,7 +133,7 @@ export default function AppointmentForm() {
                             size="lg"
                             className="text-dark uppercase font-bold tracking-widest max-w-2xl mx-auto"
                         >
-                            Professional teeth cleaning
+                           Connect with Us
                         </Paragraph>
                     </div>
 

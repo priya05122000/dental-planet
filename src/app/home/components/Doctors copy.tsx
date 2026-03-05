@@ -65,7 +65,7 @@ const SectionHeader = () => (
             size="lg"
             className="uppercase font-bold tracking-widest max-w-2xl mx-auto"
         >
-            Meet Our Team
+            Professional teeth cleaning
         </Paragraph>
     </div>
 )
