@@ -156,7 +156,7 @@ const CaseStudy = () => {
                                 "Lorem ipsum dolor, sit amet ",
                                 "text-dark"
                             )} */}
-                            {renderImage("/casestudy/13.png")}
+                            {renderImage("/casestudy/16.jpg")}
                             <div className="absolute inset-0 bg-dark/80 backdrop-blur-xs"></div>
                             <Paragraph size="lg" className={`absolute text-light inset-0 p-4 flex items-center `}>
                                 A modern dental clinic dedicated to providing advanced, comfortable, and painless dental care for patients of all ages.
@@ -195,7 +195,7 @@ const CaseStudy = () => {
                                 "Lorem ipsum dolor, sit amet ",
                                 "text-dark"
                             )} */}
-                    {renderImage("/casestudy/16.jpg")}
+                    {renderImage("/casestudy/13.png")}
                     <div className="absolute inset-0 bg-old-lace/80 backdrop-blur-xs"></div>
                     <div className="absolute text-dark">
                         <Heading level={3} className="p-4 hidden sm:block">
@@ -236,7 +236,7 @@ const CaseStudy = () => {
                     {renderImage("/casestudy/18.jpg")}
                     <div className="absolute inset-0 bg-old-lace/80 backdrop-blur-xs"></div>
                     <Heading level={6} className={`absolute text-primary inset-0 p-4 flex items-center `}>
-                        Lorem ipsum dolor, sit amet 
+                        Lorem ipsum dolor, sit amet
                     </Heading>
                 </div>
             </div>
