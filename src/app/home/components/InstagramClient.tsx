@@ -57,7 +57,7 @@ export default function InstagramClient() {
               size="lg"
               className="text-dark uppercase font-bold tracking-widest max-w-2xl"
             >
-              Professional teeth cleaning
+              Lorem ipsum dolor sit amet.
             </Paragraph>
           </div>
 

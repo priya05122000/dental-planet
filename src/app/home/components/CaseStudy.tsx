@@ -96,7 +96,7 @@ const CaseStudy = () => {
                                 size="lg"
                                 className="text-light uppercase font-bold tracking-widest max-w-2xl"
                             >
-                                Professional teeth cleaning
+                                Lorem ipsum dolor sit amet.
                             </Paragraph>
                         </div>
                     </div>

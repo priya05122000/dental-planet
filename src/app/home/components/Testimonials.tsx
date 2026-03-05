@@ -70,7 +70,7 @@ export default function Testimonials() {
             size="lg"
             className="text-dark uppercase font-bold tracking-widest text-center max-w-2xl mx-auto"
           >
-            Professional teeth cleaning
+            Lorem ipsum dolor sit amet.
           </Paragraph>
         </div>
 
