@@ -34,7 +34,7 @@ const OurClinic = () => {
                     </div>
 
                     {/* Description */}
-                    <div className="mt-10 space-y-8">
+                    <div className="my-10 space-y-8">
                         {clinicDescription.map((text, index) => (
                             <Paragraph key={index} size="base" className="text-justify">
                                 {text}
