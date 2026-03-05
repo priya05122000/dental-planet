@@ -4,18 +4,11 @@ import CenterSection from '@/src/components/common/CenterSection'
 import Heading from '@/src/components/common/Heading'
 import Paragraph from '@/src/components/common/Paragraph'
 import Span from '@/src/components/common/Span'
-
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
-
 import { GoArrowUpLeft } from 'react-icons/go'
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
-
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay, Navigation } from "swiper/modules"
 import type { Swiper as SwiperType } from "swiper"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -377,25 +370,12 @@ const Doctors = () => {
                                             {item.description}
                                         </Paragraph>
                                     </div>
-
                                 </div>
-
-
-
                             </div>
-
                         </div>
-
                     ))}
-
-
-
-
-
                 </div>
-
             </CenterSection>
-
         </div>
     )
 }
