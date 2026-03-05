@@ -117,13 +117,13 @@ export default function InstagramClient() {
           </div>
 
           {/* RIGHT SIDE TALL IMAGE */}
-          {/* <motion.div
+          <motion.div
             animate={{ scale: [1, 0.96, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative rounded overflow-hidden"
+            className="relative rounded overflow-hidden hidden sm:block"
           >
             <BlendImage src={images[4]} />
-          </motion.div> */}
+          </motion.div>
 
         </div>
       </Section>
