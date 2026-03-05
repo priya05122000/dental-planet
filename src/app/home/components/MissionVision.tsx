@@ -305,8 +305,8 @@ export default function MissionVision() {
                         }}
                         className={`cursor-pointer p-2 rounded text-light transition
       ${activeArrow === "prev"
-                                ? "bg-washed-black/58"
-                                : "bg-washed-black/12"
+                                ? "bg-primary"
+                                : "bg-washed-black/58"
                             }`}
                     >
                         <IoIosArrowBack />
@@ -320,8 +320,8 @@ export default function MissionVision() {
                         }}
                         className={`cursor-pointer p-2 rounded text-light transition
       ${activeArrow === "next"
-                                ? "bg-washed-black/58"
-                                : "bg-washed-black/12"
+                                ? "bg-primary"
+                                : "bg-washed-black/58"
                             }`}
                     >
                         <IoIosArrowForward />
