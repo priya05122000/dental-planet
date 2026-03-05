@@ -23,7 +23,7 @@ const doctors = [
         role: "Orthodontist",
         degree: "Dentist (OBD)",
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        image: "/doctors/doctor1.jpg",
+        image: "/doctors/doctor1.webp",
     },
     {
         id: 2,
@@ -31,7 +31,7 @@ const doctors = [
         role: "Pediatric Dentist",
         degree: "Dentist (MDS)",
         description: "Specialized dental care for children and teenagers.",
-        image: "/doctors/doctor2.jpg",
+        image: "/doctors/doctor2.webp",
     },
     {
         id: 3,
@@ -39,7 +39,7 @@ const doctors = [
         role: "Cosmetic Dentist",
         degree: "Dentist (BDS)",
         description: "Smile designing and aesthetic dental treatments.",
-        image: "/doctors/doctor3.jpg",
+        image: "/doctors/doctor3.webp",
     },
     {
         id: 4,
@@ -47,7 +47,7 @@ const doctors = [
         role: "Oral Surgeon",
         degree: "Dentist (OMS)",
         description: "Expert in advanced surgical procedures.",
-        image: "/doctors/doctor4.jpg",
+        image: "/doctors/doctor4.webp",
     },
 ]
 

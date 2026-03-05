@@ -15,17 +15,17 @@
 
 const sharp = require("sharp");
 
-sharp("public/design/bannerteeth.png")
-  // .resize({
-  //   width: 800,
-  //   height: 800,
-  //   fit: "cover",
-  //   position:"top"
-  // })
+sharp("public/doctors/doctor4.jpg")
+  .resize({
+    width: 900,
+    height: 1200,
+    fit: "cover",
+    position:"top"
+  })
   .webp({
     quality: 80,
     effort: 6
   })
-  .toFile("public/design/bannerteeth.webp")
+  .toFile("public/doctors/doctor4.webp")
   .then(() => console.log("✅ Done"))
   .catch(console.error);
