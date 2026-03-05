@@ -48,7 +48,7 @@ const services = [
     {
         id: 7,
         service: "Tooth Extraction & Wisdom Tooth Removal",
-        text: `Safe and painless tooth extraction and wisdom tooth removal procedures.`,
+        text: `Safe and comfortable tooth extraction for teeth that are severely damaged, infected, or causing pain. Our dental team carefully evaluates the condition of the tooth and recommends the best treatment to protect your oral health. We also provide professional wisdom tooth removal for impacted or painful wisdom teeth that may cause swelling, infection, or crowding..`,
     },
     {
         id: 8,
