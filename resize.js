@@ -15,16 +15,16 @@
 
 const sharp = require("sharp");
 
-sharp("public/doctors/before_after.jpg")
-  .resize({
-    width: 800,
-    height: 600,
-    fit: "cover"
-  })
+sharp("public/casestudy/Untitled.jpeg")
+  // .resize({
+  //   width: 800,
+  //   height: 600,
+  //   fit: "cover"
+  // })
   .webp({
-    quality: 80,
+    quality: 90,
     effort: 6
   })
-  .toFile("public/doctors/before_after.webp")
+  .toFile("public/casestudy/10.webp")
   .then(() => console.log("✅ Done"))
   .catch(console.error);

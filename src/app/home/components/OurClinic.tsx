@@ -14,10 +14,10 @@ const OurClinic = () => {
     return (
         <section id="about" >
 
-            <div className="flex flex-col lg:flex-row gap-10 items-stretch">
+            <div className="flex flex-col lg:flex-row  items-stretch">
 
                 {/* LEFT CONTENT */}
-                <div className="lg:w-[40%] flex flex-col justify-center px-6 lg:px-12 pt-10 lg:py-12 xl:py-0">
+                <div className="lg:w-[40%] flex flex-col justify-center px-6 lg:px-12 pt-10 lg:py-12 xl:py-0 bg-saffron">
 
                     {/* Heading */}
                     <div>
@@ -36,7 +36,7 @@ const OurClinic = () => {
                     {/* Description */}
                     <div className="mt-10 space-y-8">
                         {clinicDescription.map((text, index) => (
-                            <Paragraph key={index} size="base">
+                            <Paragraph key={index} size="base" className="text-justify">
                                 {text}
                             </Paragraph>
                         ))}
@@ -45,14 +45,25 @@ const OurClinic = () => {
                 </div>
 
                 {/* RIGHT IMAGE */}
-                <div className="relative lg:w-[60%] aspect-4/3 overflow-hidden shadow-lg">
+                <div className="relative lg:w-[60%] aspect-4/3 overflow-hidden  ">
                     <Image
                         src="/clinic/clinic.webp"
                         alt="Clinic Interior"
                         fill
                         priority
                         sizes="(max-width: 1024px) 100vw, 60vw"
-                        className="object-cover transition duration-700"
+                        className="object-cover"
+                    />
+
+                    {/* Black Blur Overlay */}
+                    <div className="absolute inset-0 bg-primary/50 backdrop-blur-3xl"></div>
+                    <Image
+                        src="/clinic/clinic.webp"
+                        alt="Clinic Interior"
+                        fill
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        className="object-cover absolute inset-0 p-3"
                     />
                 </div>
 

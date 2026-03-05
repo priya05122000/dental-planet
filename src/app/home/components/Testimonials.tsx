@@ -57,7 +57,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div id="testimonials" className="py-10 sm:py-16 bg-off-white">
+    <div id="testimonials" className="py-10 sm:py-16 bg-saffron">
       <CenterSection>
         <div className="mb-8">
           <Heading
@@ -125,7 +125,7 @@ export default function Testimonials() {
                 </div>
                 <Paragraph
                   size="xl"
-                  className="text-gold my-3 sm:my-6 flex gap-1 justify-center"
+                  className="text-light my-3 sm:my-6 flex gap-1 justify-center"
                 >
                   {[...Array(5)].map((_, index) => (
                     <RxStarFilled key={index} />
@@ -152,7 +152,7 @@ export default function Testimonials() {
                       onMouseDown={(e) => e.preventDefault()}
                       onClick={() => swiperRef.current?.slideToLoop(index)}
                       className={`flex items-center overflow-hidden
-          ${isActive ? "bg-black border-2 border-primary" : "bg-transparent"}
+          ${isActive ? "bg-black border-2 border-primary" : "bg-transparent border"}
           h-10 sm:h-14 cursor-pointer`}
                       transition={{
                         layout: { duration: 0.45, ease: "easeInOut" },

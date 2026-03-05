@@ -85,7 +85,7 @@ const DoctorCard = ({ doctor, active, onClick }: any) => (
     <div
         onClick={onClick}
         className={`relative aspect-square overflow-hidden shadow-lg rounded cursor-pointer transition-all duration-300
-      ${active ? "ring-1 ring-primary" : "opacity-70 hover:opacity-100"}
+      ${active ? "ring-1 ring-primary" : "opacity-80 hover:opacity-100"}
     `}
     >
         <Image
@@ -96,7 +96,7 @@ const DoctorCard = ({ doctor, active, onClick }: any) => (
         />
 
         <div className="absolute bottom-0 right-0">
-            <div className="bg-linear-to-b text-xl from-primary to-primary-light p-2 text-light">
+            <div className="bg-linear-to-b from-primary/60 to-primary-light/60 backdrop-blur-3xl p-2 text-light">
                 <GoArrowUpLeft />
             </div>
         </div>
