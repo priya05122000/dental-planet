@@ -19,7 +19,7 @@ const testimonials = [
     name: "Dr. Samantha Jones",
     role: "Senior Orthodontist",
     service: "Orthodontics",
-    image: "doctors/doctor-holds-prosthesis.jpg",
+    image: "testimonials/testimonials-3.webp",
     text: `“Dental Planet is a very clean dental clinic with friendly staff. The dentist explained my root canal treatment clearly and made the procedure completely painless.”
 `,
   },
@@ -28,7 +28,7 @@ const testimonials = [
     name: "Dr. Michael Lee",
     role: "Periodontist",
     service: "Gum Treatment",
-    image: "doctors/portrait-man-doctor.jpg",
+    image: "testimonials/testimonials-2.webp",
     text: `“I visited Dental Planet for teeth whitening and the results were amazing. Highly recommend this professional dental care clinic in Anna Nagar.”`,
   },
   {
@@ -36,7 +36,7 @@ const testimonials = [
     name: "Dr. David Smith",
     role: "Oral Surgeon",
     service: "Oral Surgery",
-    image: "doctors/female-doctor.jpg",
+    image: "testimonials/testimonials-1.webp",
     text: `“The dentist was very gentle with my child. This is truly a child-friendly dental clinic with caring doctors and hygienic treatment.”`,
   },
 ];
