@@ -17,44 +17,52 @@ const services = [
     {
         id: 1,
         service: "Dental Implants",
-        text: `Restore your smile with advanced dental implant solutions. Dental implants are a strong and long-lasting option to replace missing teeth and improve both function and appearance. Our specialists offer single tooth implants and full mouth dental implants using modern techniques. These treatments help restore chewing ability and support a natural-looking smile.`,
+        text: `Restore your smile with advanced dental implant solutions. Dental implants are a strong and long-lasting option to replace missing teeth and improve both function and appearance.`,
+        subtext: `Our specialists offer single tooth implants and full mouth dental implants using modern techniques. These treatments help restore chewing ability and support a natural-looking smile.`
     },
     {
         id: 2,
         service: "Root Canal Treatment",
-        text: `Our painless root canal treatment helps save infected teeth and relieve severe tooth pain. This procedure removes infection from inside the tooth and protects it from further damage. With advanced techniques and careful care, our team assures a comfortable treatment while restoring the strength and function of your natural tooth.`,
+        text: `Our painless root canal treatment helps save infected teeth and relieve severe tooth pain. This procedure removes infection from inside the tooth and protects it from further damage.`,
+        subtext: `With advanced techniques and careful care, our team assures a comfortable treatment while restoring the strength and function of your natural tooth.`
     },
     {
         id: 3,
         service: "Orthodontic Treatment & Braces",
-        text: `Correct crooked teeth and bite problems with advanced orthodontic care. We offer braces, clear aligners, and modern treatment options to gently move teeth into the right position. Our orthodontic treatments help improve your smile, improve oral health, and create proper teeth alignment for long-term comfort.`,
+        text: `Correct crooked teeth and bite problems with advanced orthodontic care. We offer braces, clear aligners, and modern treatment options to gently move teeth into the right position.`,
+        subtext: `Our orthodontic treatments help improve your smile, improve oral health, and create proper teeth alignment for long-term comfort.
+`
     },
     {
         id: 4,
         service: "Cosmetic Dentistry & Smile Makeover",
-        text: `Transform your smile with modern cosmetic dentistry treatments. From teeth whitening and veneers to complete smile makeover procedures, we help improve the appearance of your teeth and create a confident smile. Our smile makeover solutions are customised to create a natural and balanced smile.`,
+        text: `Transform your smile with modern cosmetic dentistry treatments. From teeth whitening and veneers to complete smile makeover procedures, we help improve the appearance of your teeth and create a confident smile.`,
+        subtext: `Our smile makeover solutions are customised to create a natural and balanced smile.`,
     },
     {
         id: 5,
         service: "Teeth Cleaning & Preventive Care",
-        text: `Maintain good oral hygiene with professional teeth cleaning and preventive dental care. Our treatments help remove plaque, tartar, and stains while protecting your teeth and gums from future problems. Regular dental check-ups and cleanings help prevent cavities, gum disease, and bad breath while keeping your smile healthy and fresh.`,
+        text: `Maintain good oral hygiene with professional teeth cleaning and preventive dental care. Our treatments help remove plaque, tartar, and stains while protecting your teeth and gums from future problems.`,
+        subtext: `Regular dental check-ups and cleanings help prevent cavities, gum disease, and bad breath while keeping your smile healthy and fresh.`
     },
     {
         id: 6,
         service: "Pediatric Dentistry",
-        text: `Healthy smiles start early. Our pediatric dentistry services are designed to care for children’s teeth from infancy through their growing years. We offer gentle check-ups, cavity treatment, fluoride care, and preventive guidance in a child-friendly environment to help kids develop strong and healthy teeth.
-`,
+        text: `Healthy smiles start early. Our pediatric dentistry services are designed to care for children’s teeth from infancy through their growing years.`,
+        subtext: `We offer gentle check-ups, cavity treatment, fluoride care, and preventive guidance in a child-friendly environment to help kids develop strong and healthy teeth.`
     },
     {
         id: 7,
         service: "Tooth Extraction & Wisdom Tooth Removal",
-        text: `Safe and comfortable tooth extraction for teeth that are severely damaged, infected, or causing pain. Our dental team carefully evaluates the condition of the tooth and recommends the best treatment to protect your oral health. We also provide professional wisdom tooth removal for impacted or painful wisdom teeth that may cause swelling, infection, or crowding..`,
+        text: `Safe and comfortable tooth extraction for teeth that are severely damaged, infected, or causing pain. Our dental team carefully evaluates the condition of the tooth and recommends the best treatment to protect your oral health.`,
+        subtext: `We also provide professional wisdom tooth removal for impacted or painful wisdom teeth that may cause swelling, infection, or crowding.`
     },
     {
         id: 8,
         service: "Gum Treatment",
-        text: `Healthy gums are the foundation of a healthy smile. At our clinic we provide advanced gum treatment to control bleeding gums and manage periodontal issues. Our care focuses on removing infection, reducing inflammation, and protecting the supporting tissues of your teeth. With modern techniques and gentle care, we help restore gum health and prevent further damage, so you can maintain strong teeth and a confident smile.
-.`,
+        text: `Healthy gums are the foundation of a healthy smile. At our clinic we provide advanced gum treatment to control bleeding gums and manage periodontal issues. Our care focuses on removing infection, reducing inflammation, and protecting the supporting tissues of your teeth.`,
+        subtext: `With modern techniques and gentle care, we help restore gum health and prevent further damage, so you can maintain strong teeth and a confident smile.
+`,
     },
 ];
 
