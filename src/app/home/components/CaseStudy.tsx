@@ -236,7 +236,7 @@ const CaseStudy = () => {
                     {renderImage("/casestudy/18.jpg")}
                     <div className="absolute inset-0 bg-old-lace/80 backdrop-blur-xs"></div>
                     <Heading level={6} className={`absolute text-primary inset-0 p-4 flex items-center `}>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        Lorem ipsum dolor, sit amet 
                     </Heading>
                 </div>
             </div>
