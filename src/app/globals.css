@@ -11,7 +11,7 @@
   --color-light: #F5F4F4;
   --color-washed-black: #343434;
   --color-gold: #FFD813;
-  --color-saffron:#FFAB4F;  
+  --color-saffron: #FFAB4F;
 }
 
 /* Base */
@@ -31,4 +31,17 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Fix swiper height */
+/* #services .swiper {
+  height: 350px;
+} */
+
+#services .swiper-wrapper {
+  height: 100%;
+}
+
+#services .swiper-slide {
+  height: 100%;
 }

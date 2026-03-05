@@ -96,7 +96,7 @@ const CaseStudy = () => {
                                 size="lg"
                                 className="text-light uppercase font-bold tracking-widest max-w-2xl"
                             >
-                                Lorem ipsum dolor sit amet.
+                                Advanced dental technology
                             </Paragraph>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ const CaseStudy = () => {
                         <div className="h-48">
                             <OverlayText src="/casestudy/8.webp" overlay="bg-saffron/80 backdrop-blur-xs">
                                 <Paragraph size="xl">
-                                    Lorem ipsum dolor sit amet
+                                    Child-friendly dental care
                                 </Paragraph>
                             </OverlayText>
                         </div>
@@ -215,8 +215,8 @@ const CaseStudy = () => {
                         src="/casestudy/7.webp"
                         overlay="bg-old-lace/80 backdrop-blur-xs"
                     >
-                        <Heading level={6} className="text-primary">
-                            Lorem ipsum dolor sit amet
+                        <Heading level={6} className="text-primary ">
+                            Gentle and painless dental treatment
                         </Heading>
                     </OverlayText>
                 </div>

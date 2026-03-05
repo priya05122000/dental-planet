@@ -115,14 +115,20 @@ const ServiceTabs = ({
 // ================= SERVICE CONTENT =================
 
 const ServiceContent = ({ item }: any) => (
-    <>
+    <div className="">
         <Paragraph
             size="xl"
-            className="text-dark font-semibold mb-2 tracking-wide leading-snug"
+            className="text-dark font-semibold mb-2 tracking-wider leading-snug"
         >
             {item.text}
         </Paragraph>
-    </>
+        <Paragraph
+            size="base"
+            className="text-dark  tracking-wider leading-snug"
+        >
+            {item.subtext}
+        </Paragraph>
+    </div>
 );
 
 // ================= MAIN COMPONENT =================
@@ -173,18 +179,18 @@ export default function Services() {
                 {/* Swiper */}
                 <div className="my-10 sm:flex gap-8">
                     {/* Service Name */}
-                    <div className="flex sm:justify-center mb-4 sm:mb-0">
+                    <div className="flex sm:justify-center mb-4 sm:mb-0 h-12 items-center">
                         <div className="flex w-56 text-dark rounded">
-                            <Paragraph className="text-primary">
+                            <Paragraph className="text-primary line-clamp-2">
                                 &#9642; {services[activeIndex].service}
                             </Paragraph>
                         </div>
                     </div>
-
                     <Swiper
                         modules={[Autoplay, Navigation]}
                         slidesPerView={1}
                         loop
+                        autoHeight={true}   // ⭐ add this
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,
@@ -201,7 +207,10 @@ export default function Services() {
                     >
                         {services.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <ServiceContent item={item} />
+                                <div className="h-90 sm:h-56">
+                                    <ServiceContent item={item} />
+
+                                </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
