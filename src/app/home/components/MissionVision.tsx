@@ -8,7 +8,7 @@ import Section from "@/src/components/common/Section"
 import type { Swiper as SwiperType } from "swiper";
 import Paragraph from "@/src/components/common/Paragraph"
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import Heading from "@/src/components/common/Heading"
 
@@ -248,13 +248,9 @@ export default function MissionVision() {
 
 
                     <Swiper
-                        modules={[Autoplay, Navigation]}
+                        modules={[Navigation]}
                         slidesPerView={1}
                         loop={true}   // ✅ ADD THIS
-                        autoplay={{
-                            delay: 5000,
-                            disableOnInteraction: false, // keeps autoplay after arrow click
-                        }}
                         grabCursor={true}
                         navigation={{
                             prevEl: ".mv-prev",
