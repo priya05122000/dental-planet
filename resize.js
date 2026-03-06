@@ -15,17 +15,18 @@
 
 const sharp = require("sharp");
 
-sharp("public/doctors/doctor4.jpg")
+sharp("public/hero/Group 2.png")
+  .rotate()
   .resize({
-    width: 900,
+    width: 1600,
     height: 1200,
     fit: "cover",
-    position:"top"
+    position: "attention"
   })
   .webp({
     quality: 80,
     effort: 6
   })
-  .toFile("public/doctors/doctor4.webp")
+  .toFile("public/hero/hero.webp")
   .then(() => console.log("✅ Done"))
   .catch(console.error);

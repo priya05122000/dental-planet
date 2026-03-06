@@ -72,34 +72,27 @@ export default function MissionVision() {
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "top top",
-                    end: () => "+=" + window.innerHeight * (sections.length - 1),
-
+                    end: `+=${sections.length * 100}%`,
                     scrub: true,
                     pin: true,
-                    pinSpacing: true,
                     anticipatePin: 1,
-                    invalidateOnRefresh: true,
-
                     onUpdate: (self) => {
-                        const index = Math.round(self.progress * (sections.length - 1))
+                        // prevent auto change on page load
+                        if (self.progress < 0.05) {
+                            setActiveIndex(0)
+                            return
+                        }
+
+                        const index = Math.min(
+                            sections.length - 1,
+                            Math.floor(self.progress * sections.length)
+                        )
+
                         setActiveIndex(index)
-                    },
-
-                    onEnterBack: (self) => {
-                        // when scrolling up → disable pin
-                        if (self.direction === -1) {
-                            self.pin?.classList.remove("gsap-pin")
-                        }
-                    },
-
-                    onEnter: (self) => {
-                        // when scrolling down again → enable pin
-                        if (self.direction === 1) {
-                            ScrollTrigger.refresh()
-                        }
                     }
-                }
+                },
             })
+
             sections.forEach((section, i) => {
                 if (i === 0) return
 
@@ -121,12 +114,8 @@ export default function MissionVision() {
             timelineRef.current = tl
         }, containerRef)
 
-        // return () => {
-        //     ScrollTrigger.getAll().forEach((t) => t.kill())
-        //     ctx.revert()
-        // }
-
         return () => {
+            ScrollTrigger.getAll().forEach((t) => t.kill())
             ctx.revert()
         }
     }, [])
@@ -172,7 +161,8 @@ export default function MissionVision() {
         <>
             <section
                 ref={containerRef}
-                className="h-screen hidden bg-dark text-white sm:flex items-center relative overflow-hidden"            >
+                className="h-screen hidden  bg-dark text-white sm:flex items-center relative overflow-hidden"
+            >
                 {/* LEFT SIDE NAV */}
                 <div className="w-1/3 pl-16 space-y-6 relative z-10 ">
                     {data.map((item, index) => (
@@ -261,7 +251,6 @@ export default function MissionVision() {
                         modules={[Navigation]}
                         slidesPerView={1}
                         loop={true}   // ✅ ADD THIS
-
                         grabCursor={true}
                         navigation={{
                             prevEl: ".mv-prev",
@@ -312,8 +301,8 @@ export default function MissionVision() {
                         }}
                         className={`cursor-pointer p-2 rounded text-light transition
       ${activeArrow === "prev"
-                                ? "bg-primary"
-                                : "bg-washed-black/58"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
                             }`}
                     >
                         <IoIosArrowBack />
@@ -327,8 +316,8 @@ export default function MissionVision() {
                         }}
                         className={`cursor-pointer p-2 rounded text-light transition
       ${activeArrow === "next"
-                                ? "bg-primary"
-                                : "bg-washed-black/58"
+                                ? "bg-washed-black/58"
+                                : "bg-washed-black/12"
                             }`}
                     >
                         <IoIosArrowForward />

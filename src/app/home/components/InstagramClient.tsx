@@ -71,13 +71,13 @@ export default function InstagramClient() {
         </div>
 
         {/* Image Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
 
           {/* LEFT SIDE */}
-          <div className="col-span-2 flex flex-col gap-6">
+          <div className="col-span-2 flex flex-col gap-2 sm:gap-4">
 
             {/* ROW 1 */}
-            <div className="flex gap-6 h-65">
+            <div className="flex gap-2 sm:gap-4 h-65">
               <motion.div
                 animate={{ flex: [6, 4, 5, 6] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -96,7 +96,7 @@ export default function InstagramClient() {
             </div>
 
             {/* ROW 2 */}
-            <div className="flex gap-6 h-65">
+            <div className="flex gap-2 sm:gap-4 h-65">
               <motion.div
                 animate={{ flex: [5, 6, 4, 5] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}

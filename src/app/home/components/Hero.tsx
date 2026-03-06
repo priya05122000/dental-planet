@@ -164,7 +164,7 @@ const Hero = () => {
                 {/* RIGHT SIDE */}
                 <div className="relative md:col-span-2 min-h-[60vh] md:min-h-full order-1 sm:order-2">
                     <Image
-                        src="/hero/banner-2.webp"
+                        src="/hero/hero.webp"
                         alt="Clinic Interior"
                         fill
                         className="object-cover"
