@@ -9,6 +9,7 @@ import Hero from './components/Hero'
 import InstagramClient from './components/InstagramClient'
 import OurClinic from './components/OurClinic'
 import CaseStudy from './components/CaseStudy'
+import DoctorsDummy from './components/DoctorsDummy'
 
 const HomePage = () => {
     return (
@@ -16,7 +17,8 @@ const HomePage = () => {
             <Hero />
             <Services />
             <OurClinic />
-            <Doctors />
+            {/* <Doctors /> */}
+            <DoctorsDummy />
             <CaptchaWrapper>
                 <AppointmentForm />
             </CaptchaWrapper>

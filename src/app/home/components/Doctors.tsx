@@ -142,6 +142,8 @@ const DoctorAvatarNav = ({ doctors, activeIndex, swiperRef }: any) => (
 
 
 
+
+
 // ================= MAIN COMPONENT =================
 
 const Doctors = () => {
@@ -154,6 +156,7 @@ const Doctors = () => {
     const swiperRef = useRef<SwiperType | null>(null)
 
     const [activeIndex, setActiveIndex] = useState(0)
+
 
 
 

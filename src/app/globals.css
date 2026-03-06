@@ -45,3 +45,20 @@ body {
 #services .swiper-slide {
   height: 100%;
 }
+
+.tab-content {
+  opacity: 0;
+}
+
+.tab-content.active {
+  opacity: 1;
+}
+
+.tab-video {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.tab-video.active {
+  opacity: 1;
+}

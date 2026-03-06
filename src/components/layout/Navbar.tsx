@@ -89,11 +89,12 @@ export default function Header() {
     <AnimatePresence>
       {showHeader && (
         <motion.header
+          id="main-header"
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -100, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className={`fixed top-0 left-0 right-0 px-0 sm:px-2 lg:px-0 z-50 flex justify-center  transition-all duration-300 ${scrolled ? "bg-dark shadow-lg py-2" : "bg-transparent py-2 lg:py-4"
+          className={`fixed top-0 h-24 left-0 right-0 px-0 sm:px-2 lg:px-0 z-50 flex justify-center  transition-all duration-300 ${scrolled ? "bg-dark shadow-lg py-2" : "bg-transparent py-2 lg:py-4"
             }`}
         >
           <div
