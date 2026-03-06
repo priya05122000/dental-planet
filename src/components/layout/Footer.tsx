@@ -47,7 +47,7 @@ const Footer = () => {
 
                             {/* Short Description */}
                             <Paragraph className="">
-                                If you are searching for the best dentist in Anna Nagar, dental implant clinic in Chennai visit Dental Planet for trusted and professional dental care.
+                                Dental Planet – Trusted dental clinic in Anna Nagar, Chennai offering expert dental treatments for healthy, confident smiles.
                             </Paragraph>
 
                             <div className="mt-8">
@@ -137,8 +137,8 @@ const Footer = () => {
                                             <li className="flex items-start gap-2 mt-2">
                                                 <MdLocationPin className="text-primary-light w-5 h-5 shrink-0 " />
                                                 <Paragraph size="sm">
-                                                    37, Easwaram, 3rd Cross St, Lapis lagoon, <br/> AA Block, Shanthi Colony,
-                                                    Anna Nagar,<br/> Chennai, Tamil Nadu - 600040.
+                                                    37, Easwaram, 3rd Cross St, Lapis lagoon, <br /> AA Block, Shanthi Colony,
+                                                    Anna Nagar,<br /> Chennai, Tamil Nadu - 600040.
                                                 </Paragraph>
                                             </li>
                                         </ul>
