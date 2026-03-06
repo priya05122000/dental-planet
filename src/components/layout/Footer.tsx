@@ -163,7 +163,7 @@ const Footer = () => {
                                                     10:00 AM - 6:00 PM
                                                 </Paragraph>
                                             </li>
-{/*
+                                            {/*
                                             <li className="flex justify-between text-light">
                                                 <Paragraph size="sm">Sunday</Paragraph>
                                                 <Paragraph size="sm" className="font-medium text-red-500">

@@ -87,7 +87,7 @@ const DoctorCard = ({ doctor, active, onClick }: any) => {
 
 /* ================= MAIN COMPONENT ================= */
 
-export default function ScrollTabs() {
+export default function Dentist() {
 
     /* ---------- REFS ---------- */
 

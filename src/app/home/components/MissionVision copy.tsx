@@ -241,12 +241,9 @@ export default function MissionVision() {
                             <Paragraph size="sm">{item.title}</Paragraph>
                         </button>
                     ))}
-
                 </div>
                 {/* Swiper */}
                 <div className=" my-10  sm:flex ">
-
-
                     <Swiper
                         modules={[Navigation]}
                         slidesPerView={1}

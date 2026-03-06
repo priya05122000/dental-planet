@@ -93,9 +93,9 @@ const Hero = () => {
 
 
     const stats = [
-        { value: 500, label: "Customer" },
-        { value: 20, label: "Customer" },
-        { value: 50, label: "Customer" },
+        { value: 2200, label: "Treatments" },
+        { value: 9, label: "Staffs" },
+        { value: 3547, label: "Happy Patients" },
     ];
 
     const { scrollToSection } = useSmoothScroll();
@@ -109,7 +109,7 @@ const Hero = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 min-h-screen">
 
                 {/* LEFT SIDE */}
-                <div className="bg-dark px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-2 order-2 sm:order-1">
+                <div className="bg-dark px-6 lg:px-12 py-12 md:py-0 grid md:grid-rows-[1fr_1.5fr] order-2 sm:order-1">
 
                     {/* Empty top (desktop only spacing) */}
                     <div className="hidden md:block" />
@@ -121,16 +121,16 @@ const Hero = () => {
                         <div>
                             <Paragraph
                                 size="lg"
-                                className="uppercase text-light/50 tracking-[1.2rem] xl:tracking-[2rem]"
+                                className="uppercase   leading-loose text-light/50 tracking-[1.2rem] "
                             >
-                                Dental
+                                Complete <br /> Dental <br /> Care
                             </Paragraph>
 
                             <Paragraph
                                 size="xl"
-                                className="text-light my-4"
+                                className="text-light mt-2 mb-6"
                             >
-                                Redefining <br /> Aesthetics
+                                by experienced dentists
                             </Paragraph>
 
                             <button className="inline-flex bg-linear-to-r from-primary to-primary-light text-light py-2 px-4 rounded text-sm lg:text-base cursor-pointer font-normal" onClick={() => handleScrollTo("#appointment-form")}>
@@ -139,7 +139,7 @@ const Hero = () => {
                         </div>
 
                         {/* Stats */}
-                        <div className="sm:mb-10 border z-10 border-light/20 rounded  p-2 xl:p-4 flex flex-row justify-between gap-10 xl:gap-20 md:absolute md:bottom-0 ">
+                        <div className="sm:mb-10 border z-10 border-light/20 rounded  p-2 xl:p-4 flex flex-row justify-between gap-10 xl:gap-16 md:absolute md:bottom-0 ">
 
                             {stats.map((item, i) => (
                                 <div key={i}>

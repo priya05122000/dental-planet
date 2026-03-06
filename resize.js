@@ -15,7 +15,7 @@
 
 const sharp = require("sharp");
 
-sharp("public/hero/Group 2.png")
+sharp("public/missionvision/missionvision.jpg")
   .rotate()
   .resize({
     width: 1600,
@@ -24,9 +24,9 @@ sharp("public/hero/Group 2.png")
     position: "attention"
   })
   .webp({
-    quality: 80,
+    quality: 50,
     effort: 6
   })
-  .toFile("public/hero/hero.webp")
+  .toFile("public/missionvision/missionvision.webp")
   .then(() => console.log("✅ Done"))
   .catch(console.error);

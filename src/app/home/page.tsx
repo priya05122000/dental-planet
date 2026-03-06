@@ -4,12 +4,12 @@ import AppointmentForm from './components/AppointmentForm'
 import MissionVision from './components/MissionVision'
 import Testimonials from './components/Testimonials'
 import CaptchaWrapper from '@/src/components/common/CaptchaWrapper'
-import Doctors from './components/Doctors'
 import Hero from './components/Hero'
 import InstagramClient from './components/InstagramClient'
 import OurClinic from './components/OurClinic'
 import CaseStudy from './components/CaseStudy'
 import DoctorsDummy from './components/DoctorsDummy'
+import Dentist from './components/Dentist'
 
 const HomePage = () => {
     return (
@@ -17,8 +17,7 @@ const HomePage = () => {
             <Hero />
             <Services />
             <OurClinic />
-            {/* <Doctors /> */}
-            <DoctorsDummy />
+            <Dentist />
             <CaptchaWrapper>
                 <AppointmentForm />
             </CaptchaWrapper>
