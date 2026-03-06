@@ -100,13 +100,20 @@ const Footer = () => {
                         <div >
                             {/* Google Map */}
                             <div className="rounded overflow-hidden h-full">
-                                <iframe
+                                {/* <iframe
                                     id="inlineFrameExample"
                                     title="Inline Frame Example"
                                     width="100%"
                                     height="100%"
                                     src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik">
-                                </iframe>
+                                </iframe> */}
+
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.242049938548!2d80.2135763748434!3d13.08384038724194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265a003c7696f%3A0x87f5d079c1d60666!2sDENTAL%20PLANET!5e0!3m2!1sen!2sin!4v1772783889636!5m2!1sen!2sin"
+                                    width="100%"
+                                    height="100%"
+                                    loading="lazy"
+                                ></iframe>
                             </div>
                         </div>
 
@@ -121,13 +128,19 @@ const Footer = () => {
                                         </Paragraph>
                                         <ul className="space-y-1 ">
                                             <li className="flex items-center gap-2 text-sm">
-                                                <IoCall className="text-primary-light" />
-                                                <a href="tel:+919876543210" className="hover:underline">
-                                                    +91 98765 43210
+                                                <IoCall className="text-primary-light w-5 h-5 shrink-0" />
+                                                <a href="tel:+918551986619" className="hover:underline">
+                                                    +918551986619
                                                 </a>
                                             </li>
-                                            {/* <li className="flex items-center gap-2 text-base lg:text-lg font-semibold"><MdEmail className="text-primary-light" /> info@dentalplanet.com</li> */}
-                                            <li className="flex items-start gap-2"><MdLocationPin className="text-primary-light text-base lg:text-lg font-semibold" /> <Paragraph size="sm">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016</Paragraph></li>
+
+                                            <li className="flex items-start gap-2 mt-2">
+                                                <MdLocationPin className="text-primary-light w-5 h-5 shrink-0 " />
+                                                <Paragraph size="sm">
+                                                    37, Easwaram, 3rd Cross St, Lapis lagoon, <br/> AA Block, Shanthi Colony,
+                                                    Anna Nagar,<br/> Chennai, Tamil Nadu - 600040.
+                                                </Paragraph>
+                                            </li>
                                         </ul>
                                     </div>
 
