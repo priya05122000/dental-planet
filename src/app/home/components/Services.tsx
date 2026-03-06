@@ -161,7 +161,7 @@ export default function Services() {
     }, [activeIndex]);
 
     return (
-        <div id="services" className="py-10 sm:py-16 bg-old-lace">
+        <div id="services" className="py-10 sm:flex justify-center items-center sm:py-16 min-h-screen sm:min-h-0 xl:h-[calc(100vh-96px)] bg-old-lace relative overflow-hidden">
             <CenterSection>
                 <SectionHeader />
 
@@ -190,7 +190,6 @@ export default function Services() {
                         modules={[Autoplay, Navigation]}
                         slidesPerView={1}
                         loop
-                        autoHeight={true}   // ⭐ add this
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,
@@ -207,48 +206,15 @@ export default function Services() {
                     >
                         {services.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="h-90 sm:h-56">
+                                <div className="h-full">
                                     <ServiceContent item={item} />
-
                                 </div>
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
 
-                {/* Navigation */}
-                {/* <div className="flex justify-end gap-2">
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setActiveArrow("prev");
-                            swiperRef.current?.slidePrev();
-                        }}
-                        // className="services-prev cursor-pointer p-2 rounded bg-washed-black/12 text-white"
-                        className={`cursor-pointer p-2 rounded text-white transition
-      ${activeArrow === "prev"
-                                ? "bg-washed-black/58"
-                                : "bg-washed-black/12"
-                            }`}
-                    >
-                        <IoIosArrowBack />
-                    </button>
 
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setActiveArrow("next");
-                            swiperRef.current?.slideNext();
-                        }}
-                        className={`cursor-pointer p-2 rounded text-white transition
-      ${activeArrow === "next"
-                                ? "bg-washed-black/12"
-                                : "bg-washed-black/58"
-                            }`}
-                    >
-                        <IoIosArrowForward />
-                    </button>
-                </div> */}
 
                 <div className="flex justify-end gap-2">
                     <button
