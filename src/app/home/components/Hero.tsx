@@ -121,7 +121,7 @@ const Hero = () => {
                         <div>
                             <Paragraph
                                 size="lg"
-                                className="uppercase   leading-loose text-light/50 tracking-[1.2rem] "
+                                className="uppercase   leading-loose text-light/50 tracking-[0.8rem] sm:tracking-[1.2rem] "
                             >
                                 Complete <br /> Dental <br /> Care
                             </Paragraph>
