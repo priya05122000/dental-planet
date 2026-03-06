@@ -151,25 +151,25 @@ const Footer = () => {
 
                                         <ul className="space-y-2">
                                             <li className="flex justify-between text-light">
-                                                <Paragraph size="sm">Monday - Friday</Paragraph>
+                                                <Paragraph size="sm">Monday - Saturday</Paragraph>
                                                 <Paragraph size="sm" className="font-medium">
-                                                    9:00 AM - 8:00 PM
-                                                </Paragraph>
-                                            </li>
-
-                                            <li className="flex justify-between text-light">
-                                                <Paragraph size="sm">Saturday</Paragraph>
-                                                <Paragraph size="sm" className="font-medium">
-                                                    10:00 AM - 6:00 PM
+                                                    10:00 AM - 8:00 PM
                                                 </Paragraph>
                                             </li>
 
                                             <li className="flex justify-between text-light">
                                                 <Paragraph size="sm">Sunday</Paragraph>
+                                                <Paragraph size="sm" className="font-medium">
+                                                    10:00 AM - 6:00 PM
+                                                </Paragraph>
+                                            </li>
+{/*
+                                            <li className="flex justify-between text-light">
+                                                <Paragraph size="sm">Sunday</Paragraph>
                                                 <Paragraph size="sm" className="font-medium text-red-500">
                                                     Closed
                                                 </Paragraph>
-                                            </li>
+                                            </li> */}
                                         </ul>
                                     </div>
 
