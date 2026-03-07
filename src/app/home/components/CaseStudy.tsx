@@ -88,7 +88,7 @@ const CaseStudy = () => {
                     {/* Title */}
                     <div className="h-48 px-4 lg:px-12 flex items-center">
                         <div>
-                            <Heading level={4} className="text-light mb-2 tracking-wide">
+                            <Heading level={4} className="text-light mb-2 tracking-widest">
                                 Modern Dental Clinic
                             </Heading>
 

@@ -231,7 +231,7 @@ export default function Dentist() {
 
             <div className="text-light text-center">
 
-                <Heading level={4} className="tracking-wide mb-2">
+                <Heading level={4} className="tracking-widest mb-2">
                     Doctors
                 </Heading>
 

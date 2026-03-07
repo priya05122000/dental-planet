@@ -99,7 +99,7 @@ const ServiceTabs = ({
                     key={item.id}
                     ref={(el) => { tabRefs.current[index] = el }}
                     onClick={() => onClick(index)}
-                    className={`px-2 py-0.5 border border-dark/10 rounded shadow-md whitespace-nowrap shrink-0 transition
+                    className={`px-2 py-0.5 cursor-pointer border border-dark/10 rounded shadow-md whitespace-nowrap shrink-0 transition
           ${activeIndex === index
                             ? "bg-dark text-light"
                             : "bg-washed-black/12"

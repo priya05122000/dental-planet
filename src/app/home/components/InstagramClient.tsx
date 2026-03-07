@@ -44,12 +44,12 @@ function BlendImage({ src, objectPosition = "object-cover" }: { src: string; obj
 
 export default function InstagramClient() {
   return (
-    <section className="bg-old-lace py-20">
+    <section className="bg-old-lace py-10 sm:py-16">
       <Section>
         {/* Heading */}
         <div className="grid sm:grid-cols-2 mb-10">
           <div>
-            <Heading level={4} className="text-dark tracking-wide mb-4">
+            <Heading level={4} className="text-dark tracking-widest mb-4">
               Instagram
             </Heading>
 

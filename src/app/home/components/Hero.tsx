@@ -139,7 +139,7 @@ const Hero = () => {
                         </div>
 
                         {/* Stats */}
-                        <div className="sm:mb-10 border z-10 border-light/20 rounded  p-2 xl:p-4 flex flex-row justify-between gap-10 xl:gap-16 md:absolute md:bottom-0 ">
+                        <div className="sm:mb-10 border z-10 border-light/20 rounded  p-2 xl:p-4 flex flex-row justify-between gap-8 xl:gap-16 md:absolute md:bottom-0 ">
 
                             {stats.map((item, i) => (
                                 <div key={i}>

@@ -21,7 +21,7 @@ const OurClinic = () => {
 
                     {/* Heading */}
                     <div>
-                        <Heading level={4} className="text-dark tracking-wide mb-2">
+                        <Heading level={4} className="text-dark tracking-widest mb-2">
                             About Us
                         </Heading>
 

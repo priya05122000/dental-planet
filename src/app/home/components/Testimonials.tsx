@@ -62,7 +62,7 @@ export default function Testimonials() {
         <div className="mb-8">
           <Heading
             level={4}
-            className="text-dark tracking-wide text-center mb-4"
+            className="text-dark tracking-widest text-center mb-4"
           >
             Testimonials
           </Heading>

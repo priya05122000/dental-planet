@@ -125,7 +125,7 @@ export default function AppointmentForm() {
                 <CenterSection>
 
                     <div className="mb-10 text-center">
-                        <Heading level={4} className="text-dark tracking-wide mb-2">
+                        <Heading level={4} className="text-dark tracking-widest mb-2">
                             Make an Appointment
                         </Heading>
 
