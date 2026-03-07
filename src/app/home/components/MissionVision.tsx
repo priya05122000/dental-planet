@@ -48,7 +48,7 @@ export default function MissionVision() {
                 <div className="block sm:hidden absolute inset-0 bg-linear-to-r from-dark/90 to bg-washed-black/80 " />
 
                 {/* BACKGROUND IMAGE (optional like your previous design) */}
-                <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none opacity-30">
+                <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none ">
                     <Image
                         src="/design/dental-planet.png"
                         alt="Dental Planet"
