@@ -7,11 +7,11 @@ import Paragraph from "@/src/components/common/Paragraph"
 import Section from "@/src/components/common/Section"
 
 const images = [
-  "/doctors/smiling-woman-dentist-chair.jpg",
+  "/smiling-woman-dentist-chair.webp",
   "/clinic/clinic.webp",
   "/clinic/clinic.webp",
-  "/doctors/before_after.webp",
-  "/doctors/smiling-woman-dentist-chair.jpg",
+  "/before_after.webp",
+  "/smiling-woman-dentist-chair.webp",
 ]
 
 /* Reusable Image with Blend Overlay */

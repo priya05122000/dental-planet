@@ -15,18 +15,18 @@
 
 const sharp = require("sharp");
 
-sharp("public/missionvision/missionvision.jpg")
+sharp("public/smiling-woman-dentist-chair.jpg")
   .rotate()
-  .resize({
-    width: 1600,
-    height: 1200,
-    fit: "cover",
-    position: "attention"
-  })
+  // .resize({
+  //   width: 1600,
+  //   height: 1200,
+  //   fit: "cover",
+  //   position: "attention"
+  // })
   .webp({
-    quality: 50,
+    quality: 10,
     effort: 6
   })
-  .toFile("public/missionvision/missionvision.webp")
+  .toFile("public/smiling-woman-dentist-chair.webp")
   .then(() => console.log("✅ Done"))
   .catch(console.error);
