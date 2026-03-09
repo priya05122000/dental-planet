@@ -15,7 +15,7 @@
 
 const sharp = require("sharp");
 
-sharp("public/smiling-woman-dentist-chair.jpg")
+sharp("public/design/bannerteeth.webp")
   .rotate()
   // .resize({
   //   width: 1600,
@@ -27,6 +27,6 @@ sharp("public/smiling-woman-dentist-chair.jpg")
     quality: 10,
     effort: 6
   })
-  .toFile("public/smiling-woman-dentist-chair.webp")
+  .toFile("public/design/bannerteeth-1.webp")
   .then(() => console.log("✅ Done"))
   .catch(console.error);
