@@ -108,7 +108,7 @@ export default function AppointmentForm() {
     };
 
     return (
-        <div id="appointment-form" className="bg-old-lace py-20 sm:py-24 lg:py-28 relative overflow-hidden">
+        <div id="appointment-form" className="bg-old-lace py-20 sm:py-24 lg:py-28 relative">
 
             {/* Decorative teeth image */}
             <Image
@@ -117,7 +117,7 @@ export default function AppointmentForm() {
                 width={200}
                 height={200}
                 className="absolute right-0 -bottom-15 sm:top-1/3 w-28 sm:w-32 md:w-40 lg:w-56 pointer-events-none z-0"
-                priority
+                loading="lazy"
             />
 
             {/* Content */}
@@ -133,7 +133,7 @@ export default function AppointmentForm() {
                             size="lg"
                             className="text-dark uppercase font-bold tracking-widest max-w-2xl mx-auto"
                         >
-                           Connect with Us
+                            Connect with Us
                         </Paragraph>
                     </div>
 

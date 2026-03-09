@@ -26,7 +26,7 @@ export default function MissionVision() {
         <div className="relative ">
 
 
-            <div className=" text-white flex justify-center items-center py-10 sm:h-[calc(100vh-96px)] relative ">
+            <div className=" text-white flex justify-center items-center py-10 sm:min-h-[calc(100vh-96px)] relative ">
 
 
                 <div className="absolute right-0 top-0 w-full sm:w-1/3 h-full pointer-events-none">
@@ -37,7 +37,7 @@ export default function MissionVision() {
                         alt="Dental Planet"
                         fill
                         className="object-cover"
-                        sizes="50vw"
+                        sizes="(max-width: 640px) 100vw, 33vw"
                     />
 
                     {/* SMOOTH GRADIENT */}
@@ -45,7 +45,7 @@ export default function MissionVision() {
                 </div>
 
                 <div className="hidden sm:block absolute inset-0 bg-linear-to-r from-dark from-70% to-washed-black/60 to-100% " />
-                <div className="block sm:hidden absolute inset-0 bg-linear-to-r from-dark/90 to bg-washed-black/80 " />
+                <div className="block sm:hidden absolute inset-0 bg-linear-to-r from-dark/100  to-washed-black/90 " />
 
                 {/* BACKGROUND IMAGE (optional like your previous design) */}
                 <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 pointer-events-none ">
@@ -53,6 +53,7 @@ export default function MissionVision() {
                         src="/design/dental-planet.png"
                         alt="Dental Planet"
                         fill
+                        loading="lazy"
                         className="object-contain object-bottom"
                         sizes="100vw"
                     />

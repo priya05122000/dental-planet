@@ -169,6 +169,7 @@ export default function Testimonials() {
                           src={item.image}
                           alt={item.name}
                           fill
+                          sizes="(max-width:768px) 40px, 56px"
                           className="object-cover"
                         />
                       </motion.div>

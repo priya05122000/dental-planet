@@ -14,10 +14,12 @@ const Reveal = ({ color = "bg-old-lace" }: { color?: string }) => (
         whileInView={{ width: 0 }}
         viewport={{ once: false, amount: 0.2 }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
-        className={`absolute top-0 right-0 h-full ${color}`}
+        className={`absolute top-0 right-0 h-full ${color} will-change-[width]`}
         style={{ width: "100%" }}
     />
 );
+
+
 
 /* ----------------------------- */
 /* Image Component */
@@ -34,6 +36,8 @@ const Img = ({
         alt="doctor"
         width={600}
         height={600}
+        loading="lazy"
+        sizes="(max-width: 768px) 100vw, 33vw"
         className={`w-full h-full ${className}`}
     />
 );
@@ -189,7 +193,7 @@ const CaseStudy = () => {
                 <div className="h-48">
                     <OverlayText
                         src="/casestudy/10.webp"
-                        overlay="bg-old-lace/80 backdrop-blur-xs"
+                        overlay="bg-old-lace/70 backdrop-blur-xs"
                     >
                         <>
                             <Heading level={3} className="hidden sm:block text-dark">
