@@ -34,9 +34,10 @@ const Footer = () => {
                                     <Image
                                         src="/logo/dental_planet.webp"
                                         alt="Dental Planet Logo"
-                                        width={200}
-                                        height={200}
-                                        className="w-1/2 h-full"
+                                        width={180}
+                                        height={60}
+                                        priority
+                                        className="h-auto w-auto max-w-72"
                                     />
                                 </div>
                             </div>
@@ -113,6 +114,7 @@ const Footer = () => {
                                     width="100%"
                                     height="100%"
                                     loading="lazy"
+                                    title="Dental Planet Location"
                                 ></iframe>
                             </div>
                         </div>
@@ -183,10 +185,39 @@ const Footer = () => {
                                         </Paragraph>
 
                                         <div className="flex items-center gap-2 text-primary text-base">
-                                            <FaInstagram className="cursor-pointer hover:text-primary-light transition" />
-                                            <FaFacebookF className="cursor-pointer hover:text-primary-light transition" />
-                                            <FaYoutube className="cursor-pointer hover:text-primary-light transition" />
-                                            <FaXTwitter className="cursor-pointer hover:text-primary-light transition" />
+                                            <Link
+                                                href="https://instagram.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="hover:text-primary-light transition"
+                                            >
+                                                <FaInstagram />
+                                            </Link>
+                                            <Link
+                                                href="https://instagram.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="hover:text-primary-light transition"
+                                            >
+                                                <FaFacebookF />
+                                            </Link>
+                                            <Link
+                                                href="https://instagram.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="hover:text-primary-light transition"
+                                            >
+                                                <FaYoutube />
+                                            </Link>
+                                            <Link
+                                                href="https://instagram.com"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="hover:text-primary-light transition"
+                                            >
+                                                <FaXTwitter />
+                                            </Link>
+
                                         </div>
                                     </div>
                                 </div>

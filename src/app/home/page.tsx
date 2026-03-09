@@ -16,14 +16,14 @@ const HomePage = () => {
             <Hero />
             <Services />
             <OurClinic />
-            {/* <Dentist /> */}
+            <Dentist />
             <CaptchaWrapper>
                 <AppointmentForm />
             </CaptchaWrapper>
             <CaseStudy />
             <MissionVision />
             <Testimonials />
-            {/* <InstagramClient /> */}
+            <InstagramClient />
         </div>
     )
 }
