@@ -173,7 +173,7 @@ const Hero = () => {
                     />
 
                     <Image
-                        src="/design/bannerteeth.png"
+                        src="/design/bannerteeth.webp"
                         alt="Dental Planet Logo"
                         width={400}
                         height={400}
