@@ -39,7 +39,7 @@ body {
 } */
 
 #services .swiper-wrapper {
-  height: 100%;
+  height: auto !important;
 }
 
 #services .swiper-slide {

@@ -156,12 +156,14 @@ export default function Services() {
 
         container.scrollTo({
             left: scrollLeft,
-            behavior: "smooth",
+            // behavior: "smooth",
         });
     }, [activeIndex]);
 
     return (
-        <div id="services" className="py-10 sm:flex justify-center items-center sm:py-16 min-h-screen sm:min-h-0 xl:h-[calc(100vh-96px)] bg-old-lace relative overflow-hidden">
+        <div id="services" className="sm:flex justify-center items-center py-10 sm:py-16  bg-old-lace relative ">
+        {/* <div id="services" className="py-10 sm:flex justify-center items-center sm:py-16 h-auto xl:min-h-[calc(100vh-96px)] bg-old-lace relative "> */}
+            {/* <div id="services" className="py-10 sm:flex justify-center items-center sm:py-16 min-h-screen sm:min-h-0 xl:h-[calc(100vh-96px)] bg-old-lace relative overflow-hidden"> */}
             <CenterSection>
                 <SectionHeader />
 
@@ -180,7 +182,7 @@ export default function Services() {
                 <div className="my-10 sm:flex gap-8">
                     {/* Service Name */}
                     <div className="flex sm:justify-center mb-4 sm:mb-0 h-12 items-center">
-                        <div className="flex w-56 text-dark rounded">
+                        <div className="flex w-56 text-dark rounded ">
                             <Paragraph className="text-primary line-clamp-2">
                                 &#9642; {services[activeIndex].service}
                             </Paragraph>
@@ -190,6 +192,7 @@ export default function Services() {
                         modules={[Autoplay, Navigation]}
                         slidesPerView={1}
                         loop
+                        autoHeight
                         autoplay={{
                             delay: 5000,
                             disableOnInteraction: false,
@@ -206,7 +209,7 @@ export default function Services() {
                     >
                         {services.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <div className="h-full">
+                                <div className="">
                                     <ServiceContent item={item} />
                                 </div>
                             </SwiperSlide>

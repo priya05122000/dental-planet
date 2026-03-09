@@ -50,21 +50,28 @@ const OurClinic = () => {
                         src="/clinic/clinic.webp"
                         alt="Clinic Interior"
                         fill
-                        priority
                         sizes="(max-width: 1024px) 100vw, 60vw"
-                        className="object-cover"
+                        className="object-cover blur-md"
                     />
 
                     {/* Black Blur Overlay */}
-                    <div className="absolute inset-0 bg-primary/50 backdrop-blur-3xl"></div>
-                    <Image
+                    <div className="absolute inset-0 bg-primary/50 "></div>
+                    {/* <Image
                         src="/clinic/clinic.webp"
                         alt="Clinic Interior"
                         fill
                         priority
                         sizes="(max-width: 1024px) 100vw, 60vw"
                         className="object-cover absolute inset-0 p-3"
+                    /> */}
+
+                    <img
+                        src="/clinic/clinic.webp"
+                        alt="Clinic Interior"
+                        className="absolute inset-0 object-cover p-3 w-full h-full will-change-transform"
+                        loading="lazy"
                     />
+
                 </div>
 
             </div>

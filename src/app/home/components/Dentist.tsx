@@ -195,19 +195,18 @@ export default function Dentist() {
                         if (!isClickScrolling.current) activate(i);
                     },
                 });
-
             });
 
-
-
             /* PINNING */
-
             scrollTriggerRef.current = ScrollTrigger.create({
                 trigger: sectionRef.current,
                 start: "top-=96 top",
                 end: "+=300%",
                 pin: true,
                 scrub: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                fastScrollEnd: true
             });
 
         }, sectionRef);
@@ -224,7 +223,7 @@ export default function Dentist() {
     return (
         <section
             ref={sectionRef}
-            className="relative min-h-[calc(100vh-96px)] sm:h-[calc(100vh-96px)] bg-dark text-light px-6 sm:px-4 py-10 flex flex-col gap-8"
+            className="relative h-[calc(100vh-96px)] bg-dark text-light px-6 sm:px-4 py-10 flex flex-col gap-8"
         >
 
             {/* ================= SECTION TITLE ================= */}
@@ -254,8 +253,7 @@ export default function Dentist() {
 
                 {/* ================= IMAGE SIDE ================= */}
 
-                <div className="relative rounded  w-full h-full shadow-lg ">
-
+                <div className="relative rounded w-full h-full shadow-lg will-change-transform">
                     {doctors.map((doc, i) => (
                         <div
                             key={i}
@@ -266,9 +264,11 @@ export default function Dentist() {
 
                             {/* IMAGE */}
 
-                            <img
+                            <Image
                                 src={doc.image}
-                                className="absolute inset-0 w-full h-full object-cover rounded object-top border border-light"
+                                alt={doc.name}
+                                fill
+                                className=" object-cover rounded object-top border border-light"
                             />
 
                             {/* NAME OVERLAY */}
